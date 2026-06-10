@@ -4,26 +4,34 @@
     <meta charset="UTF-8">
     <title>MidasVIP - Notícias</title>
     <style>
-        body { font-family: Arial, sans-serif; margin: 40px; background-color: #f4f4f4; }
+        body { font-family: 'Arial', sans-serif; margin: 40px; background-color: #f4f4f4; }
         .noticia-card { background: white; padding: 20px; margin-bottom: 20px; border-radius: 8px; box-shadow: 0 2px 4px rgba(0,0,0,0.1); }
-        h1 { color: #333; }
-        a { color: #007bff; text-decoration: none; font-weight: bold; }
-        a:hover { text-decoration: underline; }
-        .debug-info { color: red; font-size: 10px; }
+        h1 { color: #333; text-align: center; }
+        h3 { color: #d4af37; } /* Dourado para o título */
+        a { 
+            display: inline-block;
+            margin-top: 10px;
+            color: #ffffff; 
+            background-color: #d4af37; /* Botão dourado */
+            padding: 10px 15px;
+            text-decoration: none; 
+            font-weight: bold; 
+            border-radius: 5px;
+        }
+        a:hover { background-color: #b8860b; }
     </style>
 </head>
 <body>
 
-    <h1>Últimas Notícias MidasVIP</h1>
+    <h1>👑 MidasVIP - Últimas Notícias</h1>
 
     {% for noticia in noticias %}
     <div class="noticia-card">
         <h3>{{ noticia.titulo }}</h3>
+        <p><small>Data: {{ noticia.data }} | Categoria: {{ noticia.categoria }}</small></p>
         
-        <!-- Esta linha vai te mostrar exatamente quais nomes existem no seu banco -->
-        <p class="debug-info">Dados disponíveis: {{ noticia.keys() }}</p>
-        
-        <a href="{{ noticia.link if noticia.link else noticia.url }}" target="_blank">Acessar notícia completa</a>
+        <!-- O link agora usa a coluna correta 'link_noticia' -->
+        <a href="{{ noticia.link_noticia }}" target="_blank">Acessar notícia completa</a>
     </div>
     {% endfor %}
 
