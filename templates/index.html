@@ -18,8 +18,8 @@
     {% for noticia in noticias %}
     <div class="noticia-card">
         <h3>{{ noticia.titulo }}</h3>
-        <!-- Aqui está a correção: usamos noticia.link para direcionar o clique -->
-        <a href="{{ noticia.link }}" target="_blank">Acessar notícia completa</a>
+        <!-- Tenta pegar 'link', se não existir, tenta pegar 'url' -->
+        <a href="{{ noticia.link if noticia.link else noticia.url }}" target="_blank">Acessar notícia completa</a>
     </div>
     {% endfor %}
 
