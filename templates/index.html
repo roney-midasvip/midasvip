@@ -4,21 +4,26 @@
     <meta charset="UTF-8">
     <title>MidasVIP - Notícias</title>
     <style>
-        body { font-family: 'Arial', sans-serif; margin: 40px; background-color: #f4f4f4; }
-        .noticia-card { background: white; padding: 20px; margin-bottom: 20px; border-radius: 8px; box-shadow: 0 2px 4px rgba(0,0,0,0.1); }
-        h1 { color: #333; text-align: center; }
-        h3 { color: #d4af37; } /* Dourado para o título */
+        body { font-family: 'Georgia', serif; margin: 40px; background-color: #1a1a1a; color: #f4f4f4; }
+        .noticia-card { background: #2a2a2a; padding: 20px; margin-bottom: 20px; border-radius: 8px; border: 1px solid #d4af37; box-shadow: 0 4px 8px rgba(0,0,0,0.5); }
+        h1 { color: #d4af37; text-align: center; font-size: 2.5em; text-shadow: 2px 2px #000; }
+        h3 { color: #d4af37; margin-bottom: 5px; }
+        .info { font-size: 0.85em; color: #aaa; margin-bottom: 15px; }
+        .imagem-noticia { width: 100%; max-height: 300px; object-fit: cover; border-radius: 5px; margin-bottom: 15px; }
+        .btn-container { display: flex; gap: 10px; margin-top: 10px; }
         a { 
             display: inline-block;
-            margin-top: 10px;
-            color: #ffffff; 
-            background-color: #d4af37; /* Botão dourado */
-            padding: 10px 15px;
+            color: #1a1a1a; 
+            background-color: #d4af37;
+            padding: 10px 20px;
             text-decoration: none; 
             font-weight: bold; 
             border-radius: 5px;
+            transition: 0.3s;
         }
-        a:hover { background-color: #b8860b; }
+        a:hover { background-color: #f1c40f; transform: scale(1.05); }
+        .btn-venda { background-color: #27ae60; color: white; } /* Botão verde para venda */
+        .btn-venda:hover { background-color: #2ecc71; }
     </style>
 </head>
 <body>
@@ -27,11 +32,19 @@
 
     {% for noticia in noticias %}
     <div class="noticia-card">
-        <h3>{{ noticia.titulo }}</h3>
-        <p><small>Data: {{ noticia.data }} | Categoria: {{ noticia.categoria }}</small></p>
+        <!-- Exibe a imagem que está no seu banco -->
+        <img src="{{ noticia.imagem }}" alt="Imagem da notícia" class="imagem-noticia">
         
-        <!-- O link agora usa a coluna correta 'link_noticia' -->
-        <a href="{{ noticia.link_noticia }}" target="_blank">Acessar notícia completa</a>
+        <h3>{{ noticia.titulo }}</h3>
+        <div class="info">Data: {{ noticia.data }} | Categoria: {{ noticia.categoria }}</div>
+        
+        <div class="btn-container">
+            <!-- Link da notícia -->
+            <a href="{{ noticia.link_noticia if noticia.link_noticia.startswith('http') else 'https://' + noticia.link_noticia }}" target="_blank">Ler notícia</a>
+            
+            <!-- Link de Venda (Substitua o # pelo seu link de afiliado se for fixo, ou use uma coluna se existir) -->
+            <a href="COLOQUE_SEU_LINK_DE_AFILIADO_AQUI" class="btn-venda" target="_blank">Oferta Especial</a>
+        </div>
     </div>
     {% endfor %}
 
