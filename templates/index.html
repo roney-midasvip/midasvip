@@ -2,24 +2,85 @@
 <html lang="pt-br">
 <head>
     <meta charset="UTF-8">
-    <title>MidasVIP - Notícias</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MidasVIP | Notícias</title>
     <style>
-        body { font-family: 'Georgia', serif; margin: 20px; background-color: #1a1a1a; color: #f4f4f4; }
-        h1 { color: #d4af37; text-align: center; font-size: 2.5em; text-shadow: 2px 2px #000; }
-        
-        /* Layout em Grade (Quadrados) */
-        .container { display: grid; grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); gap: 20px; }
-        
-        .noticia-card { background: #2a2a2a; padding: 15px; border-radius: 8px; border: 1px solid #d4af37; display: flex; flex-direction: column; }
-        
-        .imagem-noticia { width: 100%; height: 200px; object-fit: cover; border-radius: 5px; margin-bottom: 10px; }
-        
-        h3 { color: #d4af37; font-size: 1.2em; margin: 10px 0; }
-        .info { font-size: 0.8em; color: #aaa; margin-bottom: 10px; }
-        
-        .btn-container { display: flex; flex-direction: column; gap: 8px; margin-top: auto; }
-        a { text-align: center; padding: 10px; text-decoration: none; font-weight: bold; border-radius: 5px; color: #1a1a1a; background-color: #d4af37; }
-        .btn-venda { background-color: #27ae60; color: white; }
+        @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&family=Montserrat:wght@300;400&display=swap');
+
+        body {
+            background-color: #0a0a0a;
+            color: #d4af37; /* Dourado */
+            font-family: 'Montserrat', sans-serif;
+            margin: 0;
+            padding: 20px;
+        }
+
+        h1 {
+            font-family: 'Playfair Display', serif;
+            text-align: center;
+            font-size: 2.5rem;
+            margin-bottom: 40px;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+        }
+
+        .container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .news-card {
+            background-color: #121212;
+            border: 1px solid #333;
+            padding: 20px;
+            transition: 0.3s;
+        }
+
+        .news-card:hover {
+            border-color: #d4af37;
+        }
+
+        .news-card img {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+            margin-bottom: 15px;
+        }
+
+        .news-card h2 {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.2rem;
+            margin-bottom: 10px;
+            color: #fff;
+        }
+
+        .news-card p {
+            font-size: 0.8rem;
+            color: #888;
+            margin-bottom: 20px;
+        }
+
+        .btn {
+            display: block;
+            text-align: center;
+            padding: 12px;
+            margin-top: 10px;
+            text-decoration: none;
+            text-transform: uppercase;
+            font-size: 0.8rem;
+            letter-spacing: 1px;
+            border: 1px solid #d4af37;
+            transition: 0.3s;
+        }
+
+        .btn-leitura { color: #d4af37; }
+        .btn-leitura:hover { background: #d4af37; color: #000; }
+
+        .btn-venda { color: #fff; border-color: #fff; }
+        .btn-venda:hover { background: #fff; color: #000; }
     </style>
 </head>
 <body>
@@ -28,18 +89,12 @@
 
     <div class="container">
         {% for noticia in noticias %}
-        <div class="noticia-card">
-            <img src="{{ noticia.imagem }}" alt="Imagem" class="imagem-noticia">
-            <h3>{{ noticia.titulo }}</h3>
-            <div class="info">Data: {{ noticia.data }} | {{ noticia.categoria }}</div>
-            
-            <div class="btn-container">
-                <!-- Link da notícia corrigido -->
-                <a href="{{ noticia.link_noticia if noticia.link_noticia.startswith('http') else 'https://' + noticia.link_noticia }}" target="_blank">Ler notícia</a>
-                
-                <!-- Link de Venda -->
-                <a href="https://SEU_LINK_AQUI" class="btn-venda" target="_blank">Oferta Especial</a>
-            </div>
+        <div class="news-card">
+            <img src="{{ noticia.imagem }}" alt="Imagem da notícia">
+            <h2>{{ noticia.titulo }}</h2>
+            <p>{{ noticia.data }} | {{ noticia.categoria }}</p>
+            <a href="{{ noticia.link }}" class="btn btn-leitura" target="_blank">Ler Notícia</a>
+            <a href="{{ noticia.link_produto }}" class="btn btn-venda" target="_blank">Oferta Especial</a>
         </div>
         {% endfor %}
     </div>
