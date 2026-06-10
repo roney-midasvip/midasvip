@@ -9,6 +9,7 @@
         h1 { color: #333; }
         a { color: #007bff; text-decoration: none; font-weight: bold; }
         a:hover { text-decoration: underline; }
+        .debug-info { color: red; font-size: 10px; }
     </style>
 </head>
 <body>
@@ -18,7 +19,10 @@
     {% for noticia in noticias %}
     <div class="noticia-card">
         <h3>{{ noticia.titulo }}</h3>
-        <!-- Tenta pegar 'link', se não existir, tenta pegar 'url' -->
+        
+        <!-- Esta linha vai te mostrar exatamente quais nomes existem no seu banco -->
+        <p class="debug-info">Dados disponíveis: {{ noticia.keys() }}</p>
+        
         <a href="{{ noticia.link if noticia.link else noticia.url }}" target="_blank">Acessar notícia completa</a>
     </div>
     {% endfor %}
