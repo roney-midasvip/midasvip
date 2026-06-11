@@ -7,7 +7,7 @@
 body{
     font-family:Arial, Helvetica, sans-serif;
     background:#000;
-    color:#ffffff;
+    color:#fff;
 }
 
 /* HEADER */
@@ -15,39 +15,40 @@ body{
 header{
     background:#000;
     text-align:center;
-    padding:40px 20px;
+    padding:30px 20px 20px 20px;
 }
 
 .logo-principal{
-    width:420px;
-    max-width:90%;
+    width:500px;
+    max-width:95%;
     display:block;
     margin:0 auto;
 }
 
 .slogan{
-    margin-top:15px;
+    margin-top:10px;
     color:#a8a8a8;
-    letter-spacing:6px;
-    font-size:14px;
+    letter-spacing:8px;
+    font-size:15px;
 }
 
 /* MENU */
 
 nav{
-    background:#0f0f0f;
+    background:#0c0c0c;
     border-top:1px solid #1f1f1f;
     border-bottom:1px solid #1f1f1f;
     text-align:center;
-    padding:22px;
+    padding:28px;
 }
 
 nav a{
-    color:white;
+    color:#ffffff;
     text-decoration:none;
-    margin:0 18px;
+    margin:0 28px;
     font-weight:bold;
-    font-size:15px;
+    font-size:22px;
+    transition:0.3s;
 }
 
 nav a:hover{
@@ -60,43 +61,44 @@ nav a:hover{
     max-width:1200px;
     margin:auto;
     text-align:center;
-    padding:70px 20px;
+    padding:60px 20px;
 }
 
 .hero h2{
-    font-size:48px;
+    font-size:42px;
     line-height:1.3;
-    margin-bottom:30px;
+    margin-bottom:25px;
 }
 
 .hero p{
     max-width:900px;
     margin:auto;
-    font-size:22px;
-    color:#cfcfcf;
+    font-size:24px;
+    color:#d0d0d0;
     line-height:1.8;
 }
 
 .btn-dourado{
     display:inline-block;
-    margin-top:40px;
+    margin-top:35px;
     background:#d4af37;
     color:#000;
     text-decoration:none;
-    padding:16px 35px;
+    padding:18px 40px;
     border-radius:8px;
     font-weight:bold;
+    font-size:18px;
 }
 
 .btn-dourado:hover{
     opacity:0.9;
 }
 
-/* BLOCOS */
+/* DESTAQUES */
 
 .destaque{
     max-width:1200px;
-    margin:35px auto;
+    margin:30px auto;
     background:#111;
     border:1px solid #222;
     border-radius:15px;
@@ -106,21 +108,23 @@ nav a:hover{
 .destaque h2{
     color:#d4af37;
     margin-bottom:15px;
+    font-size:28px;
 }
 
 .destaque p{
     color:#d0d0d0;
-    line-height:1.7;
+    line-height:1.8;
+    font-size:18px;
 }
 
-/* CARDS */
+/* GRID */
 
 .grid{
     max-width:1200px;
-    margin:35px auto;
+    margin:30px auto;
     padding:0 20px;
     display:grid;
-    grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
+    grid-template-columns:repeat(auto-fit,minmax(260px,1fr));
     gap:25px;
 }
 
@@ -130,31 +134,33 @@ nav a:hover{
     background:#111;
     border:1px solid #222;
     border-radius:15px;
-    padding:25px;
+    padding:30px;
     color:white;
     transition:0.3s;
 }
 
 .card:hover{
-    transform:translateY(-5px);
+    transform:translateY(-6px);
     border-color:#d4af37;
 }
 
 .card h3{
     color:#d4af37;
-    margin-bottom:12px;
+    margin-bottom:15px;
+    font-size:24px;
 }
 
 .card p{
-    color:#cfcfcf;
-    line-height:1.6;
+    color:#d0d0d0;
+    line-height:1.7;
+    font-size:17px;
 }
 
 /* FOOTER */
 
 footer{
     margin-top:60px;
-    padding:30px;
+    padding:35px;
     text-align:center;
     border-top:1px solid #1f1f1f;
     color:#888;
@@ -165,7 +171,7 @@ footer{
 @media(max-width:768px){
 
 .logo-principal{
-    width:260px;
+    width:280px;
 }
 
 .slogan{
@@ -173,20 +179,30 @@ footer{
     letter-spacing:3px;
 }
 
+nav{
+    padding:18px;
+}
+
+nav a{
+    display:inline-block;
+    margin:8px;
+    font-size:16px;
+}
+
 .hero{
-    padding:50px 20px;
+    padding:45px 20px;
 }
 
 .hero h2{
-    font-size:34px;
+    font-size:32px;
 }
 
 .hero p{
     font-size:18px;
 }
 
-nav a{
-    display:inline-block;
-    margin:8px;
+.btn-dourado{
+    font-size:16px;
+    padding:14px 24px;
 }
 }
