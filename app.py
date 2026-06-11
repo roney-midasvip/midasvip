@@ -4,24 +4,24 @@ from flask import Flask, render_template, request
 app = Flask(__name__)
 
 AMAZON_TAG = "midasvip-20"
-AWIN_ID = "2930251" # Seu ID está aqui e será usado
+AWIN_ID = "2930251"
 
 def get_db():
     conn = sqlite3.connect('midasvip_definitivo.db')
     conn.row_factory = sqlite3.Row
     return conn
 
-def gerar_link_dinamico(titulo, categoria):
-    # Lógica: Se for algo de beleza/estilo, usa Awin. Se não, usa Amazon.
+def gerar_link_final(titulo, categoria):
     cat = (categoria or "").lower()
     tit = (titulo or "").lower()
     
-    if any(termo in cat or termo in tit for termo in ['beleza', 'perfume', 'cosmetico', 'estilo']):
-        # Link Awin com seu ID
+    # Se for algo de beleza, usa Awin
+    if any(termo in cat or termo in tit for termo in ['beleza', 'perfume', 'cosmetico']):
         termo_busca = titulo.replace(" ", "+")
         return f"https://www.awin1.com/cread.php?awinaffid={AWIN_ID}&p=https%3A%2F%2Fwww.belezanaweb.com.br%2Fbusca%2F%3Fq%3D{termo_busca}"
+    
+    # Se não, usa Amazon forçando categoria de moda
     else:
-        # Link Amazon com sua Tag
         termo_busca = titulo.replace(" ", "+")
         return f"https://www.amazon.com.br/s?k={termo_busca}&tag={AMAZON_TAG}&i=fashion"
 
@@ -34,7 +34,8 @@ def home():
     noticias = []
     for n in noticias_raw:
         item = dict(n)
-        item['link_produto'] = gerar_link_dinamico(item['titulo'], item.get('categoria', ''))
+        # O link já chega pronto para o HTML
+        item['link_final'] = gerar_link_final(item['titulo'], item.get('categoria', ''))
         noticias.append(item)
         
     return render_template('index.html', noticias=noticias)
@@ -50,7 +51,7 @@ def buscar():
     noticias = []
     for n in noticias_raw:
         item = dict(n)
-        item['link_produto'] = gerar_link_dinamico(item['titulo'], item.get('categoria', ''))
+        item['link_final'] = gerar_link_final(item['titulo'], item.get('categoria', ''))
         noticias.append(item)
         
     return render_template('index.html', noticias=noticias)
