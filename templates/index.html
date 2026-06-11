@@ -5,85 +5,62 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>MIDASVIP</title>
     <style>
+        /* Fundo estilo metal escovado dourado */
         body { 
-            background-color: #121212; 
-            color: #fff; 
-            font-family: 'Segoe UI', sans-serif; 
-            margin: 0; 
-            padding: 0; 
+            background: linear-gradient(135deg, #bf953f, #fcf6ba, #b38728, #fbf5b7, #aa771c);
+            background-attachment: fixed;
+            font-family: 'Segoe UI', sans-serif;
+            margin: 0;
+            padding: 20px;
+            color: #333;
         }
-        .header-container { 
-            text-align: center; 
-            padding: 40px 20px; 
+
+        .header-container { text-align: center; padding: 40px 20px; }
+        
+        /* Estilização do Logo (Texto) */
+        .logo-texto {
+            font-family: 'Georgia', serif;
+            font-size: 60px;
+            color: #5a4500;
+            margin: 0;
+            text-shadow: 1px 1px 2px rgba(255,255,255,0.5);
+            letter-spacing: 6px;
         }
-        .logo { 
-            max-width: 250px; 
-            height: auto; 
-            display: block; 
-            margin: 0 auto 20px auto; 
+
+        .slogan-texto {
+            font-size: 16px;
+            color: #4a3a00;
+            margin-bottom: 40px;
+            letter-spacing: 3px;
+            text-transform: uppercase;
         }
-        .search-box { 
-            margin-bottom: 40px; 
-        }
-        .search-box input { 
-            padding: 12px 20px; 
-            width: 350px; 
-            border-radius: 25px; 
-            border: none; 
-            background: #1e1e1e; 
-            color: #fff; 
-            border: 1px solid #333; 
-        }
-        .search-box button { 
-            padding: 12px 25px; 
-            border-radius: 25px; 
-            border: none; 
-            background: #ffd700; 
-            color: #000; 
-            font-weight: bold; 
-            cursor: pointer; 
-            margin-left: 10px; 
-        }
-        .container { 
-            display: flex; 
-            flex-wrap: wrap; 
-            gap: 20px; 
-            justify-content: center; 
-            padding: 0 20px 40px 20px; 
-        }
+
+        .search-box { margin-bottom: 50px; }
+        .search-box input { padding: 12px 20px; width: 350px; border-radius: 25px; border: 1px solid #b38728; background: rgba(255,255,255,0.7); }
+        .search-box button { padding: 12px 25px; border-radius: 25px; border: none; background: #333; color: #ffd700; font-weight: bold; cursor: pointer; margin-left: 10px; }
+
+        .container { display: flex; flex-wrap: wrap; gap: 20px; justify-content: center; }
+        
         .card { 
             width: 300px; 
-            background: #1e1e1e; 
+            background: rgba(255, 255, 255, 0.85); 
             border-radius: 10px; 
             padding: 15px; 
-            border: 1px solid #333; 
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1); 
         }
-        .card img { 
-            width: 100%; 
-            height: 180px; 
-            object-fit: cover; 
-            border-radius: 6px; 
-            margin-bottom: 15px; 
-        }
-        .btn { 
-            display: block; 
-            text-align: center; 
-            padding: 10px; 
-            text-decoration: none; 
-            border-radius: 5px; 
-            font-weight: bold; 
-            margin-top: 5px; 
-            color: #000; 
-        }
-        .btn-noticia { background: #fff; margin-bottom: 10px; }
-        .btn-produto { background: #ffd700; }
+        
+        .card img { width: 100%; height: 180px; object-fit: cover; border-radius: 6px; margin-bottom: 10px; }
+        
+        .btn { display: block; text-align: center; padding: 10px; text-decoration: none; border-radius: 5px; font-weight: bold; margin-top: 5px; color: #fff; }
+        .btn-noticia { background: #333; margin-bottom: 10px; }
+        .btn-produto { background: #b38728; }
     </style>
 </head>
 <body>
 
     <div class="header-container">
-        <!-- Carrega a logo da pasta static -->
-        <img src="{{ url_for('static', filename='logo.png') }}" alt="MidasVIP" class="logo">
+        <h1 class="logo-texto">MIDASVIP</h1>
+        <p class="slogan-texto">NOTÍCIAS & ESTILO DE VIDA</p>
         
         <div class="search-box">
             <form action="/buscar" method="GET">
