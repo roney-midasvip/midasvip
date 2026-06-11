@@ -1,4 +1,4 @@
-from flask import Flask, render_template
+from flask import Flask, render_template, request
 import feedparser
 
 app = Flask(__name__)
@@ -20,6 +20,30 @@ def obter_noticias(limite=5):
     return noticias
 
 
+PESSOAS = {
+    "elon musk": {
+        "nome": "Elon Musk",
+        "descricao": "CEO da Tesla, SpaceX e uma das maiores fortunas do mundo."
+    },
+    "jeff bezos": {
+        "nome": "Jeff Bezos",
+        "descricao": "Fundador da Amazon e investidor bilionário."
+    },
+    "mark zuckerberg": {
+        "nome": "Mark Zuckerberg",
+        "descricao": "Fundador da Meta e um dos empresários mais influentes do planeta."
+    },
+    "neymar": {
+        "nome": "Neymar Jr.",
+        "descricao": "Jogador brasileiro e uma das celebridades esportivas mais conhecidas do mundo."
+    },
+    "cristiano ronaldo": {
+        "nome": "Cristiano Ronaldo",
+        "descricao": "Atleta global, empresário e ícone do futebol."
+    }
+}
+
+
 @app.route("/")
 def home():
 
@@ -28,6 +52,20 @@ def home():
     return render_template(
         "home.html",
         noticias=noticias
+    )
+
+
+@app.route("/buscar")
+def buscar():
+
+    termo = request.args.get("q", "").lower()
+
+    resultado = PESSOAS.get(termo)
+
+    return render_template(
+        "buscar.html",
+        resultado=resultado,
+        termo=termo
     )
 
 
