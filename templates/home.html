@@ -46,7 +46,7 @@
     </p>
 
     <a href="/noticias" class="btn-dourado">
-        Ver Últimas Notícias
+        Ver Todas as Notícias
     </a>
 
 </section>
@@ -84,6 +84,26 @@
         <h3>📰 Notícias</h3>
         <p>As principais notícias sobre riqueza, negócios e lifestyle.</p>
     </a>
+
+</section>
+
+<section class="destaque">
+
+    <h2>📰 Últimas Notícias</h2>
+
+    {% for noticia in noticias %}
+
+    <p style="margin-bottom:15px;">
+        <a
+            href="{{ noticia.link }}"
+            target="_blank"
+            style="color:#d4af37;text-decoration:none;"
+        >
+            {{ noticia.titulo }}
+        </a>
+    </p>
+
+    {% endfor %}
 
 </section>
 
