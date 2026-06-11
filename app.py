@@ -3,23 +3,40 @@ import feedparser
 
 app = Flask(__name__)
 
-RSS_URL = "https://feeds.bbci.co.uk/news/business/rss.xml"
-
 @app.route("/")
 def home():
-    feed = feedparser.parse(RSS_URL)
+    return render_template("home.html")
 
-    noticias = []
+@app.route("/bilionarios")
+def bilionarios():
+    return render_template("bilionarios.html")
 
-    for item in feed.entries[:12]:
-        noticias.append({
+@app.route("/celebridades")
+def celebridades():
+    return render_template("celebridades.html")
+
+@app.route("/luxo")
+def luxo():
+    return render_template("luxo.html")
+
+@app.route("/noticias")
+def noticias():
+
+    feed = feedparser.parse(
+        "https://feeds.bbci.co.uk/news/world/rss.xml"
+    )
+
+    lista_noticias = []
+
+    for item in feed.entries[:20]:
+        lista_noticias.append({
             "titulo": item.title,
             "link": item.link
         })
 
     return render_template(
-        "index.html",
-        noticias=noticias
+        "noticias.html",
+        noticias=lista_noticias
     )
 
 if __name__ == "__main__":
