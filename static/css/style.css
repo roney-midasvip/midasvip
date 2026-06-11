@@ -7,29 +7,29 @@
 body{
     font-family:Arial, Helvetica, sans-serif;
     background:#0b0b0b;
-    color:#ffffff;
+    color:white;
     line-height:1.6;
 }
 
 header{
     background:#000;
     text-align:center;
-    padding:35px 20px;
+    padding:30px 20px;
     border-bottom:1px solid #222;
 }
 
-header h1{
-    color:#d4af37;
-    font-size:60px;
-    letter-spacing:4px;
+.logo-principal{
+    width:320px;
+    max-width:90%;
+    display:block;
+    margin:0 auto;
 }
 
 .slogan{
     color:#999;
+    font-size:13px;
+    letter-spacing:3px;
     margin-top:10px;
-    font-size:15px;
-    text-transform:uppercase;
-    letter-spacing:2px;
 }
 
 nav{
@@ -44,7 +44,6 @@ nav a{
     text-decoration:none;
     margin:0 15px;
     font-weight:bold;
-    transition:0.3s;
 }
 
 nav a:hover{
@@ -59,16 +58,15 @@ nav a:hover{
 }
 
 .hero h2{
-    font-size:68px;
-    margin-bottom:25px;
-    color:white;
+    font-size:64px;
+    margin-bottom:20px;
 }
 
 .hero p{
-    font-size:22px;
-    color:#cccccc;
     max-width:850px;
     margin:auto;
+    color:#ccc;
+    font-size:22px;
 }
 
 .btn-dourado{
@@ -77,14 +75,9 @@ nav a:hover{
     background:#d4af37;
     color:black;
     text-decoration:none;
-    padding:15px 30px;
+    padding:14px 28px;
     border-radius:10px;
     font-weight:bold;
-    transition:0.3s;
-}
-
-.btn-dourado:hover{
-    transform:translateY(-3px);
 }
 
 .destaque{
@@ -118,7 +111,7 @@ nav a:hover{
     border-radius:18px;
     padding:28px;
     color:white;
-    transition:0.3s;
+    transition:.3s;
 }
 
 .card:hover{
@@ -132,7 +125,7 @@ nav a:hover{
 }
 
 .card p{
-    color:#cccccc;
+    color:#ccc;
 }
 
 footer{
@@ -141,28 +134,4 @@ footer{
     text-align:center;
     border-top:1px solid #222;
     color:#888;
-}
-
-@media(max-width:768px){
-
-    header h1{
-        font-size:42px;
-    }
-
-    .hero{
-        padding:70px 20px;
-    }
-
-    .hero h2{
-        font-size:38px;
-    }
-
-    .hero p{
-        font-size:18px;
-    }
-
-    nav a{
-        display:inline-block;
-        margin:8px;
-    }
 }
