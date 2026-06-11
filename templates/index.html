@@ -93,8 +93,12 @@
             <img src="{{ noticia.imagem }}" alt="Imagem da notícia">
             <h2>{{ noticia.titulo }}</h2>
             <p>{{ noticia.data }} | {{ noticia.categoria }}</p>
-            <a href="{{ noticia.link }}" class="btn btn-leitura" target="_blank">Ler Notícia</a>
-            <a href="{{ noticia.link_produto }}" class="btn btn-venda" target="_blank">Oferta Especial</a>
+            
+            <!-- Link corrigido para link_noticia -->
+            <a href="{{ noticia.link_noticia }}" class="btn btn-leitura" target="_blank">Ler Notícia</a>
+            
+            <!-- Botão de venda (apenas garantindo que ele exista no seu banco) -->
+            <a href="{{ noticia.link_produto if noticia.link_produto else '#' }}" class="btn btn-venda" target="_blank">Oferta Especial</a>
         </div>
         {% endfor %}
     </div>
