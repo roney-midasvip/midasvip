@@ -28,11 +28,13 @@
 </header>
 
 <nav>
-    <a href="/">Home</a>
+
+    <a href="/" class="menu-ativo">Home</a>
     <a href="/noticias">Notícias</a>
     <a href="/bilionarios">Bilionários</a>
     <a href="/celebridades">Celebridades</a>
     <a href="/luxo">Luxo</a>
+
 </nav>
 
 <section class="hero">
@@ -40,8 +42,9 @@
     <h2>Bilionários, Luxo e Lifestyle Premium</h2>
 
     <p>
-        Descubra as maiores fortunas do mundo, acompanhe celebridades,
-        conheça carros exóticos, relógios lendários, iates milionários,
+        Descubra as maiores fortunas do mundo,
+        acompanhe celebridades, conheça carros exóticos,
+        relógios lendários, iates milionários,
         aviação executiva e tudo que move o universo da elite global.
     </p>
 
@@ -53,36 +56,58 @@
 
 <section class="destaque">
 
-    <h2>💎 Universo MidasVIP</h2>
+    <h2>💎 Destaques do MidasVIP</h2>
 
     <p>
-        Um portal dedicado ao mundo dos bilionários, celebridades,
-        negócios, investimentos e experiências de luxo.
+        O melhor conteúdo sobre riqueza, negócios,
+        celebridades, investimentos e mercado de luxo.
     </p>
 
 </section>
 
 <section class="grid">
 
-    <a href="/bilionarios" class="card">
-        <h3>💰 Bilionários</h3>
-        <p>As maiores fortunas, rankings, investimentos e impérios empresariais.</p>
-    </a>
+    <div class="card">
+        <h3>👑 Elon Musk</h3>
+        <p>CEO da Tesla e SpaceX, frequentemente entre os mais ricos do planeta.</p>
+    </div>
 
-    <a href="/celebridades" class="card">
-        <h3>⭐ Celebridades</h3>
-        <p>Artistas, atletas, influenciadores e personalidades globais.</p>
-    </a>
+    <div class="card">
+        <h3>💼 Bernard Arnault</h3>
+        <p>Controlador do império LVMH e referência mundial em luxo.</p>
+    </div>
 
-    <a href="/luxo" class="card">
-        <h3>⌚ Luxo</h3>
-        <p>Relógios, supercarros, jatos, iates e experiências exclusivas.</p>
-    </a>
+    <div class="card">
+        <h3>🚀 Jeff Bezos</h3>
+        <p>Fundador da Amazon e investidor em tecnologia e exploração espacial.</p>
+    </div>
 
-    <a href="/noticias" class="card">
-        <h3>📰 Notícias</h3>
-        <p>Atualizações sobre riqueza, negócios, tecnologia e lifestyle.</p>
-    </a>
+    <div class="card">
+        <h3>📱 Mark Zuckerberg</h3>
+        <p>Líder da Meta e uma das maiores fortunas da nova economia digital.</p>
+    </div>
+
+</section>
+
+<section class="destaque">
+
+    <h2>⭐ Celebridades em Alta</h2>
+
+    <p>
+        Acompanhe artistas, atletas, empresários e influenciadores
+        que movimentam bilhões em negócios e entretenimento.
+    </p>
+
+</section>
+
+<section class="destaque">
+
+    <h2>🔥 Tendências do Luxo</h2>
+
+    <p>
+        Supercarros, relógios raros, imóveis milionários,
+        jatos executivos, iates e experiências exclusivas.
+    </p>
 
 </section>
 
@@ -93,6 +118,7 @@
     {% for noticia in noticias %}
 
     <p style="margin-bottom:15px;">
+
         <a
             href="{{ noticia.link }}"
             target="_blank"
@@ -100,32 +126,10 @@
         >
             {{ noticia.titulo }}
         </a>
+
     </p>
 
     {% endfor %}
-
-</section>
-
-<section class="destaque">
-
-    <h2>🔥 Tendências do Mercado de Luxo</h2>
-
-    <p>
-        Conheça as principais tendências envolvendo supercarros,
-        imóveis de alto padrão, relógios raros, moda premium,
-        aviação executiva e experiências exclusivas.
-    </p>
-
-</section>
-
-<section class="destaque">
-
-    <h2>🛍 Produtos Premium</h2>
-
-    <p>
-        Em breve: curadoria exclusiva de relógios, acessórios,
-        tecnologia de alto padrão e itens desejados pela elite global.
-    </p>
 
 </section>
 
