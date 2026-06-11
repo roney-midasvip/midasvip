@@ -93,5 +93,10 @@ margin-top:50px;
 padding:40px;
 text-align:center;
 border-top:1px solid #e5e5e5;
+  .card{
+text-decoration:none;
+color:#111;
+}
+
 color:#777;
 }
