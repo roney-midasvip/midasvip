@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Busca MidasVIP</title>
+
+<link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+
+<body>
+
+<header>
+
+<img
+src="{{ url_for('static', filename='img/logo-midasvip.png') }}"
+class="logo-principal"
+>
+
+<p class="slogan">
+O UNIVERSO DA RIQUEZA, DO PODER E DO LUXO
+</p>
+
+</header>
+
+<nav>
+<a href="/">Home</a>
+<a href="/noticias">Notícias</a>
+<a href="/bilionarios">Bilionários</a>
+<a href="/celebridades">Celebridades</a>
+<a href="/luxo">Luxo</a>
+</nav>
+
+<section class="hero">
+
+{% if resultado %}
+
+<h2>{{ resultado.nome }}</h2>
+
+<p>
+{{ resultado.descricao }}
+</p>
+
+{% else %}
+
+<h2>Nenhum resultado encontrado</h2>
+
+<p>
+Pesquise por Elon Musk, Jeff Bezos, Neymar ou Cristiano Ronaldo.
+</p>
+
+{% endif %}
+
+</section>
+
+</body>
+</html>
