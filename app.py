@@ -4,53 +4,49 @@ import urllib.parse
 
 app = Flask(__name__)
 
-# --- CONFIGURAÇÕES ---
+# Configurações
 AMAZON_TAG = "midasvip-20"
-# Substitua pelo seu ID real da Awin
-AWIN_PUBLISHER_ID = "SEU_ID_AWIN_AQUI" 
+# Substitua pelo seu ID da AWIN abaixo
+AWIN_ID = "SEU_ID_AWIN_AQUI" 
 
 def obter_conexao_banco():
     conexao = sqlite3.connect('midasvip_definitivo.db')
     conexao.row_factory = sqlite3.Row
     return conexao
 
-def determinar_link(titulo):
+def gerar_link_inteligente(titulo):
     titulo_lower = titulo.lower()
     
-    # Palavras-chave que definem produtos de beleza para a Sephora
+    # 1. Rota para AWIN/Sephora
     termos_beleza = ['beleza', 'perfume', 'maquiagem', 'batom', 'skincare', 'sephora', 'creme', 'cosmético']
-    
     if any(termo in titulo_lower for termo in termos_beleza):
-        # Rota para AWIN/Sephora
-        # O link abaixo é um exemplo padrão de DeepLink da Awin
-        url_alvo = urllib.parse.quote("https://www.sephora.com.br/busca/?q=" + titulo)
-        return f"https://www.awin1.com/cread.php?awinaffid={AWIN_PUBLISHER_ID}&p={url_alvo}"
+        # Link simplificado para Awin
+        return f"https://www.awin1.com/cread.php?awinaffid={AWIN_ID}&p=https%3A%2F%2Fwww.sephora.com.br%2F"
+    
+    # 2. Rota para Amazon (Mais genérica para evitar erro de "Nenhum resultado")
     else:
-        # Rota para Amazon
-        titulo_limpo = titulo.replace('"', '').replace("'", "").replace(":", "")
-        termo_curto = " ".join(titulo_limpo.split()[:4])
-        termo_busca = urllib.parse.quote(termo_curto)
-        return f"https://www.amazon.com.br/s?k={termo_busca}&tag={AMAZON_TAG}"
+        # Pegamos apenas as 3 primeiras palavras do título para evitar erros de busca
+        palavras = titulo.split()[:3]
+        termo_curto = "+".join(palavras)
+        return f"https://www.amazon.com.br/s?k={termo_curto}&tag={AMAZON_TAG}"
 
 @app.route('/')
 def home():
     try:
         conexao = obter_conexao_banco()
         cursor = conexao.cursor()
-        
         cursor.execute("SELECT * FROM noticias ORDER BY id DESC")
         noticias_raw = cursor.fetchall()
         
         noticias = []
         for n in noticias_raw:
             noticia = dict(n)
-            # Define o link dinamicamente baseado no conteúdo
-            noticia['link_produto'] = determinar_link(noticia['titulo'])
+            noticia['link_produto'] = gerar_link_inteligente(noticia['titulo'])
             noticias.append(noticia)
             
         conexao.close()
     except Exception as erro:
-        print(f"Erro ao processar: {erro}")
+        print(f"Erro no processamento: {erro}")
         noticias = []
 
     return render_template('index.html', noticias=noticias)
