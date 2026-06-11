@@ -15,20 +15,21 @@ body{
 header{
     text-align:center;
     padding:25px 20px;
+    background:#000;
 }
 
 .logo-principal{
-    width:320px;
+    width:280px;
     max-width:90%;
     display:block;
     margin:auto;
 }
 
 .slogan{
-    margin-top:10px;
-    color:#a5a5a5;
-    letter-spacing:6px;
-    font-size:14px;
+    margin-top:8px;
+    color:#a8a8a8;
+    letter-spacing:5px;
+    font-size:13px;
 }
 
 /* MENU */
@@ -38,14 +39,14 @@ nav{
     border-top:1px solid #1f1f1f;
     border-bottom:1px solid #1f1f1f;
     text-align:center;
-    padding:22px;
+    padding:18px;
 }
 
 nav a{
-    color:#fff;
+    color:white;
     text-decoration:none;
-    margin:0 22px;
-    font-size:20px;
+    margin:0 20px;
+    font-size:22px;
     font-weight:bold;
 }
 
@@ -60,45 +61,50 @@ nav a:hover{
 /* HERO */
 
 .hero{
-    max-width:1200px;
+    max-width:1100px;
     margin:auto;
     text-align:center;
-    padding:60px 20px;
+    padding:40px 20px;
 }
 
 .hero h2{
-    font-size:56px;
-    margin-bottom:25px;
+    font-size:34px;
+    margin-bottom:20px;
+    color:#ffffff;
 }
 
 .hero p{
-    max-width:950px;
+    max-width:850px;
     margin:auto;
-    font-size:24px;
+    font-size:20px;
     color:#d0d0d0;
     line-height:1.8;
 }
 
 .btn-dourado{
     display:inline-block;
-    margin-top:35px;
+    margin-top:25px;
     background:#d4af37;
     color:#000;
     text-decoration:none;
-    padding:16px 35px;
+    padding:14px 30px;
     border-radius:8px;
     font-weight:bold;
 }
 
-/* BLOCOS */
+.btn-dourado:hover{
+    opacity:0.9;
+}
+
+/* DESTAQUES */
 
 .destaque{
     max-width:1200px;
-    margin:35px auto;
+    margin:30px auto;
     background:#111;
     border:1px solid #222;
     border-radius:15px;
-    padding:35px;
+    padding:30px;
 }
 
 .destaque h2{
@@ -107,18 +113,18 @@ nav a:hover{
 }
 
 .destaque p{
-    line-height:1.8;
     color:#d0d0d0;
+    line-height:1.8;
 }
 
-/* GRID */
+/* CARDS */
 
 .grid{
     max-width:1200px;
-    margin:35px auto;
+    margin:30px auto;
     padding:0 20px;
     display:grid;
-    grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
+    grid-template-columns:repeat(auto-fit,minmax(260px,1fr));
     gap:25px;
 }
 
@@ -127,6 +133,12 @@ nav a:hover{
     border:1px solid #222;
     border-radius:15px;
     padding:25px;
+    transition:.3s;
+}
+
+.card:hover{
+    border-color:#d4af37;
+    transform:translateY(-5px);
 }
 
 .card h3{
@@ -136,16 +148,27 @@ nav a:hover{
 
 .card p{
     color:#d0d0d0;
-    line-height:1.7;
+    line-height:1.6;
+}
+
+/* LINKS DE NOTÍCIAS */
+
+.destaque a{
+    color:#d4af37;
+    text-decoration:none;
+}
+
+.destaque a:hover{
+    text-decoration:underline;
 }
 
 /* FOOTER */
 
 footer{
-    margin-top:60px;
+    margin-top:50px;
     padding:30px;
     text-align:center;
-    border-top:1px solid #1f1f1f;
+    border-top:1px solid #222;
     color:#888;
 }
 
@@ -157,12 +180,21 @@ footer{
     width:220px;
 }
 
+.slogan{
+    font-size:11px;
+    letter-spacing:3px;
+}
+
+.hero{
+    padding:30px 15px;
+}
+
 .hero h2{
-    font-size:36px;
+    font-size:28px;
 }
 
 .hero p{
-    font-size:18px;
+    font-size:17px;
 }
 
 nav a{
