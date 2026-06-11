@@ -1,2 +1,102 @@
-<h1>Celebridades</h1>
-<a href="/">Voltar</a>
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Celebridades | MidasVIP</title>
+
+<meta name="description" content="As celebridades mais influentes do mundo do entretenimento, esportes e negócios.">
+
+<link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+
+<body>
+
+<header>
+
+    <img
+        src="{{ url_for('static', filename='img/logo-midasvip.png') }}"
+        alt="MidasVIP"
+        class="logo-principal"
+    >
+
+    <p class="slogan">
+        O UNIVERSO DA RIQUEZA, DO PODER E DO LUXO
+    </p>
+
+</header>
+
+<nav>
+
+    <a href="/">Home</a>
+    <a href="/noticias">Notícias</a>
+    <a href="/bilionarios">Bilionários</a>
+    <a href="/celebridades" class="ativo">Celebridades</a>
+    <a href="/luxo">Luxo</a>
+
+</nav>
+
+<section class="hero">
+
+    <h2>Celebridades que Movimentam Bilhões</h2>
+
+    <p>
+        Artistas, atletas e personalidades que influenciam
+        tendências, negócios e o mercado global.
+    </p>
+
+</section>
+
+<section class="grid">
+
+    <div class="card">
+        <h3>⚽ Cristiano Ronaldo</h3>
+        <p>
+            Um dos atletas mais famosos do planeta e referência global em marketing.
+        </p>
+    </div>
+
+    <div class="card">
+        <h3>🎤 Taylor Swift</h3>
+        <p>
+            Cantora e empresária que transformou sua carreira em um império bilionário.
+        </p>
+    </div>
+
+    <div class="card">
+        <h3>⚽ Neymar Jr.</h3>
+        <p>
+            Ícone do futebol brasileiro e uma das celebridades esportivas mais conhecidas.
+        </p>
+    </div>
+
+    <div class="card">
+        <h3>🎬 Tom Cruise</h3>
+        <p>
+            Astro de Hollywood com décadas de sucesso e influência mundial.
+        </p>
+    </div>
+
+    <div class="card">
+        <h3>🎵 Beyoncé</h3>
+        <p>
+            Cantora, empresária e uma das artistas mais poderosas do entretenimento.
+        </p>
+    </div>
+
+    <div class="card">
+        <h3>🏀 LeBron James</h3>
+        <p>
+            Atleta, investidor e uma das marcas pessoais mais valiosas do esporte.
+        </p>
+    </div>
+
+</section>
+
+<footer>
+    © 2026 MidasVIP.com.br - Todos os direitos reservados
+</footer>
+
+</body>
+</html>
