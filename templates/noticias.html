@@ -4,7 +4,9 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Notícias - MidasVIP</title>
+<title>Notícias | MidasVIP</title>
+
+<meta name="description" content="Últimas notícias sobre negócios, bilionários, celebridades e mercado de luxo.">
 
 <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
 </head>
@@ -12,24 +14,37 @@
 <body>
 
 <header>
-<h1>MIDASVIP</h1>
+
+    <img
+        src="{{ url_for('static', filename='img/logo-midasvip.png') }}"
+        alt="MidasVIP"
+        class="logo-principal"
+    >
+
+    <p class="slogan">
+        O UNIVERSO DA RIQUEZA, DO PODER E DO LUXO
+    </p>
+
 </header>
 
 <nav>
-<a href="/">Home</a>
-<a href="/noticias">Notícias</a>
-<a href="/bilionarios">Bilionários</a>
-<a href="/celebridades">Celebridades</a>
-<a href="/luxo">Luxo</a>
+
+    <a href="/">Home</a>
+    <a href="/noticias" class="ativo">Notícias</a>
+    <a href="/bilionarios">Bilionários</a>
+    <a href="/celebridades">Celebridades</a>
+    <a href="/luxo">Luxo</a>
+
 </nav>
 
 <section class="hero">
-<h2>Últimas Notícias</h2>
 
-<p>
-Total de notícias encontradas:
-<strong>{{ noticias|length }}</strong>
-</p>
+    <h2>Últimas Notícias</h2>
+
+    <p>
+        Acompanhe as notícias mais recentes sobre economia,
+        negócios, tecnologia, celebridades e mercado de luxo.
+    </p>
 
 </section>
 
@@ -37,11 +52,17 @@ Total de notícias encontradas:
 
 {% for noticia in noticias %}
 
-<a href="{{ noticia.link }}" target="_blank" class="card">
+<a
+    href="{{ noticia.link }}"
+    target="_blank"
+    class="card"
+>
 
-<h3>{{ noticia.titulo }}</h3>
+    <h3>📰 {{ noticia.titulo }}</h3>
 
-<p>Clique para abrir a matéria.</p>
+    <p>
+        Clique para abrir a matéria completa.
+    </p>
 
 </a>
 
@@ -50,7 +71,7 @@ Total de notícias encontradas:
 </section>
 
 <footer>
-© MidasVIP.com.br
+    © 2026 MidasVIP.com.br - Todos os direitos reservados
 </footer>
 
 </body>
