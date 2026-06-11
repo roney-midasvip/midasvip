@@ -1,4 +1,5 @@
 <!DOCTYPE html>
+
 <html lang="pt-BR">
 <head>
 <meta charset="UTF-8">
@@ -8,50 +9,89 @@
 
 <style>
 
-body{
+*{
     margin:0;
-    background:#0b0b0b;
-    color:white;
-    font-family:Arial,sans-serif;
+    padding:0;
+    box-sizing:border-box;
+}
+
+body{
+    font-family:Arial, sans-serif;
+    background:#ffffff;
+    color:#111;
 }
 
 header{
-    background:black;
+    border-bottom:1px solid #e5e5e5;
     padding:25px;
     text-align:center;
 }
 
 header h1{
-    color:#d4af37;
-    margin:0;
+    color:#c9a227;
+    font-size:42px;
 }
 
 nav{
-    background:#151515;
-    padding:15px;
+    padding:20px;
     text-align:center;
+    border-bottom:1px solid #e5e5e5;
 }
 
 nav a{
-    color:#d4af37;
     text-decoration:none;
-    margin:15px;
+    color:#111;
+    margin:0 15px;
     font-weight:bold;
 }
 
 .hero{
-    text-align:center;
     padding:80px 20px;
+    text-align:center;
 }
 
 .hero h2{
-    font-size:40px;
+    font-size:48px;
+    margin-bottom:20px;
 }
 
 .hero p{
-    max-width:700px;
+    max-width:800px;
     margin:auto;
-    color:#cccccc;
+    color:#666;
+    font-size:18px;
+}
+
+.grid{
+    max-width:1200px;
+    margin:auto;
+    padding:40px 20px;
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
+    gap:20px;
+}
+
+.card{
+    border:1px solid #e5e5e5;
+    border-radius:10px;
+    padding:25px;
+    transition:.3s;
+}
+
+.card:hover{
+    transform:translateY(-4px);
+}
+
+.card h3{
+    margin-bottom:10px;
+    color:#c9a227;
+}
+
+footer{
+    text-align:center;
+    padding:40px;
+    border-top:1px solid #e5e5e5;
+    color:#777;
 }
 
 </style>
@@ -60,24 +100,53 @@ nav a{
 <body>
 
 <header>
-    <h1>MIDASVIP</h1>
+<h1>MIDASVIP</h1>
 </header>
 
 <nav>
-    <a href="/">Home</a>
-    <a href="/noticias">Notícias</a>
-    <a href="/bilionarios">Bilionários</a>
-    <a href="/celebridades">Celebridades</a>
-    <a href="/luxo">Luxo</a>
+<a href="/">Home</a>
+<a href="/noticias">Notícias</a>
+<a href="/bilionarios">Bilionários</a>
+<a href="/celebridades">Celebridades</a>
+<a href="/luxo">Luxo</a>
 </nav>
 
 <section class="hero">
-    <h2>O universo dos bilionários e do luxo</h2>
-    <p>
-        Notícias, celebridades, fortunas, relógios,
-        carros, iates e experiências exclusivas.
-    </p>
+<h2>O mundo dos bilionários e do luxo</h2>
+
+<p>
+Fortunas, celebridades, relógios exclusivos,
+jatos privados, iates e experiências premium.
+</p>
 </section>
+
+<section class="grid">
+
+<div class="card">
+<h3>Bilionários</h3>
+<p>Conheça os homens e mulheres mais ricos do mundo.</p>
+</div>
+
+<div class="card">
+<h3>Celebridades</h3>
+<p>Os nomes mais influentes do entretenimento global.</p>
+</div>
+
+<div class="card">
+<h3>Luxo</h3>
+<p>Relógios, carros, iates e estilo de vida premium.</p>
+</div>
+
+<div class="card">
+<h3>Notícias</h3>
+<p>Atualizações sobre riqueza, negócios e lifestyle.</p>
+</div>
+
+</section>
+
+<footer>
+© MidasVIP
+</footer>
 
 </body>
 </html>
