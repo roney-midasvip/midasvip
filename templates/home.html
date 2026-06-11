@@ -10,27 +10,48 @@
 
 body{
     margin:0;
-    font-family:Arial;
-    background:#111;
+    background:#0b0b0b;
     color:white;
+    font-family:Arial,sans-serif;
 }
 
 header{
-    background:#000;
+    background:black;
+    padding:25px;
+    text-align:center;
+}
+
+header h1{
     color:#d4af37;
-    padding:20px;
+    margin:0;
 }
 
-.container{
-    max-width:1200px;
+nav{
+    background:#151515;
+    padding:15px;
+    text-align:center;
+}
+
+nav a{
+    color:#d4af37;
+    text-decoration:none;
+    margin:15px;
+    font-weight:bold;
+}
+
+.hero{
+    text-align:center;
+    padding:80px 20px;
+}
+
+.hero h2{
+    font-size:40px;
+}
+
+.hero p{
+    max-width:700px;
     margin:auto;
-    padding:20px;
-}
-
-.card{
-    background:#1c1c1c;
-    padding:20px;
-    border-radius:10px;
+    color:#cccccc;
 }
 
 </style>
@@ -39,24 +60,24 @@ header{
 <body>
 
 <header>
-<h1>MidasVIP</h1>
-<p>Bilionários • Celebridades • Luxo</p>
+    <h1>MIDASVIP</h1>
 </header>
 
-<div class="container">
+<nav>
+    <a href="/">Home</a>
+    <a href="/noticias">Notícias</a>
+    <a href="/bilionarios">Bilionários</a>
+    <a href="/celebridades">Celebridades</a>
+    <a href="/luxo">Luxo</a>
+</nav>
 
-<div class="card">
-
-<h2>Bem-vindo ao MidasVIP</h2>
-
-<p>
-O portal brasileiro sobre bilionários,
-celebridades e produtos de luxo.
-</p>
-
-</div>
-
-</div>
+<section class="hero">
+    <h2>O universo dos bilionários e do luxo</h2>
+    <p>
+        Notícias, celebridades, fortunas, relógios,
+        carros, iates e experiências exclusivas.
+    </p>
+</section>
 
 </body>
 </html>
