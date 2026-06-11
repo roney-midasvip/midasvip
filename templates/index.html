@@ -15,13 +15,23 @@
             padding: 20px;
         }
 
+        header {
+            text-align: center; 
+            margin-bottom: 40px; 
+            padding-top: 20px;
+        }
+
         h1 {
             font-family: 'Playfair Display', serif;
             text-align: center;
             font-size: 2.5rem;
-            margin-bottom: 40px;
+            margin-bottom: 10px;
             letter-spacing: 2px;
             text-transform: uppercase;
+            display: flex; 
+            justify-content: center; 
+            align-items: center; 
+            gap: 15px;
         }
 
         .container {
@@ -85,7 +95,24 @@
 </head>
 <body>
 
-    <h1>👑 MidasVIP - Últimas Notícias</h1>
+    <header>
+        <h1>
+            <span style="font-size: 2rem;">👑</span> MidasVIP
+        </h1>
+        <p style="color: #888; letter-spacing: 3px; text-transform: uppercase; font-size: 0.9rem; margin-top: 0;">Últimas Notícias</p>
+
+        <!-- Barra de Pesquisa Moderna -->
+        <form action="/buscar" method="GET" style="margin-top: 25px;">
+            <input type="text" name="q" placeholder="Pesquisar notícias..." 
+                   style="background: #121212; border: 1px solid #d4af37; padding: 10px 20px; 
+                          width: 300px; color: #fff; border-radius: 25px; outline: none;">
+            <button type="submit" 
+                    style="background: #d4af37; border: none; padding: 10px 20px; 
+                           border-radius: 25px; cursor: pointer; color: #000; font-weight: bold; margin-left: 10px;">
+                Buscar
+            </button>
+        </form>
+    </header>
 
     <div class="container">
         {% for noticia in noticias %}
@@ -94,10 +121,7 @@
             <h2>{{ noticia.titulo }}</h2>
             <p>{{ noticia.data }} | {{ noticia.categoria }}</p>
             
-            <!-- Link corrigido para link_noticia -->
             <a href="{{ noticia.link_noticia }}" class="btn btn-leitura" target="_blank">Ler Notícia</a>
-            
-            <!-- Botão de venda (apenas garantindo que ele exista no seu banco) -->
             <a href="{{ noticia.link_produto if noticia.link_produto else '#' }}" class="btn btn-venda" target="_blank">Oferta Especial</a>
         </div>
         {% endfor %}
