@@ -1,9 +1,9 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
-
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
 <title>Notícias - MidasVIP</title>
 
 <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
@@ -25,16 +25,25 @@
 
 <section class="hero">
 <h2>Últimas Notícias</h2>
-<p>Total de notícias: {{ noticias|length }}</p>
+
+<p>
+Total de notícias encontradas:
+<strong>{{ noticias|length }}</strong>
+</p>
+
 </section>
 
 <section class="grid">
 
 {% for noticia in noticias %}
 
-<div class="card">
+<a href="{{ noticia.link }}" target="_blank" class="card">
+
 <h3>{{ noticia.titulo }}</h3>
-</div>
+
+<p>Clique para abrir a matéria.</p>
+
+</a>
 
 {% endfor %}
 
