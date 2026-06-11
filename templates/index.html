@@ -1,35 +1,34 @@
 <!DOCTYPE html>
-<html lang="pt-br">
+<html>
 <head>
-    <meta charset="UTF-8">
-    <title>MIDASVIP</title>
     <style>
-        body { background: #121212; color: #fff; font-family: sans-serif; padding: 20px; }
-        .pesquisa { text-align: center; margin-bottom: 30px; }
-        .card-container { display: flex; flex-wrap: wrap; gap: 20px; justify-content: center; }
-        .card { width: 300px; background: #1e1e1e; padding: 15px; border-radius: 8px; border: 1px solid #333; }
-        .card img { width: 100%; height: 180px; object-fit: cover; border-radius: 4px; }
-        .card h3 { color: #ffd700; font-size: 1.1em; }
-        .btn { display: block; background: #333; color: #fff; text-align: center; padding: 10px; text-decoration: none; margin-top: 10px; }
+        body { background: #121212; color: #fff; font-family: sans-serif; }
+        .busca-container { text-align: center; padding: 20px; }
+        .busca-container input { padding: 12px; width: 400px; border-radius: 20px; border: none; }
+        .busca-container button { padding: 12px 25px; border-radius: 20px; border: none; background: #ffd700; cursor: pointer; font-weight: bold; }
+        .grid { display: flex; flex-wrap: wrap; justify-content: center; gap: 20px; padding: 20px; }
+        .card { width: 300px; background: #1e1e1e; padding: 15px; border-radius: 10px; }
+        .card img { width: 100%; height: 160px; object-fit: cover; border-radius: 5px; }
+        .btn-noticia { display: block; background: #444; color: white; text-align: center; padding: 10px; margin: 10px 0; text-decoration: none; border-radius: 5px; }
+        .btn-produto { display: block; background: #ffd700; color: black; text-align: center; padding: 10px; text-decoration: none; border-radius: 5px; font-weight: bold; }
     </style>
 </head>
 <body>
-    <h1 style="text-align: center;">MIDASVIP</h1>
-    <div class="pesquisa">
+    <div class="busca-container">
         <form action="/buscar" method="GET">
             <input type="text" name="q" placeholder="Pesquisar celebridade, bilionário..." required>
-            <button type="submit">Buscar</button>
+            <button type="submit">BUSCAR</button>
         </form>
     </div>
-
-    <div class="card-container">
+    <div class="grid">
         {% for n in noticias %}
         <div class="card">
-            <!-- Certifique-se que no seu DB a coluna da imagem se chama 'imagem' -->
-            {% if n.imagem %}<img src="{{ n.imagem }}" alt="Notícia">{% endif %}
+            <img src="{{ n.imagem }}">
             <h3>{{ n.titulo }}</h3>
-            <p style="font-size: 0.8em;">{{ n.data }} | {{ n.categoria }}</p>
-            <a href="{{ n.link_final }}" target="_blank" class="btn">LER NOTÍCIA</a>
+            <!-- Link da Notícia (se você tiver uma coluna 'link_noticia' no banco) -->
+            <a href="{{ n.link_noticia }}" class="btn-noticia" target="_blank">LER NOTÍCIA</a>
+            <!-- Link do Produto (o afiliado) -->
+            <a href="{{ n.link_afiliado }}" class="btn-produto" target="_blank">COMPRAR PRODUTO</a>
         </div>
         {% endfor %}
     </div>
