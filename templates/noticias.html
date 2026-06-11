@@ -4,7 +4,6 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
 <title>Notícias - MidasVIP</title>
 
 <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
@@ -13,42 +12,36 @@
 <body>
 
 <header>
-    <h1>MIDASVIP</h1>
+<h1>MIDASVIP</h1>
 </header>
 
 <nav>
-    <a href="/">Home</a>
-    <a href="/noticias">Notícias</a>
-    <a href="/bilionarios">Bilionários</a>
-    <a href="/celebridades">Celebridades</a>
-    <a href="/luxo">Luxo</a>
+<a href="/">Home</a>
+<a href="/noticias">Notícias</a>
+<a href="/bilionarios">Bilionários</a>
+<a href="/celebridades">Celebridades</a>
+<a href="/luxo">Luxo</a>
 </nav>
 
 <section class="hero">
-    <h2>Últimas Notícias</h2>
-    <p>Atualizações automáticas em tempo real.</p>
+<h2>Últimas Notícias</h2>
+<p>Total de notícias: {{ noticias|length }}</p>
 </section>
 
 <section class="grid">
 
 {% for noticia in noticias %}
 
-<a href="{{ noticia.link }}"
-   target="_blank"
-   class="card">
-
+<div class="card">
 <h3>{{ noticia.titulo }}</h3>
-
-<p>Clique para ler a matéria completa.</p>
-
-</a>
+</div>
 
 {% endfor %}
 
 </section>
 
 <footer>
-    © MidasVIP.com.br
+© MidasVIP.com.br
 </footer>
 
 </body>
