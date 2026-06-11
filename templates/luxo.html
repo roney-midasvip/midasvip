@@ -1,2 +1,103 @@
-<h1>Luxo</h1>
-<a href="/">Voltar</a>
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Luxo | MidasVIP</title>
+
+<meta name="description" content="Relógios de luxo, supercarros, iates, jatos privados, mansões e lifestyle premium.">
+
+<link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+
+<body>
+
+<header>
+
+    <img
+        src="{{ url_for('static', filename='img/logo-midasvip.png') }}"
+        alt="MidasVIP"
+        class="logo-principal"
+    >
+
+    <p class="slogan">
+        O UNIVERSO DA RIQUEZA, DO PODER E DO LUXO
+    </p>
+
+</header>
+
+<nav>
+
+    <a href="/">Home</a>
+    <a href="/noticias">Notícias</a>
+    <a href="/bilionarios">Bilionários</a>
+    <a href="/celebridades">Celebridades</a>
+    <a href="/luxo" class="ativo">Luxo</a>
+
+</nav>
+
+<section class="hero">
+
+    <h2>O Mundo do Luxo Sem Limites</h2>
+
+    <p>
+        Descubra os relógios mais desejados do planeta,
+        supercarros exclusivos, iates milionários,
+        jatos executivos e experiências reservadas para a elite global.
+    </p>
+
+</section>
+
+<section class="grid">
+
+    <div class="card">
+        <h3>⌚ Rolex</h3>
+        <p>
+            Uma das marcas de relógios mais prestigiadas e desejadas do mundo.
+        </p>
+    </div>
+
+    <div class="card">
+        <h3>🏎 Ferrari</h3>
+        <p>
+            Símbolo máximo de desempenho, exclusividade e paixão automotiva.
+        </p>
+    </div>
+
+    <div class="card">
+        <h3>🛥 Iates de Luxo</h3>
+        <p>
+            Verdadeiros palácios flutuantes utilizados pelos mais ricos do planeta.
+        </p>
+    </div>
+
+    <div class="card">
+        <h3>✈ Jatos Privados</h3>
+        <p>
+            Mobilidade, conforto e privacidade para executivos e celebridades.
+        </p>
+    </div>
+
+    <div class="card">
+        <h3>🏡 Mansões</h3>
+        <p>
+            Imóveis extraordinários localizados nos endereços mais exclusivos do mundo.
+        </p>
+    </div>
+
+    <div class="card">
+        <h3>💎 Alta Joalheria</h3>
+        <p>
+            Peças únicas produzidas pelas marcas mais tradicionais do mercado de luxo.
+        </p>
+    </div>
+
+</section>
+
+<footer>
+    © 2026 MidasVIP.com.br - Todos os direitos reservados
+</footer>
+
+</body>
+</html>
