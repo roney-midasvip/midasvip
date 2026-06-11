@@ -13,63 +13,47 @@ def obter_conexao_banco():
     return conexao
 
 def gerar_link(titulo, categoria):
-    # Unificamos o texto para checagem (titulo + categoria)
-    texto_para_analise = (titulo + " " + (categoria if categoria else "")).lower()
+    texto = (titulo + " " + (categoria or "")).lower()
     
-    # Lista expandida para garantir que itens de luxo vão para a Awin
-    termos_beleza_luxo = [
-        'beleza', 'perfume', 'maquiagem', 'batom', 'skincare', 'sephora', 
-        'creme', 'cosmético', 'cabelo', 'luxo', 'fashion', 'estilo', 'joia', 'brinco', 'relógio'
-    ]
-    
-    if any(termo in texto_para_analise for termo in termos_beleza_luxo):
+    # 1. Se você for aprovado em alguma marca (ex: Beleza na Web), 
+    # basta adicionar aqui para o código passar a direcionar para ela.
+    if any(termo in texto for termo in ['perfume', 'beleza', 'cosmetico']):
+        # Quando aprovado, troque o link abaixo pelo seu link de afiliado da marca
         termo_busca = titulo.replace(" ", "+")
-        return f"https://www.awin1.com/cread.php?awinaffid={AWIN_ID}&p=https%3A%2F%2Fwww.sephora.com.br%2Fbusca%2F%3Fq%3D{termo_busca}"
+        return f"https://www.awin1.com/cread.php?awinaffid={AWIN_ID}&p=https%3A%2F%2Fwww.belezanaweb.com.br%2Fbusca%2F%3Fq%3D{termo_busca}"
+    
+    # 2. Lógica para Amazon (Relógios, óculos, luxo)
+    # Refinamos para evitar "livros" buscando apenas em departamentos específicos se possível
     else:
+        # Usamos termos mais específicos para evitar livros
+        # Se for relógio ou óculos, forçamos o termo de busca ser mais preciso
         palavras = titulo.split()[:3]
         termo_busca = "+".join(palavras)
-        return f"https://www.amazon.com.br/s?k={termo_busca}&tag={AMAZON_TAG}"
+        return f"https://www.amazon.com.br/s?k={termo_busca}&tag={AMAZON_TAG}&i=fashion"
 
 @app.route('/')
 def home():
-    try:
-        conexao = obter_conexao_banco()
-        cursor = conexao.cursor()
-        cursor.execute("SELECT * FROM noticias ORDER BY id DESC")
-        noticias_raw = cursor.fetchall()
-        
-        noticias = []
-        for n in noticias_raw:
-            noticia = dict(n)
-            # Passando a categoria para a função de gerar_link
-            noticia['link_produto'] = gerar_link(noticia['titulo'], noticia.get('categoria', ''))
-            noticias.append(noticia)
-        conexao.close()
-    except Exception as erro:
-        print(f"Erro: {erro}")
-        noticias = []
+    conexao = obter_conexao_banco()
+    cursor = conexao.cursor()
+    cursor.execute("SELECT * FROM noticias ORDER BY id DESC")
+    noticias_raw = cursor.fetchall()
+    noticias = [dict(n) for n in noticias_raw]
+    for n in noticias:
+        n['link_produto'] = gerar_link(n['titulo'], n.get('categoria', ''))
+    conexao.close()
     return render_template('index.html', noticias=noticias)
 
 @app.route('/buscar')
 def buscar():
     termo = request.args.get('q', '')
-    noticias = []
-    try:
-        conexao = obter_conexao_banco()
-        cursor = conexao.cursor()
-        query = "SELECT * FROM noticias WHERE titulo LIKE ? OR categoria LIKE ? ORDER BY id DESC"
-        cursor.execute(query, ('%' + termo + '%', '%' + termo + '%'))
-        noticias_raw = cursor.fetchall()
-        
-        for n in noticias_raw:
-            noticia = dict(n)
-            # Passando a categoria aqui também
-            noticia['link_produto'] = gerar_link(noticia['titulo'], noticia.get('categoria', ''))
-            noticias.append(noticia)
-        conexao.close()
-    except Exception as erro:
-        print(f"Erro na busca: {erro}")
-    
+    conexao = obter_conexao_banco()
+    cursor = conexao.cursor()
+    cursor.execute("SELECT * FROM noticias WHERE titulo LIKE ? OR categoria LIKE ? ORDER BY id DESC", ('%' + termo + '%', '%' + termo + '%'))
+    noticias_raw = cursor.fetchall()
+    noticias = [dict(n) for n in noticias_raw]
+    for n in noticias:
+        n['link_produto'] = gerar_link(n['titulo'], n.get('categoria', ''))
+    conexao.close()
     return render_template('index.html', noticias=noticias)
 
 if __name__ == '__main__':
