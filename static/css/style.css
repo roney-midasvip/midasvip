@@ -1,3 +1,97 @@
+*{
+margin:0;
+padding:0;
+box-sizing:border-box;
+}
+
 body{
-font-family: Arial, sans-serif;
+font-family:Arial, sans-serif;
+background:#ffffff;
+color:#111;
+}
+
+header{
+text-align:center;
+padding:30px;
+border-bottom:1px solid #e5e5e5;
+}
+
+header h1{
+color:#c9a227;
+font-size:48px;
+}
+
+nav{
+text-align:center;
+padding:18px;
+border-bottom:1px solid #e5e5e5;
+}
+
+nav a{
+text-decoration:none;
+color:#111;
+font-weight:bold;
+margin:0 15px;
+}
+
+.hero{
+max-width:1200px;
+margin:auto;
+text-align:center;
+padding:80px 20px;
+}
+
+.hero h2{
+font-size:52px;
+margin-bottom:20px;
+}
+
+.hero p{
+color:#666;
+font-size:18px;
+}
+
+.grid{
+max-width:1200px;
+margin:auto;
+padding:40px 20px;
+display:grid;
+grid-template-columns:repeat(auto-fit,minmax(260px,1fr));
+gap:25px;
+}
+
+.card{
+border:1px solid #e5e5e5;
+border-radius:12px;
+padding:25px;
+transition:0.3s;
+}
+
+.card:hover{
+transform:translateY(-5px);
+}
+
+.card h3{
+color:#c9a227;
+margin-bottom:10px;
+}
+
+.destaque{
+max-width:1200px;
+margin:40px auto;
+padding:40px;
+background:#f7f7f7;
+border-radius:12px;
+}
+
+.destaque h2{
+margin-bottom:15px;
+}
+
+footer{
+margin-top:50px;
+padding:40px;
+text-align:center;
+border-top:1px solid #e5e5e5;
+color:#777;
 }
