@@ -5,7 +5,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>MidasVIP</title>
+<title>MidasVIP - Bilionários, Celebridades e Luxo</title>
 
 <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
 </head>
@@ -13,59 +13,77 @@
 <body>
 
 <header>
-<h1>MIDASVIP</h1>
+    <h1>MIDASVIP</h1>
 </header>
 
 <nav>
-<a href="/">Home</a>
-<a href="/noticias">Notícias</a>
-<a href="/bilionarios">Bilionários</a>
-<a href="/celebridades">Celebridades</a>
-<a href="/luxo">Luxo</a>
+    <a href="/">Home</a>
+    <a href="/noticias">Notícias</a>
+    <a href="/bilionarios">Bilionários</a>
+    <a href="/celebridades">Celebridades</a>
+    <a href="/luxo">Luxo</a>
 </nav>
 
 <section class="hero">
-<h2>O mundo dos bilionários e do luxo</h2>
+    <h2>O mundo dos bilionários e do luxo</h2>
+
+```
 <p>
-Fortunas, celebridades, relógios exclusivos,
-jatos privados, iates e experiências premium.
+    Fortunas, celebridades, relógios exclusivos,
+    jatos privados, iates, carros exóticos e experiências premium.
 </p>
+```
+
 </section>
 
 <section class="destaque">
-<h2>Destaque da Semana</h2>
+    <h2>Destaque da Semana</h2>
+
+```
 <p>
-Em breve aqui aparecerão notícias e conteúdos exclusivos sobre
-bilionários, celebridades e produtos de luxo.
+    Acompanhe as principais notícias sobre bilionários,
+    celebridades e o universo do luxo no Brasil e no mundo.
 </p>
+```
+
 </section>
 
 <section class="grid">
 
-<div class="card">
-<h3>Bilionários</h3>
-<p>Conheça os homens e mulheres mais ricos do mundo.</p>
-</div>
+```
+<a href="/bilionarios" class="card">
+    <h3>Bilionários</h3>
+    <p>
+        Conheça os empresários e investidores mais ricos do planeta.
+    </p>
+</a>
 
-<div class="card">
-<h3>Celebridades</h3>
-<p>Os nomes mais influentes do entretenimento global.</p>
-</div>
+<a href="/celebridades" class="card">
+    <h3>Celebridades</h3>
+    <p>
+        Artistas, atletas e personalidades que movimentam o mundo.
+    </p>
+</a>
 
-<div class="card">
-<h3>Luxo</h3>
-<p>Relógios, carros, iates e estilo de vida premium.</p>
-</div>
+<a href="/luxo" class="card">
+    <h3>Luxo</h3>
+    <p>
+        Relógios, carros, iates, moda e estilo de vida premium.
+    </p>
+</a>
 
-<div class="card">
-<h3>Notícias</h3>
-<p>Atualizações sobre riqueza, negócios e lifestyle.</p>
-</div>
+<a href="/noticias" class="card">
+    <h3>Notícias</h3>
+    <p>
+        Atualizações diárias sobre riqueza, negócios e lifestyle.
+    </p>
+</a>
+```
 
 </section>
 
 <footer>
-© MidasVIP.com.br
+    <p>© MidasVIP.com.br</p>
 </footer>
 
 </body>
