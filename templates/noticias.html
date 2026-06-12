@@ -1,14 +1,15 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
+
 <head>
+
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Notícias | MidasVIP</title>
-
-<meta name="description" content="Últimas notícias sobre negócios, bilionários, celebridades e mercado de luxo.">
+<title>Notícias - MidasVIP</title>
 
 <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+
 </head>
 
 <body>
@@ -30,7 +31,7 @@
 <nav>
 
     <a href="/">Home</a>
-    <a href="/noticias" class="ativo">Notícias</a>
+    <a href="/noticias" class="menu-ativo">Notícias</a>
     <a href="/bilionarios">Bilionários</a>
     <a href="/celebridades">Celebridades</a>
     <a href="/luxo">Luxo</a>
@@ -42,8 +43,8 @@
     <h2>Últimas Notícias</h2>
 
     <p>
-        Acompanhe as notícias mais recentes sobre economia,
-        negócios, tecnologia, celebridades e mercado de luxo.
+        Bilionários, celebridades, mercado de luxo,
+        investimentos, iates, relógios e lifestyle premium.
     </p>
 
 </section>
@@ -58,10 +59,29 @@
     class="card"
 >
 
-    <h3>📰 {{ noticia.titulo }}</h3>
+    {% if noticia.imagem %}
+
+    <img
+        src="{{ noticia.imagem }}"
+        alt="{{ noticia.titulo }}"
+        style="
+        width:100%;
+        height:220px;
+        object-fit:cover;
+        border-radius:12px;
+        margin-bottom:15px;
+        "
+    >
+
+    {% endif %}
+
+    <h3>{{ noticia.titulo }}</h3>
 
     <p>
-        Clique para abrir a matéria completa.
+
+        Fonte:
+        <strong>{{ noticia.fonte }}</strong>
+
     </p>
 
 </a>
@@ -71,8 +91,11 @@
 </section>
 
 <footer>
-    © 2026 MidasVIP.com.br - Todos os direitos reservados
+
+    © 2026 MidasVIP.com.br
+
 </footer>
 
 </body>
+
 </html>
