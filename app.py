@@ -1,4 +1,4 @@
-from flask import Flask, render_template
+from flask import Flask, render_template, send_from_directory
 import requests
 
 app = Flask(__name__)
@@ -187,6 +187,10 @@ def tecnologia():
 @app.route("/viagens")
 def viagens():
     return render_template("viagens.html")
-    
+
+@app.route('/sitemap.xml')
+def sitemap():
+    return send_from_directory('static', 'sitemap.xml')
+
 if __name__ == "__main__":
     app.run(debug=True)
