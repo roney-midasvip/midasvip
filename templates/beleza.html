@@ -1,16 +1,36 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
+
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
 <title>Beleza Premium | MidasVIP</title>
-<link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+
+<link rel="stylesheet"
+href="{{ url_for('static', filename='css/style.css') }}">
+
+<style>
+.btn{
+  display:inline-block;
+  margin-top:10px;
+  padding:10px 14px;
+  background:gold;
+  color:#000;
+  font-weight:bold;
+  border-radius:8px;
+  text-decoration:none;
+}
+.btn:hover{background:#e6c200;}
+.card p{opacity:0.85;}
+</style>
+
 </head>
 
 <body>
 
 <header>
-<img src="{{ url_for('static', filename='img/logo-midasvip.png') }}" alt="MidasVIP" class="logo-principal">
+<img src="{{ url_for('static', filename='img/logo-midasvip.png') }}" class="logo-principal">
 </header>
 
 <nav>
@@ -20,20 +40,37 @@
 
 <section class="hero">
 <h1>💄 Beleza Premium</h1>
-<p>Skincare, maquiagem e cuidados pessoais inspirados no universo do luxo.</p>
+<p>Skincare e beleza com padrão elevado e resultados reais.</p>
+</section>
+
+<section class="destaque">
+<h2>💎 Cuidados & Estilo</h2>
+<p>Produtos de beleza que elevam autoestima e presença.</p>
 </section>
 
 <section class="grid">
 
-<div class="card"><h3>✨ Skincare</h3><p>Rotinas sofisticadas para cuidados com a pele.</p></div>
+<div class="card">
+<h3>✨ Skincare Premium</h3>
+<p>Rotina de cuidados para pele saudável e luminosa.</p>
+<a href="LINK_AFILIADO" class="btn">Ver oferta</a>
+</div>
 
-<div class="card"><h3>🌸 Beauty Care</h3><p>Produtos premium para bem-estar e beleza.</p></div>
+<div class="card">
+<h3>🔥 Maquiagem Sofisticada</h3>
+<p>Realce de beleza com acabamento profissional.</p>
+<a href="LINK_AFILIADO" class="btn">Ver oferta</a>
+</div>
 
-<div class="card"><h3>💎 Luxury Beauty</h3><p>Marcas reconhecidas mundialmente.</p></div>
-
-<div class="card"><h3>👑 Tendências</h3><p>Novidades do mercado internacional.</p></div>
+<div class="card">
+<h3>💎 Kit Beleza Completo</h3>
+<p>Essenciais de beleza em um só conjunto.</p>
+<a href="LINK_AFILIADO" class="btn">Ver oferta</a>
+</div>
 
 </section>
+
+<footer>© 2026 MidasVIP</footer>
 
 </body>
 </html>
