@@ -13,7 +13,7 @@ def buscar_noticias(tema):
         f"q={tema}"
         "&language=en"
         "&sortBy=publishedAt"
-        "&pageSize=30"
+        "&pageSize=40"
         f"&apiKey={NEWS_API_KEY}"
     )
 
@@ -22,6 +22,7 @@ def buscar_noticias(tema):
         resposta = requests.get(url, timeout=15)
 
         if resposta.status_code != 200:
+            print("Erro NewsAPI:", resposta.status_code)
             return []
 
         dados = resposta.json()
@@ -37,7 +38,13 @@ def buscar_noticias(tema):
             "covid",
             "vaccine",
             "war",
-            "arrested"
+            "arrested",
+            "soccer odds",
+            "betting",
+            "recipe",
+            "pasta",
+            "world cup odds",
+            "fugitive"
         ]
 
         for item in dados.get("articles", []):
@@ -61,12 +68,14 @@ def buscar_noticias(tema):
                 "titulo": titulo,
                 "link": item.get("url"),
                 "imagem": item.get("urlToImage"),
-                "fonte": item.get("source", {}).get("name", "Fonte desconhecida")
+                "fonte": item.get("source", {}).get("name", "Fonte desconhecida"),
+                "data": item.get("publishedAt", "")
             })
 
         return noticias
 
     except Exception as erro:
+
         print("ERRO:", erro)
         return []
 
@@ -75,7 +84,7 @@ def buscar_noticias(tema):
 def home():
 
     noticias = buscar_noticias(
-        "billionaire OR celebrity OR luxury"
+        '"Elon Musk" OR "Jeff Bezos" OR luxury OR celebrity OR billionaire'
     )
 
     return render_template(
@@ -88,7 +97,7 @@ def home():
 def noticias():
 
     noticias = buscar_noticias(
-        "billionaire OR celebrity OR luxury"
+        '"Elon Musk" OR "Jeff Bezos" OR luxury OR celebrity OR billionaire'
     )
 
     return render_template(
@@ -101,7 +110,7 @@ def noticias():
 def bilionarios():
 
     noticias = buscar_noticias(
-        "billionaire OR forbes OR wealth OR net worth"
+        '"Elon Musk" OR "Jeff Bezos" OR "Bernard Arnault" OR "Warren Buffett" OR billionaire OR Forbes'
     )
 
     return render_template(
@@ -114,7 +123,7 @@ def bilionarios():
 def celebridades():
 
     noticias = buscar_noticias(
-        "celebrity OR hollywood OR singer OR actor"
+        '"Taylor Swift" OR "Cristiano Ronaldo" OR "Beyonce" OR celebrity OR Hollywood'
     )
 
     return render_template(
@@ -127,7 +136,7 @@ def celebridades():
 def luxo():
 
     noticias = buscar_noticias(
-        "luxury OR rolex OR ferrari OR lamborghini OR yacht OR private jet"
+        '"Rolex" OR "Ferrari" OR "Lamborghini" OR "Bugatti" OR "Private Jet" OR "Superyacht"'
     )
 
     return render_template(
