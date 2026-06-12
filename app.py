@@ -14,7 +14,7 @@ def buscar_noticias():
         "&language=en"
         "&sortBy=publishedAt"
         "&pageSize=12"
-        f"&apiKey={NEWS_API_KEY}"
+        f"&apiKey={7a1c6708658f493bb44176f431606bc3}"
     )
 
     try:
