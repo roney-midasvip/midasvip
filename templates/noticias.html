@@ -82,6 +82,12 @@
         Fonte:
         <strong>{{ noticia.fonte }}</strong>
 
+        <br><br>
+
+        {% if noticia.data %}
+            {{ noticia.data[:10] }}
+        {% endif %}
+
     </p>
 
 </a>
