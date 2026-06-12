@@ -1,7 +1,7 @@
 from flask import Flask, render_template
 import requests
 
-app = Flask(_name_)
+app = Flask(**name**)
 
 NEWS_API_KEY = "7a1c6708658f493bb44176f431606bc3"
 
@@ -68,7 +68,6 @@ try:
     return noticias
 
 except Exception as erro:
-
     print("ERRO:", erro)
     return []
 ```
