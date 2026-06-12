@@ -1,14 +1,23 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
+
 <head>
+
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
 <title>MidasVIP - Bilionários, Celebridades e Luxo</title>
 
-<meta name="description" content="Bilionários, celebridades, investimentos, carros exóticos, relógios de luxo, iates, jatos privados e lifestyle premium.">
+<meta
+    name="description"
+    content="Bilionários, celebridades, investimentos, carros exóticos, relógios de luxo, iates, jatos privados e lifestyle premium."
+>
 
-<link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+<link
+    rel="stylesheet"
+    href="{{ url_for('static', filename='css/style.css') }}"
+>
+
 </head>
 
 <body>
@@ -43,8 +52,10 @@
 
     <p>
         Descubra as maiores fortunas do mundo,
-        acompanhe celebridades, conheça carros exóticos,
-        relógios lendários, iates milionários,
+        acompanhe celebridades,
+        conheça carros exóticos,
+        relógios lendários,
+        iates milionários,
         aviação executiva e tudo que move o universo da elite global.
     </p>
 
@@ -59,8 +70,10 @@
     <h2>💎 Destaques do MidasVIP</h2>
 
     <p>
-        O melhor conteúdo sobre riqueza, negócios,
-        celebridades, investimentos e mercado de luxo.
+        O melhor conteúdo sobre riqueza,
+        negócios,
+        celebridades,
+        investimentos e mercado de luxo.
     </p>
 
 </section>
@@ -69,22 +82,30 @@
 
     <div class="card">
         <h3>👑 Elon Musk</h3>
-        <p>CEO da Tesla e SpaceX, frequentemente entre os mais ricos do planeta.</p>
+        <p>
+            CEO da Tesla e SpaceX, frequentemente entre os mais ricos do planeta.
+        </p>
     </div>
 
     <div class="card">
         <h3>💼 Bernard Arnault</h3>
-        <p>Controlador do império LVMH e referência mundial em luxo.</p>
+        <p>
+            Controlador do império LVMH e referência mundial em luxo.
+        </p>
     </div>
 
     <div class="card">
         <h3>🚀 Jeff Bezos</h3>
-        <p>Fundador da Amazon e investidor em tecnologia e exploração espacial.</p>
+        <p>
+            Fundador da Amazon e investidor em tecnologia e exploração espacial.
+        </p>
     </div>
 
     <div class="card">
         <h3>📱 Mark Zuckerberg</h3>
-        <p>Líder da Meta e uma das maiores fortunas da nova economia digital.</p>
+        <p>
+            Líder da Meta e uma das maiores fortunas da economia digital.
+        </p>
     </div>
 
 </section>
@@ -94,8 +115,9 @@
     <h2>⭐ Celebridades em Alta</h2>
 
     <p>
-        Acompanhe artistas, atletas, empresários e influenciadores
-        que movimentam bilhões em negócios e entretenimento.
+        Acompanhe artistas,
+        atletas,
+        empresários e influenciadores que movimentam bilhões em negócios e entretenimento.
     </p>
 
 </section>
@@ -105,36 +127,68 @@
     <h2>🔥 Tendências do Luxo</h2>
 
     <p>
-        Supercarros, relógios raros, imóveis milionários,
-        jatos executivos, iates e experiências exclusivas.
+        Supercarros,
+        relógios raros,
+        imóveis milionários,
+        jatos executivos,
+        iates e experiências exclusivas.
     </p>
 
 </section>
 
 <section class="destaque">
 
-    <h2>📰 Últimas Notícias</h2>
+    <h2>📰 Top Notícias do Dia</h2>
 
-    {% for noticia in noticias %}
+    {% if noticias %}
 
-    <p style="margin-bottom:15px;">
+        {% for noticia in noticias %}
 
-        <a
-            href="{{ noticia.link }}"
-            target="_blank"
-            style="color:#d4af37;text-decoration:none;"
-        >
-            {{ noticia.titulo }}
-        </a>
+        <div style="margin-bottom:20px;">
 
-    </p>
+            <a
+                href="{{ noticia.link }}"
+                target="_blank"
+                style="
+                    color:#d4af37;
+                    text-decoration:none;
+                    font-size:18px;
+                    line-height:1.5;
+                "
+            >
+                {{ noticia.titulo }}
+            </a>
 
-    {% endfor %}
+            {% if noticia.fonte %}
+
+            <p style="
+                margin-top:5px;
+                color:#999;
+                font-size:13px;
+            ">
+                Fonte: {{ noticia.fonte }}
+            </p>
+
+            {% endif %}
+
+        </div>
+
+        {% endfor %}
+
+    {% else %}
+
+        <p>
+            Nenhuma notícia encontrada no momento.
+        </p>
+
+    {% endif %}
 
 </section>
 
 <footer>
+
     © 2026 MidasVIP.com.br - Todos os direitos reservados
+
 </footer>
 
 </body>
