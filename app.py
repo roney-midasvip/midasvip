@@ -167,9 +167,10 @@ def luxo():
     )
 
     return render_template(
-        "luxo.html",
-        noticias=noticias
-    )
+    "luxo.html",
+    noticias=noticias,
+    produtos=produtos_luxo
+)
 
 @app.route("/midasvip-select")
 def midasvip_select():
