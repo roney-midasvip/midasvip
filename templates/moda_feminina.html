@@ -1,16 +1,36 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
+
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
 <title>Moda Feminina | MidasVIP</title>
-<link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+
+<link rel="stylesheet"
+href="{{ url_for('static', filename='css/style.css') }}">
+
+<style>
+.btn{
+  display:inline-block;
+  margin-top:10px;
+  padding:10px 14px;
+  background:gold;
+  color:#000;
+  font-weight:bold;
+  border-radius:8px;
+  text-decoration:none;
+}
+.btn:hover{background:#e6c200;}
+.card p{opacity:0.85;}
+</style>
+
 </head>
 
 <body>
 
 <header>
-<img src="{{ url_for('static', filename='img/logo-midasvip.png') }}" alt="MidasVIP" class="logo-principal">
+<img src="{{ url_for('static', filename='img/logo-midasvip.png') }}" class="logo-principal">
 </header>
 
 <nav>
@@ -20,20 +40,37 @@
 
 <section class="hero">
 <h1>👗 Moda Feminina</h1>
-<p>Elegância, sofisticação e tendências inspiradas nas passarelas internacionais.</p>
+<p>Estilo, elegância e tendências inspiradas no universo do luxo.</p>
+</section>
+
+<section class="destaque">
+<h2>💎 Estilo & Tendência</h2>
+<p>Peças selecionadas para elevar presença e estilo pessoal.</p>
 </section>
 
 <section class="grid">
 
-<div class="card"><h3>👠 Fashion</h3><p>Peças inspiradas no universo luxury.</p></div>
+<div class="card">
+<h3>✨ Look Elegante Casual</h3>
+<p>Estilo sofisticado para o dia a dia.</p>
+<a href="LINK_AFILIADO" class="btn">Ver oferta</a>
+</div>
 
-<div class="card"><h3>👜 Estilo</h3><p>Moda feminina para diferentes ocasiões.</p></div>
+<div class="card">
+<h3>🔥 Look Festa Luxo</h3>
+<p>Impacto visual para eventos especiais.</p>
+<a href="LINK_AFILIADO" class="btn">Ver oferta</a>
+</div>
 
-<div class="card"><h3>✨ Tendências</h3><p>Novidades do mercado internacional.</p></div>
-
-<div class="card"><h3>💎 Elegância</h3><p>Looks clássicos e sofisticados.</p></div>
+<div class="card">
+<h3>💎 Look Minimalista Premium</h3>
+<p>Elegância discreta e moderna.</p>
+<a href="LINK_AFILIADO" class="btn">Ver oferta</a>
+</div>
 
 </section>
+
+<footer>© 2026 MidasVIP</footer>
 
 </body>
 </html>
