@@ -7,6 +7,23 @@ app = Flask(__name__)
 
 NEWS_API_KEY = "7a1c6708658f493bb44176f431606bc3"
 
+produtos_luxo = [
+    {
+        "nome": "Rolex Submariner",
+        "descricao": "O relógio de luxo mais desejado do mundo",
+        "link": "https://seu-link-afiliado-aqui.com"
+    },
+    {
+        "nome": "Perfume Dior Sauvage",
+        "descricao": "Perfume masculino mais vendido globalmente",
+        "link": "https://seu-link-afiliado-aqui.com"
+    },
+    {
+        "nome": "Bolsa Louis Vuitton",
+        "descricao": "Símbolo máximo de status e luxo",
+        "link": "https://seu-link-afiliado-aqui.com"
+    }
+]
 
 def buscar_noticias(tema):
 
