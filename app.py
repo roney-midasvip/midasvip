@@ -10,10 +10,10 @@ def buscar_noticias():
 
     url = (
         "https://newsapi.org/v2/everything?"
-        'q=("luxury" OR "billionaire" OR "celebrity" OR "forbes" OR "richest" OR "superyacht" OR "luxury watch")'
+        'q=("billionaire" OR "forbes" OR "wealth" OR "luxury watch" OR "rolex" OR "ferrari" OR "lamborghini" OR "bugatti" OR "superyacht" OR "private jet" OR "celebrity" OR "hollywood" OR "net worth")'
         "&language=en"
         "&sortBy=publishedAt"
-        "&pageSize=20"
+        "&pageSize=30"
         f"&apiKey={NEWS_API_KEY}"
     )
 
@@ -30,11 +30,29 @@ def buscar_noticias():
         noticias = []
         titulos_vistos = set()
 
+        palavras_bloqueadas = [
+            "murder",
+            "killed",
+            "stabbed",
+            "crime",
+            "school",
+            "covid",
+            "vaccine",
+            "antivaxxer",
+            "war",
+            "arrested"
+        ]
+
         for item in dados.get("articles", []):
 
-            titulo = item.get("title")
+            titulo = item.get("title", "")
 
             if not titulo:
+                continue
+
+            titulo_lower = titulo.lower()
+
+            if any(p in titulo_lower for p in palavras_bloqueadas):
                 continue
 
             if titulo in titulos_vistos:
@@ -64,7 +82,7 @@ def home():
 
     return render_template(
         "index.html",
-        noticias=noticias
+        noticias=noticias[:5]
     )
 
 
@@ -81,17 +99,35 @@ def noticias():
 
 @app.route("/bilionarios")
 def bilionarios():
-    return render_template("bilionarios.html")
+
+    noticias = buscar_noticias()
+
+    return render_template(
+        "bilionarios.html",
+        noticias=noticias
+    )
 
 
 @app.route("/celebridades")
 def celebridades():
-    return render_template("celebridades.html")
+
+    noticias = buscar_noticias()
+
+    return render_template(
+        "celebridades.html",
+        noticias=noticias
+    )
 
 
 @app.route("/luxo")
 def luxo():
-    return render_template("luxo.html")
+
+    noticias = buscar_noticias()
+
+    return render_template(
+        "luxo.html",
+        noticias=noticias
+    )
 
 
 if __name__ == "__main__":
