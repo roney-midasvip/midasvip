@@ -1,71 +1,67 @@
-from flask import Flask, render_template, request
-import feedparser
+from flask import Flask, render_template
+import requests
 
 app = Flask(__name__)
 
-RSS_URL = "https://feeds.bbci.co.uk/news/world/rss.xml"
+NEWS_API_KEY = "7a1c6708658f493bb44176f431606bc3"
 
 
-def obter_noticias(limite=5):
-    feed = feedparser.parse(RSS_URL)
+def buscar_noticias():
 
-    noticias = []
+    url = (
+        "https://newsapi.org/v2/everything?"
+        "q=(luxury OR billionaire OR celebrity OR luxury watches OR yachts)"
+        "&language=en"
+        "&sortBy=publishedAt"
+        "&pageSize=12"
+        f"&apiKey={NEWS_API_KEY}"
+    )
 
-    for item in feed.entries[:limite]:
-        noticias.append({
-            "titulo": item.title,
-            "link": item.link
-        })
+    try:
 
-    return noticias
+        resposta = requests.get(url, timeout=10)
 
+        dados = resposta.json()
 
-PESSOAS = {
-    "elon musk": {
-        "nome": "Elon Musk",
-        "descricao": "CEO da Tesla, SpaceX e uma das maiores fortunas do mundo."
-    },
-    "jeff bezos": {
-        "nome": "Jeff Bezos",
-        "descricao": "Fundador da Amazon e investidor bilionário."
-    },
-    "mark zuckerberg": {
-        "nome": "Mark Zuckerberg",
-        "descricao": "Fundador da Meta e um dos empresários mais influentes do planeta."
-    },
-    "neymar": {
-        "nome": "Neymar Jr.",
-        "descricao": "Jogador brasileiro e uma das celebridades esportivas mais conhecidas do mundo."
-    },
-    "cristiano ronaldo": {
-        "nome": "Cristiano Ronaldo",
-        "descricao": "Atleta global, empresário e ícone do futebol."
-    }
-}
+        noticias = []
+
+        if dados.get("status") == "ok":
+
+            for item in dados.get("articles", []):
+
+                noticias.append({
+                    "titulo": item.get("title"),
+                    "link": item.get("url")
+                })
+
+        return noticias
+
+    except Exception as erro:
+
+        print("ERRO:", erro)
+
+        return []
 
 
 @app.route("/")
 def home():
 
-    noticias = obter_noticias(5)
+    noticias = buscar_noticias()
 
     return render_template(
-        "home.html",
+        "index.html",
         noticias=noticias
     )
 
 
-@app.route("/buscar")
-def buscar():
+@app.route("/noticias")
+def noticias():
 
-    termo = request.args.get("q", "").lower()
-
-    resultado = PESSOAS.get(termo)
+    noticias = buscar_noticias()
 
     return render_template(
-        "buscar.html",
-        resultado=resultado,
-        termo=termo
+        "noticias.html",
+        noticias=noticias
     )
 
 
@@ -82,17 +78,6 @@ def celebridades():
 @app.route("/luxo")
 def luxo():
     return render_template("luxo.html")
-
-
-@app.route("/noticias")
-def noticias():
-
-    lista_noticias = obter_noticias(20)
-
-    return render_template(
-        "noticias.html",
-        noticias=lista_noticias
-    )
 
 
 if __name__ == "__main__":
