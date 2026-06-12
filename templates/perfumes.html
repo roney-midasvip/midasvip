@@ -1,9 +1,7 @@
 <!DOCTYPE html>
-
 <html lang="pt-BR">
 
 <head>
-
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
@@ -11,6 +9,28 @@
 
 <link rel="stylesheet"
 href="{{ url_for('static', filename='css/style.css') }}">
+
+<style>
+/* melhorias rápidas sem mexer no seu CSS global */
+.btn{
+  display:inline-block;
+  margin-top:10px;
+  padding:10px 14px;
+  background:gold;
+  color:#000;
+  font-weight:bold;
+  border-radius:8px;
+  text-decoration:none;
+}
+
+.btn:hover{
+  background:#e6c200;
+}
+
+.card p{
+  opacity:0.85;
+}
+</style>
 
 </head>
 
@@ -21,15 +41,14 @@ href="{{ url_for('static', filename='css/style.css') }}">
 <img
 src="{{ url_for('static', filename='img/logo-midasvip.png') }}"
 alt="MidasVIP"
-class="logo-principal"
-
->
+class="logo-principal">
 
 </header>
 
 <nav>
 
-<a href="/">Home</a> <a href="/midasvip-select">Universo MidasVIP</a>
+<a href="/">Home</a>
+<a href="/midasvip-select">Universo MidasVIP</a>
 
 </nav>
 
@@ -38,68 +57,77 @@ class="logo-principal"
 <h1>🌸 Perfumes Premium</h1>
 
 <p>
-As fragrâncias mais desejadas do mundo inspiram esta seleção especial do MidasVIP.
+Descubra fragrâncias sofisticadas inspiradas no universo do luxo, elegância e celebridades.
 </p>
 
 </section>
 
+<!-- BLOCO DE INSPIRAÇÃO -->
+<section class="destaque">
+
+<h2>💎 Inspiração de Luxo</h2>
+
+<p>
+Selecionamos fragrâncias inspiradas em marcas icônicas como Chanel, Dior e Tom Ford — com opções elegantes para diferentes estilos.
+</p>
+
+</section>
+
+<!-- PRODUTOS -->
 <section class="grid">
 
 <div class="card">
-
-<h3>🌹 Chanel</h3>
-
-<p>
-Elegância atemporal e sofisticação francesa.
-</p>
-
+<h3>🌹 Perfume Feminino Elegante</h3>
+<p>Fragrância floral sofisticada com toque de baunilha e musk. Ideal para elegância diária.</p>
+<a href="SEU-LINK-AFILIADO-AQUI" class="btn">Ver oferta</a>
 </div>
 
 <div class="card">
-
-<h3>✨ Dior</h3>
-
-<p>
-Luxo moderno e fragrâncias icônicas.
-</p>
-
+<h3>🔥 Perfume Masculino Premium</h3>
+<p>Notas amadeiradas e especiadas. Estilo executivo, forte presença e sofisticação.</p>
+<a href="SEU-LINK-AFILIADO-AQUI" class="btn">Ver oferta</a>
 </div>
 
 <div class="card">
-
-<h3>🔥 Tom Ford</h3>
-
-<p>
-Perfumes exclusivos para quem busca presença marcante.
-</p>
-
+<h3>✨ Perfume Viral de Luxo</h3>
+<p>Fragrância moderna e muito elogiada. Tendência entre perfumes mais desejados.</p>
+<a href="SEU-LINK-AFILIADO-AQUI" class="btn">Ver oferta</a>
 </div>
 
 <div class="card">
+<h3>💎 Perfume Oriental Sofisticado</h3>
+<p>Notas intensas de âmbar e especiarias. Perfume de presença marcante.</p>
+<a href="SEU-LINK-AFILIADO-AQUI" class="btn">Ver oferta</a>
+</div>
 
-<h3>💎 Carolina Herrera</h3>
+<div class="card">
+<h3>🌸 Perfume Diário Elegante</h3>
+<p>Leve, fresco e sofisticado. Perfeito para uso diário com estilo premium.</p>
+<a href="SEU-LINK-AFILIADO-AQUI" class="btn">Ver oferta</a>
+</div>
 
-<p>
-Estilo, glamour e sofisticação internacional.
-</p>
-
+<div class="card">
+<h3>💥 Perfume Assinatura de Impacto</h3>
+<p>Fragrância doce e sensual. Ideal para eventos e ocasiões especiais.</p>
+<a href="SEU-LINK-AFILIADO-AQUI" class="btn">Ver oferta</a>
 </div>
 
 </section>
 
+<!-- CONVERSÃO FINAL -->
 <section class="destaque">
 
-<h2>🎁 Em Breve</h2>
+<h2>🎯 Escolha sua fragrância ideal</h2>
 
 <p>
-Seleções especiais, ofertas e recomendações de perfumes premium.
+Cada perfume representa um estilo de vida: elegância, presença, luxo ou tendência.
 </p>
 
 </section>
 
 <footer>
 
-© 2026 MidasVIP.com.br
+© 2026 MidasVIP.com.br — Universo de luxo e lifestyle
 
 </footer>
 
