@@ -10,35 +10,50 @@ def buscar_noticias():
 
     url = (
         "https://newsapi.org/v2/everything?"
-        "q=(luxury OR billionaire OR celebrity OR luxury watches OR yachts)"
+        'q=("luxury" OR "billionaire" OR "celebrity" OR "forbes" OR "richest" OR "superyacht" OR "luxury watch")'
         "&language=en"
         "&sortBy=publishedAt"
-        "&pageSize=12"
+        "&pageSize=20"
         f"&apiKey={NEWS_API_KEY}"
     )
 
     try:
 
-        resposta = requests.get(url, timeout=10)
+        resposta = requests.get(url, timeout=15)
+
+        if resposta.status_code != 200:
+            print("Erro API:", resposta.status_code)
+            return []
 
         dados = resposta.json()
 
         noticias = []
+        titulos_vistos = set()
 
-        if dados.get("status") == "ok":
+        for item in dados.get("articles", []):
 
-            for item in dados.get("articles", []):
+            titulo = item.get("title")
 
-                noticias.append({
-                    "titulo": item.get("title"),
-                    "link": item.get("url")
-                })
+            if not titulo:
+                continue
+
+            if titulo in titulos_vistos:
+                continue
+
+            titulos_vistos.add(titulo)
+
+            noticias.append({
+                "titulo": titulo,
+                "link": item.get("url"),
+                "imagem": item.get("urlToImage"),
+                "fonte": item.get("source", {}).get("name", "Fonte desconhecida")
+            })
 
         return noticias
 
     except Exception as erro:
 
-        print("ERRO:", erro)
+        print("ERRO NEWSAPI:", erro)
 
         return []
 
@@ -49,7 +64,7 @@ def home():
     noticias = buscar_noticias()
 
     return render_template(
-        "index.html",
+        "home.html",
         noticias=noticias
     )
 
@@ -81,4 +96,4 @@ def luxo():
 
 
 if __name__ == "__main__":
-    app.run()
+    app.run(debug=True)
