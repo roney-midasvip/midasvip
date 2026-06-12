@@ -22,7 +22,7 @@ def buscar_noticias():
         resposta = requests.get(url, timeout=15)
 
         if resposta.status_code != 200:
-            print("Erro API:", resposta.status_code)
+            print("Erro NewsAPI:", resposta.status_code)
             return []
 
         dados = resposta.json()
@@ -53,8 +53,7 @@ def buscar_noticias():
 
     except Exception as erro:
 
-        print("ERRO NEWSAPI:", erro)
-
+        print("ERRO:", erro)
         return []
 
 
@@ -64,7 +63,7 @@ def home():
     noticias = buscar_noticias()
 
     return render_template(
-        "home.html",
+        "index.html",
         noticias=noticias
     )
 
