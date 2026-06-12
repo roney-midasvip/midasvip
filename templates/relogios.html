@@ -1,36 +1,131 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
+
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
 <title>Relógios Premium | MidasVIP</title>
-<link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+
+<link rel="stylesheet"
+href="{{ url_for('static', filename='css/style.css') }}">
+
+<style>
+.btn{
+  display:inline-block;
+  margin-top:10px;
+  padding:10px 14px;
+  background:gold;
+  color:#000;
+  font-weight:bold;
+  border-radius:8px;
+  text-decoration:none;
+}
+
+.btn:hover{
+  background:#e6c200;
+}
+
+.card p{
+  opacity:0.85;
+}
+</style>
+
 </head>
 
 <body>
 
 <header>
-<img src="{{ url_for('static', filename='img/logo-midasvip.png') }}" alt="MidasVIP" class="logo-principal">
+
+<img
+src="{{ url_for('static', filename='img/logo-midasvip.png') }}"
+alt="MidasVIP"
+class="logo-principal">
+
 </header>
 
 <nav>
+
 <a href="/">Home</a>
 <a href="/midasvip-select">Universo MidasVIP</a>
+
 </nav>
 
 <section class="hero">
+
 <h1>⌚ Relógios Premium</h1>
-<p>O universo dos relógios mais desejados do mundo.</p>
+
+<p>
+Relógios sofisticados inspirados no universo do luxo, status e alta performance.
+</p>
+
+</section>
+
+<section class="destaque">
+
+<h2>💎 Estilo & Status</h2>
+
+<p>
+Selecionamos relógios que representam elegância, poder e estilo — do clássico ao moderno.
+</p>
+
 </section>
 
 <section class="grid">
 
-<div class="card"><h3>⌚ Rolex</h3></div>
-<div class="card"><h3>💎 Patek Philippe</h3></div>
-<div class="card"><h3>🔥 Richard Mille</h3></div>
-<div class="card"><h3>👑 Audemars Piguet</h3></div>
+<div class="card">
+<h3>⌚ Relógio Executivo Clássico</h3>
+<p>Design elegante em aço, ideal para ambiente profissional e sofisticado.</p>
+<a href="SEU-LINK-AFILIADO-AQUI" class="btn">Ver oferta</a>
+</div>
+
+<div class="card">
+<h3>🔥 Relógio Esportivo Premium</h3>
+<p>Performance e estilo em um design moderno e robusto.</p>
+<a href="SEU-LINK-AFILIADO-AQUI" class="btn">Ver oferta</a>
+</div>
+
+<div class="card">
+<h3>💎 Relógio de Luxo Minimalista</h3>
+<p>Design limpo e sofisticado para quem valoriza elegância discreta.</p>
+<a href="SEU-LINK-AFILIADO-AQUI" class="btn">Ver oferta</a>
+</div>
+
+<div class="card">
+<h3>⚡ Relógio Estilo Bilionário</h3>
+<p>Visual marcante e presença forte. Inspirado em alto padrão global.</p>
+<a href="SEU-LINK-AFILIADO-AQUI" class="btn">Ver oferta</a>
+</div>
+
+<div class="card">
+<h3>🌍 Relógio Automático Premium</h3>
+<p>Mecanismo sofisticado para quem aprecia engenharia e tradição.</p>
+<a href="SEU-LINK-AFILIADO-AQUI" class="btn">Ver oferta</a>
+</div>
+
+<div class="card">
+<h3>💥 Relógio Fashion Luxo</h3>
+<p>Design moderno, tendência e estilo para destaque visual.</p>
+<a href="SEU-LINK-AFILIADO-AQUI" class="btn">Ver oferta</a>
+</div>
 
 </section>
+
+<section class="destaque">
+
+<h2>🎯 Escolha seu estilo</h2>
+
+<p>
+Cada relógio representa status, personalidade e presença.
+</p>
+
+</section>
+
+<footer>
+
+© 2026 MidasVIP.com.br — Universo de luxo e lifestyle
+
+</footer>
 
 </body>
 </html>
