@@ -148,6 +148,45 @@ def luxo():
 def midasvip_select():
 
     return render_template("midasvip_select.html")
+
+@app.route("/perfumes")
+def perfumes():
+    return render_template("perfumes.html")
+
+
+@app.route("/beleza")
+def beleza():
+    return render_template("beleza.html")
+
+
+@app.route("/moda-feminina")
+def moda_feminina():
+    return render_template("moda_feminina.html")
+
+
+@app.route("/relogios")
+def relogios():
+    return render_template("relogios.html")
+
+
+@app.route("/bolsas")
+def bolsas():
+    return render_template("bolsas.html")
+
+
+@app.route("/moda-masculina")
+def moda_masculina():
+    return render_template("moda_masculina.html")
+
+
+@app.route("/tecnologia")
+def tecnologia():
+    return render_template("tecnologia.html")
+
+
+@app.route("/viagens")
+def viagens():
+    return render_template("viagens.html")
     
 if __name__ == "__main__":
     app.run(debug=True)
