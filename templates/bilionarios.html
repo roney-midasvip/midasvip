@@ -1,60 +1,50 @@
 <!DOCTYPE html>
-
 <html lang="pt-BR">
-
 <head>
-
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
 <title>Bilionários | MidasVIP</title>
 
-<meta name="description" content="As maiores fortunas do mundo, negócios bilionários, investimentos e patrimônio dos mais ricos do planeta.">
+<meta name="description" content="As últimas notícias sobre os bilionários mais ricos do mundo.">
 
 <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
-
 </head>
 
 <body>
 
 <header>
 
-```
-<img
-    src="{{ url_for('static', filename='img/logo-midasvip.png') }}"
-    alt="MidasVIP"
-    class="logo-principal"
->
+    <img
+        src="{{ url_for('static', filename='img/logo-midasvip.png') }}"
+        alt="MidasVIP"
+        class="logo-principal"
+    >
 
-<p class="slogan">
-    O UNIVERSO DA RIQUEZA, DO PODER E DO LUXO
-</p>
-```
+    <p class="slogan">
+        O UNIVERSO DA RIQUEZA, DO PODER E DO LUXO
+    </p>
 
 </header>
 
 <nav>
 
-```
-<a href="/">Home</a>
-<a href="/noticias">Notícias</a>
-<a href="/bilionarios" class="menu-ativo">Bilionários</a>
-<a href="/celebridades">Celebridades</a>
-<a href="/luxo">Luxo</a>
-```
+    <a href="/">Home</a>
+    <a href="/noticias">Notícias</a>
+    <a href="/bilionarios" class="menu-ativo">Bilionários</a>
+    <a href="/celebridades">Celebridades</a>
+    <a href="/luxo">Luxo</a>
 
 </nav>
 
 <section class="hero">
 
-```
-<h2>Bilionários do Mundo</h2>
+    <h2>Bilionários do Mundo</h2>
 
-<p>
-    Elon Musk, Jeff Bezos, Bernard Arnault, Warren Buffett,
-    Mark Zuckerberg e os negócios que movimentam trilhões.
-</p>
-```
+    <p>
+        Fortuna, investimentos, rankings da Forbes,
+        empresas globais e os empresários mais ricos do planeta.
+    </p>
 
 </section>
 
@@ -63,36 +53,33 @@
 {% for noticia in noticias %}
 
 <a
-href="{{ noticia.link }}"
-target="_blank"
-class="card"
-
+    href="{{ noticia.link }}"
+    target="_blank"
+    class="card"
 >
 
-```
-{% if noticia.imagem %}
+    {% if noticia.imagem %}
 
-<img
-    src="{{ noticia.imagem }}"
-    alt="{{ noticia.titulo }}"
-    style="
-    width:100%;
-    height:220px;
-    object-fit:cover;
-    border-radius:12px;
-    margin-bottom:15px;
-    "
->
+    <img
+        src="{{ noticia.imagem }}"
+        alt="{{ noticia.titulo }}"
+        style="
+        width:100%;
+        height:220px;
+        object-fit:cover;
+        border-radius:12px;
+        margin-bottom:15px;
+        "
+    >
 
-{% endif %}
+    {% endif %}
 
-<h3>{{ noticia.titulo }}</h3>
+    <h3>{{ noticia.titulo }}</h3>
 
-<p>
-    Fonte:
-    <strong>{{ noticia.fonte }}</strong>
-</p>
-```
+    <p>
+        Fonte:
+        <strong>{{ noticia.fonte }}</strong>
+    </p>
 
 </a>
 
@@ -101,13 +88,8 @@ class="card"
 </section>
 
 <footer>
-
-```
-© 2026 MidasVIP.com.br
-```
-
+    © 2026 MidasVIP.com.br
 </footer>
 
 </body>
-
 </html>
