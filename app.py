@@ -1,7 +1,7 @@
 from flask import Flask, render_template
 import requests
 
-app = Flask(**name**)
+app = Flask(_name_)
 
 NEWS_API_KEY = "7a1c6708658f493bb44176f431606bc3"
 
