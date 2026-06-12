@@ -150,35 +150,27 @@ nav a:hover{
 }
 
 /* =======================
-   GRID (NOTÍCIAS + PRODUTOS)
+   GRID BASE (NOTÍCIAS)
 ======================= */
 
 .grid{
     max-width:1400px;
-
     margin:40px auto;
-
     padding:0 20px;
 
     display:grid;
-
-    grid-template-columns:
-    repeat(auto-fit,minmax(300px,1fr));
-
+    grid-template-columns:repeat(auto-fit,minmax(300px,1fr));
     gap:30px;
 }
 
 /* CARD PADRÃO */
 .card{
     background:#111;
-
     border:1px solid #222;
     border-radius:18px;
-
     padding:30px;
 
     color:#fff;
-
     text-decoration:none;
 
     transition:0.3s;
@@ -202,7 +194,7 @@ nav a:hover{
 }
 
 /* =======================
-   BOTÃO DE AFILIADO (CORRIGIDO)
+   BOTÃO DE AFILIADO
 ======================= */
 
 .btn{
@@ -227,6 +219,36 @@ nav a:hover{
 .btn:hover{
     background:#caa233;
     transform:scale(1.05);
+}
+
+/* =======================
+   PRODUTOS (FIX DEFINITIVO)
+======================= */
+
+.produtos{
+    width:100%;
+    display:flex;
+    justify-content:center;
+    margin-top:60px;
+}
+
+.container-produtos{
+    width:100%;
+    max-width:1400px;
+    padding:0 20px;
+    text-align:center;
+}
+
+.produtos h2{
+    color:#d4af37;
+    font-size:42px;
+    margin-bottom:30px;
+    text-align:center;
+}
+
+.produtos .grid{
+    width:100%;
+    margin:0 auto;
 }
 
 /* =======================
