@@ -144,6 +144,10 @@ def luxo():
         noticias=noticias
     )
 
+@app.route("/midasvip-select")
+def midasvip_select():
 
+    return render_template("midasvip_select.html")
+    
 if __name__ == "__main__":
     app.run(debug=True)
