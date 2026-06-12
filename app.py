@@ -7,31 +7,51 @@ app = Flask(__name__)
 
 NEWS_API_KEY = "7a1c6708658f493bb44176f431606bc3"
 
-produtos_luxo = [
-    {
-        "nome": "Rolex Submariner",
-        "descricao": "O relógio de luxo mais desejado do mundo",
-        "link": "https://seu-link-afiliado-aqui.com"
-    },
-    {
-        "nome": "Perfume Dior Sauvage",
-        "descricao": "Perfume masculino mais vendido globalmente",
-        "link": "https://seu-link-afiliado-aqui.com"
-    },
-    {
-        "nome": "Bolsa Louis Vuitton",
-        "descricao": "Símbolo máximo de status e luxo",
-        "link": "https://seu-link-afiliado-aqui.com"
-    }
-]
+# 💰 PRODUTOS POR CATEGORIA (MONETIZAÇÃO)
+produtos_por_categoria = {
 
+    "luxo": [
+        {
+            "nome": "Rolex Submariner",
+            "descricao": "Relógio mais icônico do luxo mundial",
+            "link": "https://seu-link-afiliado.com"
+        },
+        {
+            "nome": "Ferrari Experience",
+            "descricao": "Experiência exclusiva com supercarros",
+            "link": "https://seu-link-afiliado.com"
+        }
+    ],
+
+    "beleza": [
+        {
+            "nome": "Dior Sauvage",
+            "descricao": "Perfume masculino mais vendido do mundo",
+            "link": "https://seu-link-afiliado.com"
+        },
+        {
+            "nome": "Chanel No.5",
+            "descricao": "Perfume feminino clássico de luxo",
+            "link": "https://seu-link-afiliado.com"
+        }
+    ],
+
+    "moda-masculina": [
+        {
+            "nome": "Hugo Boss Camisa",
+            "descricao": "Elegância masculina premium",
+            "link": "https://seu-link-afiliado.com"
+        }
+    ]
+}
+
+
+# 🧠 NEWS + CACHE
 def buscar_noticias(tema):
 
-    # 1. usa cache se ainda está válido
     if cache_valido():
         return get_cache()
 
-    # 2. se já bateu limite diário, não chama API
     if not pode_atualizar():
         return get_cache()
 
@@ -48,7 +68,6 @@ def buscar_noticias(tema):
         resposta = requests.get(url, timeout=15)
 
         if resposta.status_code != 200:
-            print("Erro NewsAPI:", resposta.status_code)
             return get_cache()
 
         dados = resposta.json()
@@ -57,26 +76,14 @@ def buscar_noticias(tema):
         titulos_vistos = set()
 
         palavras_bloqueadas = [
-            "murder",
-            "killed",
-            "stabbed",
-            "crime",
-            "covid",
-            "vaccine",
-            "war",
-            "arrested",
-            "soccer odds",
-            "betting",
-            "recipe",
-            "pasta",
-            "world cup odds",
+            "murder", "killed", "stabbed", "crime", "covid",
+            "vaccine", "war", "arrested", "betting", "recipe",
             "fugitive"
         ]
 
         for item in dados.get("articles", []):
 
             titulo = item.get("title", "")
-
             if not titulo:
                 continue
 
@@ -98,98 +105,84 @@ def buscar_noticias(tema):
                 "data": item.get("publishedAt", "")
             })
 
-        # 🔥 salva no cache (ESSENCIAL)
         atualizar_cache(noticias)
-
         return noticias
 
-    except Exception as erro:
-        print("ERRO:", erro)
+    except Exception:
         return get_cache()
 
+
+# 🏠 HOME
 @app.route("/")
 def home():
-
-    noticias = buscar_noticias(
-        '"Elon Musk" OR "Jeff Bezos" OR luxury OR celebrity OR billionaire'
-    )
-
-    return render_template(
-        "index.html",
-        noticias=noticias[:8]
-    )
+    noticias = buscar_noticias("luxury celebrity billionaire")
+    return render_template("index.html", noticias=noticias[:8])
 
 
+# 📰 NOTÍCIAS GERAL
 @app.route("/noticias")
 def noticias():
+    noticias = buscar_noticias("luxury celebrity billionaire")
+    return render_template("noticias.html", noticias=noticias)
 
-    noticias = buscar_noticias(
-        '"Elon Musk" OR "Jeff Bezos" OR luxury OR celebrity OR billionaire'
-    )
+
+# 💰 LUXO (MONETIZADO)
+@app.route("/luxo")
+def luxo():
+    noticias = buscar_noticias('"Rolex" OR "Ferrari" OR "Lamborghini" OR "Bugatti" OR "Private Jet"')
 
     return render_template(
-        "noticias.html",
-        noticias=noticias
+        "luxo.html",
+        noticias=noticias,
+        produtos=produtos_por_categoria["luxo"]
     )
 
 
+# 💎 BELEZA (MONETIZADO)
+@app.route("/beleza")
+def beleza():
+    noticias = buscar_noticias('"perfume" OR "beauty" OR "luxury skincare"')
+
+    return render_template(
+        "beleza.html",
+        noticias=noticias,
+        produtos=produtos_por_categoria["beleza"]
+    )
+
+
+# 👔 MODA MASCULINA (MONETIZADO)
+@app.route("/moda-masculina")
+def moda_masculina():
+    noticias = buscar_noticias('"men fashion" OR "luxury clothing"')
+
+    return render_template(
+        "moda_masculina.html",
+        noticias=noticias,
+        produtos=produtos_por_categoria["moda-masculina"]
+    )
+
+
+# 👑 OUTRAS ROTAS (SEM MEXER)
 @app.route("/bilionarios")
 def bilionarios():
-
-    noticias = buscar_noticias(
-        '"Elon Musk" OR "Jeff Bezos" OR "Bernard Arnault" OR "Warren Buffett" OR billionaire OR Forbes'
-    )
-
-    return render_template(
-        "bilionarios.html",
-        noticias=noticias
-    )
+    noticias = buscar_noticias("Elon Musk Jeff Bezos Bernard Arnault Forbes billionaire")
+    return render_template("bilionarios.html", noticias=noticias)
 
 
 @app.route("/celebridades")
 def celebridades():
+    noticias = buscar_noticias("Taylor Swift Cristiano Ronaldo Beyonce Hollywood celebrity")
+    return render_template("celebridades.html", noticias=noticias)
 
-    noticias = buscar_noticias(
-        '"Taylor Swift" OR "Cristiano Ronaldo" OR "Beyonce" OR celebrity OR Hollywood'
-    )
-
-    return render_template(
-        "celebridades.html",
-        noticias=noticias
-    )
-
-
-@app.route("/luxo")
-def luxo():
-
-    noticias = buscar_noticias(
-        '"Rolex" OR "Ferrari" OR "Lamborghini" OR "Bugatti" OR "Private Jet" OR "Superyacht"'
-    )
-
-    return render_template(
-    "luxo.html",
-    noticias=noticias,
-    produtos=produtos_luxo
-)
 
 @app.route("/midasvip-select")
 def midasvip_select():
-
     return render_template("midasvip_select.html")
+
 
 @app.route("/perfumes")
 def perfumes():
     return render_template("perfumes.html")
-
-
-@app.route("/beleza")
-def beleza():
-    return render_template("beleza.html")
-
-
-@app.route("/moda-feminina")
-def moda_feminina():
-    return render_template("moda_feminina.html")
 
 
 @app.route("/relogios")
@@ -202,11 +195,6 @@ def bolsas():
     return render_template("bolsas.html")
 
 
-@app.route("/moda-masculina")
-def moda_masculina():
-    return render_template("moda_masculina.html")
-
-
 @app.route("/tecnologia")
 def tecnologia():
     return render_template("tecnologia.html")
@@ -216,9 +204,11 @@ def tecnologia():
 def viagens():
     return render_template("viagens.html")
 
+
 @app.route('/sitemap.xml')
 def sitemap():
     return send_from_directory('static', 'sitemap.xml')
+
 
 if __name__ == "__main__":
     app.run(debug=True)
