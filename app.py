@@ -7,9 +7,9 @@ app = Flask(__name__)
 
 NEWS_API_KEY = "7a1c6708658f493bb44176f431606bc3"
 
-# 💰 PRODUTOS POR CATEGORIA (MONETIZAÇÃO)
-produtos_por_categoria = {
 
+# 💰 PRODUTOS POR CATEGORIA
+produtos_por_categoria = {
     "luxo": [
         {
             "nome": "Rolex Submariner",
@@ -46,12 +46,14 @@ produtos_por_categoria = {
 }
 
 
-# 🧠 NEWS + CACHE
+# 🧠 CACHE + NEWS
 def buscar_noticias(tema):
 
+    # cache válido
     if cache_valido():
         return get_cache()
 
+    # limite diário
     if not pode_atualizar():
         return get_cache()
 
@@ -83,7 +85,7 @@ def buscar_noticias(tema):
 
         for item in dados.get("articles", []):
 
-            titulo = item.get("title", "")
+            titulo = item.get("title")
             if not titulo:
                 continue
 
@@ -108,7 +110,8 @@ def buscar_noticias(tema):
         atualizar_cache(noticias)
         return noticias
 
-    except Exception:
+    except Exception as e:
+        print("ERRO NEWS:", e)
         return get_cache()
 
 
@@ -119,26 +122,26 @@ def home():
     return render_template("index.html", noticias=noticias[:8])
 
 
-# 📰 NOTÍCIAS GERAL
+# 📰 NOTÍCIAS
 @app.route("/noticias")
 def noticias():
     noticias = buscar_noticias("luxury celebrity billionaire")
     return render_template("noticias.html", noticias=noticias)
 
 
-# 💰 LUXO (MONETIZADO)
+# 💎 LUXO
 @app.route("/luxo")
 def luxo():
-    noticias = buscar_noticias('"Rolex" OR "Ferrari" OR "Lamborghini" OR "Bugatti" OR "Private Jet"')
+    noticias = buscar_noticias('"Rolex" OR "Ferrari" OR "Luxury" OR "Bugatti" OR "Private Jet"')
 
     return render_template(
         "luxo.html",
         noticias=noticias,
-        produtos=produtos_por_categoria["luxo"]
+        produtos=produtos_por_categoria.get("luxo", [])
     )
 
 
-# 💎 BELEZA (MONETIZADO)
+# 💄 BELEZA
 @app.route("/beleza")
 def beleza():
     noticias = buscar_noticias('"perfume" OR "beauty" OR "luxury skincare"')
@@ -146,11 +149,11 @@ def beleza():
     return render_template(
         "beleza.html",
         noticias=noticias,
-        produtos=produtos_por_categoria["beleza"]
+        produtos=produtos_por_categoria.get("beleza", [])
     )
 
 
-# 👔 MODA MASCULINA (MONETIZADO)
+# 👔 MODA MASCULINA
 @app.route("/moda-masculina")
 def moda_masculina():
     noticias = buscar_noticias('"men fashion" OR "luxury clothing"')
@@ -158,11 +161,11 @@ def moda_masculina():
     return render_template(
         "moda_masculina.html",
         noticias=noticias,
-        produtos=produtos_por_categoria["moda-masculina"]
+        produtos=produtos_por_categoria.get("moda-masculina", [])
     )
 
 
-# 👑 OUTRAS ROTAS (SEM MEXER)
+# 👑 OUTRAS ROTAS
 @app.route("/bilionarios")
 def bilionarios():
     noticias = buscar_noticias("Elon Musk Jeff Bezos Bernard Arnault Forbes billionaire")
