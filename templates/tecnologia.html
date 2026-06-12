@@ -1,16 +1,36 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
+
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
 <title>Tecnologia Premium | MidasVIP</title>
-<link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+
+<link rel="stylesheet"
+href="{{ url_for('static', filename='css/style.css') }}">
+
+<style>
+.btn{
+  display:inline-block;
+  margin-top:10px;
+  padding:10px 14px;
+  background:gold;
+  color:#000;
+  font-weight:bold;
+  border-radius:8px;
+  text-decoration:none;
+}
+.btn:hover{background:#e6c200;}
+.card p{opacity:0.85;}
+</style>
+
 </head>
 
 <body>
 
 <header>
-<img src="{{ url_for('static', filename='img/logo-midasvip.png') }}" alt="MidasVIP" class="logo-principal">
+<img src="{{ url_for('static', filename='img/logo-midasvip.png') }}" class="logo-principal">
 </header>
 
 <nav>
@@ -20,17 +40,37 @@
 
 <section class="hero">
 <h1>📱 Tecnologia Premium</h1>
-<p>Inovação, design e gadgets de alto padrão.</p>
+<p>Gadgets e inovação com estilo sofisticado.</p>
+</section>
+
+<section class="destaque">
+<h2>💎 Inovação & Estilo</h2>
+<p>Tecnologia que combina desempenho e design.</p>
 </section>
 
 <section class="grid">
 
-<div class="card"><h3>📱 Smartphones</h3></div>
-<div class="card"><h3>💻 Notebooks</h3></div>
-<div class="card"><h3>🎧 Áudio Premium</h3></div>
-<div class="card"><h3>🚀 Inovação</h3></div>
+<div class="card">
+<h3>📱 Smartphone Premium</h3>
+<p>Alto desempenho e design moderno.</p>
+<a href="LINK_AFILIADO" class="btn">Ver oferta</a>
+</div>
+
+<div class="card">
+<h3>🎧 Fone de Luxo</h3>
+<p>Qualidade sonora e estilo sofisticado.</p>
+<a href="LINK_AFILIADO" class="btn">Ver oferta</a>
+</div>
+
+<div class="card">
+<h3>⌚ Smartwatch Premium</h3>
+<p>Tecnologia e elegância no pulso.</p>
+<a href="LINK_AFILIADO" class="btn">Ver oferta</a>
+</div>
 
 </section>
+
+<footer>© 2026 MidasVIP</footer>
 
 </body>
 </html>
