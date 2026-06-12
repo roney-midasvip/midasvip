@@ -1,7 +1,7 @@
 from flask import Flask, render_template
 import requests
 
-app = Flask(**name**)
+app = Flask(__name__)
 
 NEWS_API_KEY = "7a1c6708658f493bb44176f431606bc3"
 
@@ -165,19 +165,7 @@ def luxo():
 
 ```
 noticias = buscar_noticias(
-    '"luxury brand" OR '
-    '"luxury watch" OR '
-    '"rolex" OR '
-    '"patek philippe" OR '
-    '"richard mille" OR '
-    '"ferrari" OR '
-    '"lamborghini" OR '
-    '"bugatti" OR '
-    '"rolls-royce" OR '
-    '"bentley" OR '
-    '"superyacht" OR '
-    '"megayacht" OR '
-    '"private jet"'
+    '"luxury brand" OR "luxury watch" OR "rolex" OR "patek philippe" OR "richard mille" OR "ferrari" OR "lamborghini" OR "bugatti" OR "rolls-royce" OR "bentley" OR "superyacht" OR "megayacht" OR "private jet"'
 )
 
 return render_template(
@@ -186,5 +174,5 @@ return render_template(
 )
 ```
 
-if **name** == "**main**":
-app.run(debug=True)
+if __name__ == "__main__":
+    app.run(debug=True)
