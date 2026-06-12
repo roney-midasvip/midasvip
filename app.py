@@ -1,12 +1,22 @@
 from flask import Flask, render_template, send_from_directory
 import requests
 
+from cache_noticias import cache_valido, get_cache, atualizar_cache, pode_atualizar
+
 app = Flask(__name__)
 
 NEWS_API_KEY = "7a1c6708658f493bb44176f431606bc3"
 
 
 def buscar_noticias(tema):
+
+    # 1. usa cache se ainda está válido
+    if cache_valido():
+        return get_cache()
+
+    # 2. se já bateu limite diário, não chama API
+    if not pode_atualizar():
+        return get_cache()
 
     url = (
         "https://newsapi.org/v2/everything?"
@@ -18,12 +28,11 @@ def buscar_noticias(tema):
     )
 
     try:
-
         resposta = requests.get(url, timeout=15)
 
         if resposta.status_code != 200:
             print("Erro NewsAPI:", resposta.status_code)
-            return []
+            return get_cache()
 
         dados = resposta.json()
 
@@ -72,13 +81,14 @@ def buscar_noticias(tema):
                 "data": item.get("publishedAt", "")
             })
 
+        # 🔥 salva no cache (ESSENCIAL)
+        atualizar_cache(noticias)
+
         return noticias
 
     except Exception as erro:
-
         print("ERRO:", erro)
-        return []
-
+        return get_cache()
 
 @app.route("/")
 def home():
