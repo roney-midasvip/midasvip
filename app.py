@@ -1,7 +1,7 @@
 from flask import Flask, render_template
 import requests
 
-app = Flask(__name__)
+app = Flask(**name**)
 
 NEWS_API_KEY = "7a1c6708658f493bb44176f431606bc3"
 
@@ -31,7 +31,6 @@ try:
     titulos_vistos = set()
 
     palavras_bloqueadas = [
-
         "murder",
         "killed",
         "stabbed",
@@ -42,13 +41,11 @@ try:
         "prison",
         "jail",
         "court",
-
         "war",
         "military",
         "missile",
         "terror",
         "terrorist",
-
         "election",
         "president",
         "government",
@@ -56,22 +53,18 @@ try:
         "senate",
         "congress",
         "politics",
-
         "covid",
         "vaccine",
         "hospital",
         "disease",
         "virus",
-
         "earthquake",
         "flood",
         "hurricane",
         "storm",
-
         "world cup odds",
         "betting",
         "sports betting",
-
         "recipe",
         "teacher",
         "school",
