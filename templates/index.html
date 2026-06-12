@@ -1,4 +1,5 @@
 <!DOCTYPE html>
+
 <html lang="pt-BR">
 
 <head>
@@ -9,8 +10,9 @@
 <title>MidasVIP - Bilionários, Celebridades e Luxo</title>
 
 <meta
-    name="description"
-    content="Bilionários, celebridades, investimentos, carros exóticos, relógios de luxo, iates, jatos privados e lifestyle premium."
+name="description"
+content="Bilionários, celebridades, investimentos, carros exóticos, relógios de luxo, iates, jatos privados e lifestyle premium."
+
 >
 
 <link
@@ -24,170 +26,204 @@
 
 <header>
 
-    <img
-        src="{{ url_for('static', filename='img/logo-midasvip.png') }}"
-        alt="MidasVIP"
-        class="logo-principal"
-    >
+```
+<img
+    src="{{ url_for('static', filename='img/logo-midasvip.png') }}"
+    alt="MidasVIP"
+    class="logo-principal"
+>
 
-    <p class="slogan">
-        O UNIVERSO DA RIQUEZA, DO PODER E DO LUXO
-    </p>
+<p class="slogan">
+    O UNIVERSO DA RIQUEZA, DO PODER E DO LUXO
+</p>
+```
 
 </header>
 
 <nav>
 
-    <a href="/" class="menu-ativo">Home</a>
-    <a href="/noticias">Notícias</a>
-    <a href="/bilionarios">Bilionários</a>
-    <a href="/celebridades">Celebridades</a>
-    <a href="/luxo">Luxo</a>
+```
+<a href="/" class="menu-ativo">Home</a>
+<a href="/noticias">Notícias</a>
+<a href="/bilionarios">Bilionários</a>
+<a href="/celebridades">Celebridades</a>
+<a href="/luxo">Luxo</a>
+```
 
 </nav>
 
 <section class="hero">
 
-    <h2>Bilionários, Luxo e Lifestyle Premium</h2>
+```
+<h2>Bilionários, Luxo e Lifestyle Premium</h2>
 
-    <p>
-        Descubra as maiores fortunas do mundo,
-        acompanhe celebridades,
-        conheça carros exóticos,
-        relógios lendários,
-        iates milionários,
-        aviação executiva e tudo que move o universo da elite global.
-    </p>
+<p>
+    Descubra as maiores fortunas do mundo,
+    acompanhe celebridades,
+    conheça carros exóticos,
+    relógios lendários,
+    iates milionários,
+    aviação executiva e tudo que move o universo da elite global.
+</p>
 
-    <a href="/noticias" class="btn-dourado">
-        Ver Últimas Notícias
-    </a>
+<a href="/noticias" class="btn-dourado">
+    Ver Últimas Notícias
+</a>
+```
 
 </section>
 
 <section class="destaque">
 
-    <h2>💎 Destaques do MidasVIP</h2>
+```
+<h2>💎 Destaques do MidasVIP</h2>
 
-    <p>
-        O melhor conteúdo sobre riqueza,
-        negócios,
-        celebridades,
-        investimentos e mercado de luxo.
-    </p>
+<p>
+    O melhor conteúdo sobre riqueza,
+    negócios,
+    celebridades,
+    investimentos e mercado de luxo.
+</p>
+```
 
 </section>
 
 <section class="grid">
 
+```
+<a href="/bilionarios" style="text-decoration:none;color:inherit;">
     <div class="card">
         <h3>👑 Elon Musk</h3>
         <p>
             CEO da Tesla e SpaceX, frequentemente entre os mais ricos do planeta.
         </p>
     </div>
+</a>
 
+<a href="/bilionarios" style="text-decoration:none;color:inherit;">
     <div class="card">
         <h3>💼 Bernard Arnault</h3>
         <p>
             Controlador do império LVMH e referência mundial em luxo.
         </p>
     </div>
+</a>
 
+<a href="/bilionarios" style="text-decoration:none;color:inherit;">
     <div class="card">
         <h3>🚀 Jeff Bezos</h3>
         <p>
             Fundador da Amazon e investidor em tecnologia e exploração espacial.
         </p>
     </div>
+</a>
 
+<a href="/bilionarios" style="text-decoration:none;color:inherit;">
     <div class="card">
         <h3>📱 Mark Zuckerberg</h3>
         <p>
             Líder da Meta e uma das maiores fortunas da economia digital.
         </p>
     </div>
+</a>
+```
 
 </section>
 
+<a href="/celebridades" style="text-decoration:none;color:inherit;">
+
 <section class="destaque">
 
-    <h2>⭐ Celebridades em Alta</h2>
+```
+<h2>⭐ Celebridades em Alta</h2>
 
-    <p>
-        Acompanhe artistas,
-        atletas,
-        empresários e influenciadores que movimentam bilhões em negócios e entretenimento.
-    </p>
+<p>
+    Acompanhe artistas,
+    atletas,
+    empresários e influenciadores que movimentam bilhões em negócios e entretenimento.
+</p>
+```
 
 </section>
 
+</a>
+
+<a href="/luxo" style="text-decoration:none;color:inherit;">
+
 <section class="destaque">
 
-    <h2>🔥 Tendências do Luxo</h2>
+```
+<h2>🔥 Tendências do Luxo</h2>
 
-    <p>
-        Supercarros,
-        relógios raros,
-        imóveis milionários,
-        jatos executivos,
-        iates e experiências exclusivas.
-    </p>
+<p>
+    Supercarros,
+    relógios raros,
+    imóveis milionários,
+    jatos executivos,
+    iates e experiências exclusivas.
+</p>
+```
 
 </section>
 
+</a>
+
 <section class="destaque">
 
-    <h2>📰 Top Notícias do Dia</h2>
+```
+<h2>📰 Top Notícias do Dia</h2>
 
-    {% if noticias %}
+{% if noticias %}
 
-        {% for noticia in noticias %}
+    {% for noticia in noticias %}
 
-        <div style="margin-bottom:20px;">
+    <div style="margin-bottom:20px;">
 
-            <a
-                href="{{ noticia.link }}"
-                target="_blank"
-                style="
-                    color:#d4af37;
-                    text-decoration:none;
-                    font-size:18px;
-                    line-height:1.5;
-                "
-            >
-                {{ noticia.titulo }}
-            </a>
+        <a
+            href="{{ noticia.link }}"
+            target="_blank"
+            style="
+                color:#d4af37;
+                text-decoration:none;
+                font-size:18px;
+                line-height:1.5;
+            "
+        >
+            {{ noticia.titulo }}
+        </a>
 
-            {% if noticia.fonte %}
+        {% if noticia.fonte %}
 
-            <p style="
-                margin-top:5px;
-                color:#999;
-                font-size:13px;
-            ">
-                Fonte: {{ noticia.fonte }}
-            </p>
-
-            {% endif %}
-
-        </div>
-
-        {% endfor %}
-
-    {% else %}
-
-        <p>
-            Nenhuma notícia encontrada no momento.
+        <p style="
+            margin-top:5px;
+            color:#999;
+            font-size:13px;
+        ">
+            Fonte: {{ noticia.fonte }}
         </p>
 
-    {% endif %}
+        {% endif %}
+
+    </div>
+
+    {% endfor %}
+
+{% else %}
+
+    <p>
+        Nenhuma notícia encontrada no momento.
+    </p>
+
+{% endif %}
+```
 
 </section>
 
 <footer>
 
-    © 2026 MidasVIP.com.br - Todos os direitos reservados
+```
+© 2026 MidasVIP.com.br - Todos os direitos reservados
+```
 
 </footer>
 
