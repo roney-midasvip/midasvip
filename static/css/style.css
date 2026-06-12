@@ -17,18 +17,18 @@ body{
 header{
     background:#000;
     text-align:center;
-    padding:15px 20px 5px;
+    padding:15px 20px 10px;
 }
 
 .logo-principal{
-    width:460px;
+    width:520px;
     max-width:95%;
     display:block;
     margin:0 auto;
 }
 
 .slogan{
-    margin-top:5px;
+    margin-top:8px;
     color:#b9b9b9;
     font-size:14px;
     letter-spacing:8px;
@@ -75,21 +75,21 @@ nav a:hover{
     max-width:1400px;
     margin:0 auto;
     text-align:center;
-    padding:50px 20px;
+    padding:70px 20px;
 }
 
 .hero h2{
-    font-size:60px;
-    line-height:1.2;
-    margin-bottom:25px;
+    font-size:56px;
+    line-height:1.15;
+    margin-bottom:30px;
     font-weight:700;
 }
 
 .hero p{
-    max-width:1000px;
+    max-width:1100px;
     margin:0 auto;
-    font-size:20px;
-    line-height:1.8;
+    font-size:28px;
+    line-height:1.7;
     color:#dddddd;
 }
 
@@ -104,7 +104,7 @@ nav a:hover{
     background:#d4af37;
     color:#000;
 
-    padding:18px 40px;
+    padding:18px 42px;
 
     border-radius:10px;
 
@@ -112,6 +112,8 @@ nav a:hover{
     font-weight:bold;
 
     text-decoration:none;
+
+    transition:0.3s;
 }
 
 .btn-dourado:hover{
@@ -270,16 +272,4 @@ footer{
     .card p{
         font-size:16px;
     }
-}
-.logo-principal{
-    width:600px !important;
-}
-
-.hero h2{
-    font-size:80px !important;
-    color:red !important;
-}
-
-nav a{
-    font-size:40px !important;
 }
