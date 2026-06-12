@@ -20,7 +20,7 @@
 
   gtag('config', 'G-HXWRZ08449');
 </script>
-  
+
 <body>
 
 <header>
@@ -58,6 +58,7 @@ jatos privados e experiências exclusivas da elite global.
 
 </section>
 
+<!-- 🔥 NOTÍCIAS -->
 <section class="grid">
 
 {% for noticia in noticias %}
@@ -82,6 +83,33 @@ Fonte:
 </a>
 
 {% endfor %}
+
+</section>
+
+<!-- 💎 NOVA SEÇÃO: PRODUTOS (MONETIZAÇÃO) -->
+<section class="produtos">
+
+<h2 style="margin-top:40px;">Produtos de Luxo em Destaque</h2>
+
+<div class="grid">
+
+{% for p in produtos %}
+
+<div class="card">
+
+<h3>{{ p.nome }}</h3>
+
+<p>{{ p.descricao }}</p>
+
+<a href="{{ p.link }}" target="_blank" class="btn">
+Ver Oferta Exclusiva
+</a>
+
+</div>
+
+{% endfor %}
+
+</div>
 
 </section>
 
