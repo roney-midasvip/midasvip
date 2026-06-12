@@ -1,16 +1,36 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
+
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
 <title>Bolsas & Acessórios | MidasVIP</title>
-<link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+
+<link rel="stylesheet"
+href="{{ url_for('static', filename='css/style.css') }}">
+
+<style>
+.btn{
+  display:inline-block;
+  margin-top:10px;
+  padding:10px 14px;
+  background:gold;
+  color:#000;
+  font-weight:bold;
+  border-radius:8px;
+  text-decoration:none;
+}
+.btn:hover{background:#e6c200;}
+.card p{opacity:0.85;}
+</style>
+
 </head>
 
 <body>
 
 <header>
-<img src="{{ url_for('static', filename='img/logo-midasvip.png') }}" alt="MidasVIP" class="logo-principal">
+<img src="{{ url_for('static', filename='img/logo-midasvip.png') }}" class="logo-principal">
 </header>
 
 <nav>
@@ -20,17 +40,37 @@
 
 <section class="hero">
 <h1>👜 Bolsas & Acessórios</h1>
-<p>Itens inspirados nas marcas mais desejadas do planeta.</p>
+<p>Peças elegantes que definem estilo e personalidade.</p>
+</section>
+
+<section class="destaque">
+<h2>💎 Destaques de Luxo</h2>
+<p>Acessórios que elevam qualquer look.</p>
 </section>
 
 <section class="grid">
 
-<div class="card"><h3>👜 Bolsas</h3></div>
-<div class="card"><h3>🕶 Óculos</h3></div>
-<div class="card"><h3>💼 Malas</h3></div>
-<div class="card"><h3>✨ Acessórios</h3></div>
+<div class="card">
+<h3>👜 Bolsa Elegante</h3>
+<p>Design sofisticado e versátil.</p>
+<a href="LINK_AFILIADO" class="btn">Ver oferta</a>
+</div>
+
+<div class="card">
+<h3>🕶️ Óculos Premium</h3>
+<p>Estilo e proteção com presença forte.</p>
+<a href="LINK_AFILIADO" class="btn">Ver oferta</a>
+</div>
+
+<div class="card">
+<h3>💼 Bolsa Executiva</h3>
+<p>Ideal para estilo profissional elegante.</p>
+<a href="LINK_AFILIADO" class="btn">Ver oferta</a>
+</div>
 
 </section>
+
+<footer>© 2026 MidasVIP</footer>
 
 </body>
 </html>
