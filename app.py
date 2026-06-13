@@ -29,11 +29,11 @@ def buscar_todas_noticias():
     if not pode_atualizar():
         return get_cache()
 
-    # Query abrangente para pegar tudo de uma vez
+    # Query abrangente adaptada para português
     url = (
         "https://newsapi.org/v2/everything?"
-        "q=luxury OR billionaire OR celebrity OR fashion OR watches OR supercars"
-        "&language=en"
+        "q=luxo OR bilionario OR celebridade OR moda OR relogio OR supercarro"
+        "&language=pt"
         "&sortBy=publishedAt"
         "&pageSize=80"
         f"&apiKey={NEWS_API_KEY}"
@@ -47,7 +47,7 @@ def buscar_todas_noticias():
         dados = resposta.json()
         noticias = []
         titulos_vistos = set()
-        palavras_bloqueadas = ["murder", "killed", "stabbed", "crime", "covid", "vaccine", "war", "arrested", "betting", "recipe", "fugitive"]
+        palavras_bloqueadas = ["assassinato", "morto", "esfaqueado", "crime", "covid", "vacina", "guerra", "preso", "aposta", "receita", "fugitivo"]
 
         for item in dados.get("articles", []):
             titulo = item.get("title")
@@ -69,7 +69,7 @@ def buscar_todas_noticias():
         print("ERRO NEWS:", e)
         return get_cache()
 
-# 💡 FILTRO LOCAL (NÃO GASTA API)
+# 💡 FILTRO LOCAL
 def filtrar_por_tema(noticias, keywords):
     return [n for n in noticias if any(k in n['titulo'].lower() for k in keywords)]
 
@@ -80,16 +80,13 @@ def home():
     return render_template("index.html", noticias=todas[:8])
 
 @app.route("/quem-somos")
-def quem_somos():
-    return render_template("quem_somos.html")
+def quem_somos(): return render_template("quem_somos.html")
 
 @app.route("/contato")
-def contato():
-    return render_template("contato.html")
+def contato(): return render_template("contato.html")
 
 @app.route("/privacidade")
-def privacidade():
-    return render_template("privacidade.html")
+def privacidade(): return render_template("privacidade.html")
 
 @app.route("/noticias")
 def noticias():
@@ -98,22 +95,21 @@ def noticias():
 @app.route("/luxo")
 def luxo():
     todas = buscar_todas_noticias()
-    filtradas = filtrar_por_tema(todas, ["luxury", "rolex", "ferrari", "bugatti", "jet", "yacht", "watch"])
+    filtradas = filtrar_por_tema(todas, ["luxo", "rolex", "ferrari", "bugatti", "jato", "iate", "relogio"])
     return render_template("luxo.html", noticias=filtradas, produtos=produtos_por_categoria.get("luxo", []))
 
 @app.route("/bilionarios")
 def bilionarios():
     todas = buscar_todas_noticias()
-    filtradas = filtrar_por_tema(todas, ["billionaire", "musk", "bezos", "arnault", "forbes", "wealth", "business"])
+    filtradas = filtrar_por_tema(todas, ["bilionario", "musk", "bezos", "arnault", "forbes", "riqueza", "negocios"])
     return render_template("bilionarios.html", noticias=filtradas)
 
 @app.route("/celebridades")
 def celebridades():
     todas = buscar_todas_noticias()
-    filtradas = filtrar_por_tema(todas, ["celebrity", "hollywood", "swift", "beyonce", "kardashian", "actor", "singer"])
+    filtradas = filtrar_por_tema(todas, ["celebridade", "hollywood", "famosos", "ator", "cantor"])
     return render_template("celebridades.html", noticias=filtradas)
 
-# 👑 OUTRAS ROTAS (Sem notícias dinâmicas)
 @app.route("/midasvip-select")
 def midasvip_select(): return render_template("midasvip_select.html")
 
