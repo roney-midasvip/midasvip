@@ -1,47 +1,17 @@
-<!DOCTYPE html>
-<html lang="pt-BR">
-<head>
+{% extends "base.html" %}
 
-<!-- Google tag (gtag.js) -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-HXWRZ08449"></script>
-<script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
+{% block title %}Moda Masculina{% endblock %}
 
-  gtag('config', 'G-HXWRZ08449');
-</script>
-  
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Moda Masculina | MidasVIP</title>
-<link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
-</head>
-
-<body>
-
-<header>
-<img src="{{ url_for('static', filename='img/logo-midasvip.png') }}" alt="MidasVIP" class="logo-principal">
-</header>
-
-<nav>
-<a href="/">Home</a>
-<a href="/midasvip-select">Universo MidasVIP</a>
-</nav>
-
+{% block content %}
 <section class="hero">
-<h1>👔 Moda Masculina</h1>
-<p>Estilo executivo, elegância e sofisticação.</p>
+    <h1>👔 Moda Masculina</h1>
+    <p>Estilo executivo, elegância e sofisticação.</p>
 </section>
 
 <section class="grid">
-
-<div class="card"><h3>👔 Ternos</h3></div>
-<div class="card"><h3>⌚ Acessórios</h3></div>
-<div class="card"><h3>👞 Sapatos</h3></div>
-<div class="card"><h3>💼 Lifestyle</h3></div>
-
+    <div class="card"><h3>👔 Ternos</h3></div>
+    <div class="card"><h3>⌚ Acessórios</h3></div>
+    <div class="card"><h3>👞 Sapatos</h3></div>
+    <div class="card"><h3>💼 Lifestyle</h3></div>
 </section>
-
-</body>
-</html>
+{% endblock %}
