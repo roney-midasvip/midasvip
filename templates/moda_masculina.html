@@ -3,15 +3,24 @@
 {% block title %}Moda Masculina{% endblock %}
 
 {% block content %}
-<section class="hero">
-    <h1>👔 Moda Masculina</h1>
-    <p>Estilo executivo, elegância e sofisticação.</p>
-</section>
-
-<section class="grid">
-    <div class="card"><h3>👔 Ternos</h3></div>
-    <div class="card"><h3>⌚ Acessórios</h3></div>
-    <div class="card"><h3>👞 Sapatos</h3></div>
-    <div class="card"><h3>💼 Lifestyle</h3></div>
-</section>
+<div style="max-width: 1400px; margin: 20px auto; padding: 0 20px;">
+    <!-- Botão Voltar -->
+    <a href="/midasvip-select" style="color: #d4af37; text-decoration: none; font-size: 18px; display: inline-block; margin-bottom: 20px;">
+        ← Voltar para Categorias
+    </a>
+    
+    <h2>👔 Moda Masculina</h2>
+    
+    <div class="grid">
+        {% for item in produtos %}
+        <div class="card">
+            <h3>{{ item.nome }}</h3>
+            <p>{{ item.descricao }}</p>
+            <a href="{{ item.link }}" target="_blank" class="btn">VER DETALHES</a>
+        </div>
+        {% else %}
+        <p>Estamos buscando novas ofertas para você. Volte em breve!</p>
+        {% endfor %}
+    </div>
+</div>
 {% endblock %}
