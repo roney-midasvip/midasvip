@@ -19,6 +19,10 @@ def home():
     todas = dados.get("bilionarios", []) + dados.get("celebridades", []) + dados.get("luxo", [])
     return render_template("index.html", noticias=todas[:8])
 
+@app.route('/midasvip-select')
+def midasvip_select():
+    return render_template('midasvip_select.html')
+
 @app.route("/luxo")
 def luxo():
     dados = carregar_cache()
