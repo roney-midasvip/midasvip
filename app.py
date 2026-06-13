@@ -10,8 +10,6 @@ app = Flask(__name__)
 API_KEY = "lmd_dev_F8K39DzOwG_Z1pGoeCk7rg1FFouHbuEdXFldOGfsIWc"
 SOURCE_ID = "fc89b7ba-30c3-4ff4-ad37-5ebfea125368"
 
-def atualizar_produtos_automaticamente():
-
 def carregar_produtos():
     atualizar_produtos_automaticamente()
     if os.path.exists('produtos_data.json'):
