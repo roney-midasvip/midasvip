@@ -3,48 +3,24 @@
 {% block title %}Moda Feminina{% endblock %}
 
 {% block content %}
-<style>
-    .btn {
-        display: inline-block;
-        margin-top: 10px;
-        padding: 10px 14px;
-        background: gold;
-        color: #000;
-        font-weight: bold;
-        border-radius: 8px;
-        text-decoration: none;
-    }
-    .btn:hover { background: #e6c200; }
-    .card p { opacity: 0.85; }
-</style>
-
-<section class="hero">
-    <h1>👗 Moda Feminina</h1>
-    <p>Estilo, elegância e tendências inspiradas no universo do luxo.</p>
-</section>
-
-<section class="destaque">
-    <h2>💎 Estilo & Tendência</h2>
-    <p>Peças selecionadas para elevar presença e estilo pessoal.</p>
-</section>
-
-<section class="grid">
-    <div class="card">
-        <h3>✨ Look Elegante Casual</h3>
-        <p>Estilo sofisticado para o dia a dia.</p>
-        <a href="LINK_AFILIADO" class="btn">Ver oferta</a>
+<div style="max-width: 1400px; margin: 20px auto; padding: 0 20px;">
+    <!-- Botão Voltar -->
+    <a href="/midasvip-select" style="color: #d4af37; text-decoration: none; font-size: 18px; display: inline-block; margin-bottom: 20px;">
+        ← Voltar para Categorias
+    </a>
+    
+    <h2>👗 Moda Feminina</h2>
+    
+    <div class="grid">
+        {% for item in produtos %}
+        <div class="card">
+            <h3>{{ item.nome }}</h3>
+            <p>{{ item.descricao }}</p>
+            <a href="{{ item.link }}" target="_blank" class="btn">VER DETALHES</a>
+        </div>
+        {% else %}
+        <p>Estamos buscando novas ofertas para você. Volte em breve!</p>
+        {% endfor %}
     </div>
-
-    <div class="card">
-        <h3>🔥 Look Festa Luxo</h3>
-        <p>Impacto visual para eventos especiais.</p>
-        <a href="LINK_AFILIADO" class="btn">Ver oferta</a>
-    </div>
-
-    <div class="card">
-        <h3>💎 Look Minimalista Premium</h3>
-        <p>Elegância discreta e moderna.</p>
-        <a href="LINK_AFILIADO" class="btn">Ver oferta</a>
-    </div>
-</section>
+</div>
 {% endblock %}
