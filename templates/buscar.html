@@ -1,68 +1,15 @@
-<!DOCTYPE html>
-<html lang="pt-BR">
-<head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+{% extends "base.html" %}
 
-<title>Busca MidasVIP</title>
+{% block title %}Busca MidasVIP{% endblock %}
 
-<link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
-</head>
-
-  <!-- Google tag (gtag.js) -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-HXWRZ08449"></script>
-<script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
-
-  gtag('config', 'G-HXWRZ08449');
-</script>
-  
-<body>
-
-<header>
-
-<img
-src="{{ url_for('static', filename='img/logo-midasvip.png') }}"
-class="logo-principal"
->
-
-<p class="slogan">
-O UNIVERSO DA RIQUEZA, DO PODER E DO LUXO
-</p>
-
-</header>
-
-<nav>
-<a href="/">Home</a>
-<a href="/noticias">Notícias</a>
-<a href="/bilionarios">Bilionários</a>
-<a href="/celebridades">Celebridades</a>
-<a href="/luxo">Luxo</a>
-</nav>
-
+{% block content %}
 <section class="hero">
-
-{% if resultado %}
-
-<h2>{{ resultado.nome }}</h2>
-
-<p>
-{{ resultado.descricao }}
-</p>
-
-{% else %}
-
-<h2>Nenhum resultado encontrado</h2>
-
-<p>
-Pesquise por Elon Musk, Jeff Bezos, Neymar ou Cristiano Ronaldo.
-</p>
-
-{% endif %}
-
+    {% if resultado %}
+    <h2>{{ resultado.nome }}</h2>
+    <p>{{ resultado.descricao }}</p>
+    {% else %}
+    <h2>Nenhum resultado encontrado</h2>
+    <p>Pesquise por Elon Musk, Jeff Bezos, Neymar ou Cristiano Ronaldo.</p>
+    {% endif %}
 </section>
-
-</body>
-</html>
+{% endblock %}
