@@ -2,17 +2,46 @@ from flask import Flask, render_template
 from noticias_manager import carregar_cache
 import json
 import os
+import requests
 
 app = Flask(__name__)
 
-# Função auxiliar para carregar os produtos do arquivo JSON gerado pelo robô
+# CONFIGURAÇÕES DA API
+API_KEY = "SUA_API_KEY_AQUI" # MANTENHA A SUA AQUI
+SOURCE_ID = "fc89b7ba-30c3-4ff4-ad37-5ebfea125368"
+
+def atualizar_produtos_automaticamente():
+    """Busca produtos da API caso o arquivo ainda não exista."""
+    if os.path.exists('produtos_data.json'):
+        return # Já existe, não precisa buscar de novo agora
+    
+    print("--- Buscando produtos automaticamente... ---")
+    categorias = ["perfumes", "beleza", "moda-feminina", "relogios", "bolsas", "moda-masculina", "tecnologia", "viagens"]
+    base_produtos = {}
+
+    for cat in categorias:
+        url = f"https://api.lomadee.com/v3/{API_KEY}/product/_preferred?sourceId={SOURCE_ID}&keyword={cat}"
+        try:
+            r = requests.get(url)
+            if r.status_code == 200:
+                base_produtos[cat] = [{"nome": p['productName'], "descricao": p.get('shortDescription', ''), "link": p['link']} 
+                                      for p in r.json().get('products', [])[:5]]
+        except: pass
+    
+    with open('produtos_data.json', 'w', encoding='utf-8') as f:
+        json.dump(base_produtos, f, ensure_ascii=False, indent=4)
+
 def carregar_produtos():
+    atualizar_produtos_automaticamente() # Garante que exista
     if os.path.exists('produtos_data.json'):
         with open('produtos_data.json', 'r', encoding='utf-8') as f:
             return json.load(f)
     return {}
 
-# 🏠 ROTAS PRINCIPAIS
+# --- ROTAS ---
+# (Suas rotas permanecem IGUAIS ao que você me passou, 
+#  o carregar_produtos() agora se encarrega de tudo!)
+
 @app.route("/")
 def home():
     dados = carregar_cache()
@@ -24,7 +53,6 @@ def midasvip_select():
     produtos = carregar_produtos()
     return render_template('midasvip_select.html', produtos=produtos)
 
-# 🛍️ ROTAS DE PRODUTOS (CATEGORIAS)
 @app.route("/perfumes")
 def perfumes():
     produtos = carregar_produtos()
@@ -65,36 +93,7 @@ def viagens():
     produtos = carregar_produtos()
     return render_template("viagens.html", produtos=produtos.get("viagens", []))
 
-# 📰 ROTAS DE NOTÍCIAS
-@app.route("/luxo")
-def luxo():
-    dados = carregar_cache()
-    produtos = carregar_produtos()
-    return render_template("luxo.html", noticias=dados.get("luxo", []), produtos=produtos.get("luxo", []))
-
-@app.route("/bilionarios")
-def bilionarios():
-    dados = carregar_cache()
-    return render_template("bilionarios.html", noticias=dados.get("bilionarios", []))
-
-@app.route("/celebridades")
-def celebridades():
-    dados = carregar_cache()
-    return render_template("celebridades.html", noticias=dados.get("celebridades", []))
-
-@app.route("/noticias")
-def noticias(): 
-    dados = carregar_cache()
-    todas = dados.get("bilionarios", []) + dados.get("celebridades", []) + dados.get("luxo", [])
-    return render_template("noticias.html", noticias=todas)
-
-# 📄 ROTAS ESTÁTICAS
-@app.route("/quem-somos")
-def quem_somos(): return render_template("quem_somos.html")
-@app.route("/contato")
-def contato(): return render_template("contato.html")
-@app.route("/privacidade")
-def privacidade(): return render_template("privacidade.html")
+# ... (Mantenha as outras rotas de notícias e estáticas como estavam)
 
 if __name__ == "__main__":
     app.run(debug=True)
