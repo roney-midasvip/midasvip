@@ -1,46 +1,26 @@
 from flask import Flask, render_template
 from noticias_manager import carregar_cache
-import json
-import os
 import requests
 
 app = Flask(__name__)
 
 # CONFIGURAÇÕES DA API
-API_KEY = "lmd_dev_F8K39DzOwG_Z1pGoeCk7rg1FFouHbuEdXFldOGfsIWc" # MANTENHA A SUA AQUI
+API_KEY = "lmd_dev_F8K39DzOwG_Z1pGoeCk7rg1FFouHbuEdXFldOGfsIWc"
 SOURCE_ID = "fc89b7ba-30c3-4ff4-ad37-5ebfea125368"
 
-def atualizar_produtos_automaticamente():
-    """Busca produtos da API caso o arquivo ainda não exista."""
-    if os.path.exists('produtos_data.json'):
-        return # Já existe, não precisa buscar de novo agora
-    
-    print("--- Buscando produtos automaticamente... ---")
-    categorias = ["perfumes", "beleza", "moda-feminina", "relogios", "bolsas", "moda-masculina", "tecnologia", "viagens"]
-    base_produtos = {}
-
-    for cat in categorias:
-        url = f"https://api.lomadee.com/v3/{API_KEY}/product/_preferred?sourceId={SOURCE_ID}&keyword={cat}"
-        try:
-            r = requests.get(url)
-            if r.status_code == 200:
-                base_produtos[cat] = [{"nome": p['productName'], "descricao": p.get('shortDescription', ''), "link": p['link']} 
-                                      for p in r.json().get('products', [])[:5]]
-        except: pass
-    
-    with open('produtos_data.json', 'w', encoding='utf-8') as f:
-        json.dump(base_produtos, f, ensure_ascii=False, indent=4)
-
-def carregar_produtos():
-    atualizar_produtos_automaticamente() # Garante que exista
-    if os.path.exists('produtos_data.json'):
-        with open('produtos_data.json', 'r', encoding='utf-8') as f:
-            return json.load(f)
-    return {}
+def buscar_produtos_direto(categoria):
+    """Busca produtos direto da API sem salvar em arquivo."""
+    url = f"https://api.lomadee.com/v3/{API_KEY}/product/_preferred?sourceId={SOURCE_ID}&keyword={categoria}"
+    try:
+        r = requests.get(url, timeout=5) # Timeout curto para não travar o site
+        if r.status_code == 200:
+            data = r.json().get('products', [])
+            return [{"nome": p['productName'], "descricao": p.get('shortDescription', ''), "link": p['link']} for p in data[:6]]
+    except Exception as e:
+        print(f"Erro ao buscar {categoria}: {e}")
+    return []
 
 # --- ROTAS ---
-# (Suas rotas permanecem IGUAIS ao que você me passou, 
-#  o carregar_produtos() agora se encarrega de tudo!)
 
 @app.route("/")
 def home():
@@ -50,50 +30,68 @@ def home():
 
 @app.route('/midasvip-select')
 def midasvip_select():
-    produtos = carregar_produtos()
-    return render_template('midasvip_select.html', produtos=produtos)
+    return render_template('midasvip_select.html')
 
 @app.route("/perfumes")
 def perfumes():
-    produtos = carregar_produtos()
-    return render_template("perfumes.html", produtos=produtos.get("perfumes", []))
+    return render_template("perfumes.html", produtos=buscar_produtos_direto("perfumes"))
 
 @app.route("/beleza")
 def beleza():
-    produtos = carregar_produtos()
-    return render_template("beleza.html", produtos=produtos.get("beleza", []))
+    return render_template("beleza.html", produtos=buscar_produtos_direto("beleza"))
 
 @app.route("/moda-feminina")
 def moda_feminina():
-    produtos = carregar_produtos()
-    return render_template("moda_feminina.html", produtos=produtos.get("moda-feminina", []))
+    return render_template("moda_feminina.html", produtos=buscar_produtos_direto("moda feminina"))
 
 @app.route("/relogios")
 def relogios():
-    produtos = carregar_produtos()
-    return render_template("relogios.html", produtos=produtos.get("relogios", []))
+    return render_template("relogios.html", produtos=buscar_produtos_direto("relogios"))
 
 @app.route("/bolsas")
 def bolsas():
-    produtos = carregar_produtos()
-    return render_template("bolsas.html", produtos=produtos.get("bolsas", []))
+    return render_template("bolsas.html", produtos=buscar_produtos_direto("bolsas"))
 
 @app.route("/moda-masculina")
 def moda_masculina():
-    produtos = carregar_produtos()
-    return render_template("moda_masculina.html", produtos=produtos.get("moda-masculina", []))
+    return render_template("moda_masculina.html", produtos=buscar_produtos_direto("moda masculina"))
 
 @app.route("/tecnologia")
 def tecnologia():
-    produtos = carregar_produtos()
-    return render_template("tecnologia.html", produtos=produtos.get("tecnologia", []))
+    return render_template("tecnologia.html", produtos=buscar_produtos_direto("tecnologia"))
 
 @app.route("/viagens")
 def viagens():
-    produtos = carregar_produtos()
-    return render_template("viagens.html", produtos=produtos.get("viagens", []))
+    return render_template("viagens.html", produtos=buscar_produtos_direto("viagens"))
 
-# ... (Mantenha as outras rotas de notícias e estáticas como estavam)
+# ROTAS DE NOTÍCIAS E ESTÁTICAS
+@app.route("/luxo")
+def luxo():
+    dados = carregar_cache()
+    return render_template("luxo.html", noticias=dados.get("luxo", []), produtos=buscar_produtos_direto("luxo"))
+
+@app.route("/bilionarios")
+def bilionarios():
+    dados = carregar_cache()
+    return render_template("bilionarios.html", noticias=dados.get("bilionarios", []))
+
+@app.route("/celebridades")
+def celebridades():
+    dados = carregar_cache()
+    return render_template("celebridades.html", noticias=dados.get("celebridades", []))
+
+@app.route("/noticias")
+def noticias(): 
+    dados = carregar_cache()
+    todas = dados.get("bilionarios", []) + dados.get("celebridades", []) + dados.get("luxo", [])
+    return render_template("noticias.html", noticias=todas)
+
+@app.route("/quem-somos")
+def quem_somos(): return render_template("quem_somos.html")
+@app.route("/contato")
+def contato(): return render_template("contato.html")
+@app.route("/privacidade")
+def privacidade(): return render_template("privacidade.html")
 
 if __name__ == "__main__":
     app.run(debug=True)
