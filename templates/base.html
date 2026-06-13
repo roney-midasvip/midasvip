@@ -5,7 +5,16 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>{% block title %}{% endblock %} | MidasVIP</title>
     <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
-    <!-- Insira seus scripts de tracking aqui -->
+    
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-HXWRZ08449"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'G-HXWRZ08449');
+    </script>
+    
     <meta name="lomadee" content="2324685" />
 </head>
 <body>
@@ -15,11 +24,11 @@
     </header>
 
     <nav>
-        <a href="/">Home</a>
-        <a href="/noticias">Notícias</a>
-        <a href="/bilionarios">Bilionários</a>
-        <a href="/celebridades">Celebridades</a>
-        <a href="/luxo">Luxo</a>
+        <a href="/" class="{{ 'menu-ativo' if request.path == '/' }}">Home</a>
+        <a href="/noticias" class="{{ 'menu-ativo' if request.path == '/noticias' }}">Notícias</a>
+        <a href="/bilionarios" class="{{ 'menu-ativo' if request.path == '/bilionarios' }}">Bilionários</a>
+        <a href="/celebridades" class="{{ 'menu-ativo' if request.path == '/celebridades' }}">Celebridades</a>
+        <a href="/luxo" class="{{ 'menu-ativo' if request.path == '/luxo' }}">Luxo</a>
     </nav>
 
     <!-- Aqui entra o conteúdo único de cada página -->
