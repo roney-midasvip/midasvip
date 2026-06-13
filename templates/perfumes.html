@@ -3,64 +3,24 @@
 {% block title %}Perfumes Premium{% endblock %}
 
 {% block content %}
-<section class="hero">
-    <h1>🌸 Perfumes Premium</h1>
-    <p>As fragrâncias mais desejadas do mundo reunidas pelo MidasVIP. Conheça perfumes femininos e masculinos que se tornaram símbolos de elegância, sofisticação e exclusividade.</p>
-</section>
-
-<section class="destaque">
-    <h2>💎 Femininos em Destaque</h2>
-</section>
-
-<section class="grid">
-    <div class="card">
-        <h3>🌸 Chanel Coco Mademoiselle</h3>
-        <p>Um dos perfumes femininos mais icônicos do mundo.</p>
+<div style="max-width: 1400px; margin: 20px auto; padding: 0 20px;">
+    <!-- Botão Voltar -->
+    <a href="/midasvip-select" style="color: #d4af37; text-decoration: none; font-size: 18px; display: inline-block; margin-bottom: 20px;">
+        ← Voltar para Categorias
+    </a>
+    
+    <h2>🌸 Perfumes Premium</h2>
+    
+    <div class="grid">
+        {% for item in produtos %}
+        <div class="card">
+            <h3>{{ item.nome }}</h3>
+            <p>{{ item.descricao }}</p>
+            <a href="{{ item.link }}" target="_blank" class="btn">VER DETALHES</a>
+        </div>
+        {% else %}
+        <p>Estamos buscando novas ofertas para você. Volte em breve!</p>
+        {% endfor %}
     </div>
-    <div class="card">
-        <h3>💎 Dior J'adore</h3>
-        <p>Elegância francesa com notas florais sofisticadas.</p>
-    </div>
-    <div class="card">
-        <h3>✨ La Vie Est Belle</h3>
-        <p>Sucesso global conhecido por sua assinatura marcante.</p>
-    </div>
-    <div class="card">
-        <h3>👑 Good Girl</h3>
-        <p>Fragrância moderna e luxuosa da Carolina Herrera.</p>
-    </div>
-</section>
-
-<section class="destaque">
-    <h2>🔥 Masculinos em Destaque</h2>
-</section>
-
-<section class="grid">
-    <div class="card">
-        <h3>🔥 Dior Sauvage</h3>
-        <p>Um dos perfumes masculinos mais vendidos do planeta.</p>
-    </div>
-    <div class="card">
-        <h3>💼 Bleu de Chanel</h3>
-        <p>Sofisticação e elegância para qualquer ocasião.</p>
-    </div>
-    <div class="card">
-        <h3>🌊 Acqua Di Giò</h3>
-        <p>Clássico da perfumaria masculina internacional.</p>
-    </div>
-    <div class="card">
-        <h3>🖤 Tom Ford Oud Wood</h3>
-        <p>Luxo, exclusividade e personalidade marcante.</p>
-    </div>
-</section>
-
-<section class="destaque">
-    <h2>⭐ Tendências do Mercado de Luxo</h2>
-    <p>O mercado global de perfumes premium continua crescendo, impulsionado por consumidores que buscam experiências, sofisticação e identidade através das fragrâncias. Marcas tradicionais e lançamentos exclusivos seguem movimentando bilhões de dólares todos os anos.</p>
-</section>
-
-<section class="destaque">
-    <h2>🎁 Em Breve no MidasVIP</h2>
-    <p>Em breve esta seção contará com seleções especiais, recomendações premium e oportunidades exclusivas para os apaixonados pelo universo da perfumaria de luxo.</p>
-</section>
+</div>
 {% endblock %}
