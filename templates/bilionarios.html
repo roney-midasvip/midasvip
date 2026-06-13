@@ -14,18 +14,25 @@
 </div>
 
 <section class="grid">
-    {% for noticia in noticias %}
-    <a href="{{ noticia.link }}" target="_blank" class="card">
-        {% if noticia.imagem %}
-        <img src="{{ noticia.imagem }}" 
-             alt="{{ noticia.titulo }}" 
-             style="width:100%;height:220px;object-fit:cover;border-radius:12px;margin-bottom:15px;"
-             onerror="this.style.display='none';">
-        {% endif %}
+    {% if noticias and noticias|length > 0 %}
+        {% for noticia in noticias %}
+        <a href="{{ noticia.link }}" target="_blank" class="card">
+            {% if noticia.imagem %}
+            <img src="{{ noticia.imagem }}" 
+                 alt="{{ noticia.titulo }}" 
+                 style="width:100%;height:220px;object-fit:cover;border-radius:12px;margin-bottom:15px;"
+                 onerror="this.style.display='none';">
+            {% endif %}
 
-        <h3>{{ noticia.titulo }}</h3>
-        <p>Fonte: <strong>{{ noticia.fonte }}</strong></p>
-    </a>
-    {% endfor %}
+            <h3>{{ noticia.titulo }}</h3>
+            <p>Fonte: <strong>{{ noticia.fonte }}</strong></p>
+        </a>
+        {% endfor %}
+    {% else %}
+        <!-- Mensagem caso o filtro não retorne notícias -->
+        <div style="text-align: center; width: 100%; padding: 40px; color: #888;">
+            <p>No momento, não há notícias disponíveis nesta categoria.</p>
+        </div>
+    {% endif %}
 </section>
 {% endblock %}
