@@ -1,172 +1,66 @@
-<!DOCTYPE html>
+{% extends "base.html" %}
 
-<html lang="pt-BR">
+{% block title %}Perfumes Premium{% endblock %}
 
-<head>
-
-<!-- Google tag (gtag.js) -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-HXWRZ08449"></script>
-<script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
-
-  gtag('config', 'G-HXWRZ08449');
-</script>
-  
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-<title>Perfumes Premium | MidasVIP</title>
-
-<link rel="stylesheet"
-href="{{ url_for('static', filename='css/style.css') }}">
-
-</head>
-
-<body>
-
-<header>
-
-<img
-src="{{ url_for('static', filename='img/logo-midasvip.png') }}"
-alt="MidasVIP"
-class="logo-principal"
-
->
-
-<p class="slogan">
-O UNIVERSO DA RIQUEZA, DO PODER E DO LUXO
-</p>
-
-</header>
-
-<nav>
-
-<a href="/">Home</a> <a href="/midasvip-select">Universo MidasVIP</a>
-
-</nav>
-
+{% block content %}
 <section class="hero">
-
-<h1>🌸 Perfumes Premium</h1>
-
-<p>
-As fragrâncias mais desejadas do mundo reunidas pelo MidasVIP.
-Conheça perfumes femininos e masculinos que se tornaram símbolos
-de elegância, sofisticação e exclusividade.
-</p>
-
+    <h1>🌸 Perfumes Premium</h1>
+    <p>As fragrâncias mais desejadas do mundo reunidas pelo MidasVIP. Conheça perfumes femininos e masculinos que se tornaram símbolos de elegância, sofisticação e exclusividade.</p>
 </section>
 
 <section class="destaque">
-
-<h2>💎 Femininos em Destaque</h2>
-
+    <h2>💎 Femininos em Destaque</h2>
 </section>
 
 <section class="grid">
-
-<div class="card">
-<h3>🌸 Chanel Coco Mademoiselle</h3>
-<p>
-Um dos perfumes femininos mais icônicos do mundo.
-</p>
-</div>
-
-<div class="card">
-<h3>💎 Dior J'adore</h3>
-<p>
-Elegância francesa com notas florais sofisticadas.
-</p>
-</div>
-
-<div class="card">
-<h3>✨ La Vie Est Belle</h3>
-<p>
-Sucesso global conhecido por sua assinatura marcante.
-</p>
-</div>
-
-<div class="card">
-<h3>👑 Good Girl</h3>
-<p>
-Fragrância moderna e luxuosa da Carolina Herrera.
-</p>
-</div>
-
+    <div class="card">
+        <h3>🌸 Chanel Coco Mademoiselle</h3>
+        <p>Um dos perfumes femininos mais icônicos do mundo.</p>
+    </div>
+    <div class="card">
+        <h3>💎 Dior J'adore</h3>
+        <p>Elegância francesa com notas florais sofisticadas.</p>
+    </div>
+    <div class="card">
+        <h3>✨ La Vie Est Belle</h3>
+        <p>Sucesso global conhecido por sua assinatura marcante.</p>
+    </div>
+    <div class="card">
+        <h3>👑 Good Girl</h3>
+        <p>Fragrância moderna e luxuosa da Carolina Herrera.</p>
+    </div>
 </section>
 
 <section class="destaque">
-
-<h2>🔥 Masculinos em Destaque</h2>
-
+    <h2>🔥 Masculinos em Destaque</h2>
 </section>
 
 <section class="grid">
-
-<div class="card">
-<h3>🔥 Dior Sauvage</h3>
-<p>
-Um dos perfumes masculinos mais vendidos do planeta.
-</p>
-</div>
-
-<div class="card">
-<h3>💼 Bleu de Chanel</h3>
-<p>
-Sofisticação e elegância para qualquer ocasião.
-</p>
-</div>
-
-<div class="card">
-<h3>🌊 Acqua Di Giò</h3>
-<p>
-Clássico da perfumaria masculina internacional.
-</p>
-</div>
-
-<div class="card">
-<h3>🖤 Tom Ford Oud Wood</h3>
-<p>
-Luxo, exclusividade e personalidade marcante.
-</p>
-</div>
-
+    <div class="card">
+        <h3>🔥 Dior Sauvage</h3>
+        <p>Um dos perfumes masculinos mais vendidos do planeta.</p>
+    </div>
+    <div class="card">
+        <h3>💼 Bleu de Chanel</h3>
+        <p>Sofisticação e elegância para qualquer ocasião.</p>
+    </div>
+    <div class="card">
+        <h3>🌊 Acqua Di Giò</h3>
+        <p>Clássico da perfumaria masculina internacional.</p>
+    </div>
+    <div class="card">
+        <h3>🖤 Tom Ford Oud Wood</h3>
+        <p>Luxo, exclusividade e personalidade marcante.</p>
+    </div>
 </section>
 
 <section class="destaque">
-
-<h2>⭐ Tendências do Mercado de Luxo</h2>
-
-<p>
-O mercado global de perfumes premium continua crescendo,
-impulsionado por consumidores que buscam experiências,
-sofisticação e identidade através das fragrâncias.
-Marcas tradicionais e lançamentos exclusivos seguem
-movimentando bilhões de dólares todos os anos.
-</p>
-
+    <h2>⭐ Tendências do Mercado de Luxo</h2>
+    <p>O mercado global de perfumes premium continua crescendo, impulsionado por consumidores que buscam experiências, sofisticação e identidade através das fragrâncias. Marcas tradicionais e lançamentos exclusivos seguem movimentando bilhões de dólares todos os anos.</p>
 </section>
 
 <section class="destaque">
-
-<h2>🎁 Em Breve no MidasVIP</h2>
-
-<p>
-Em breve esta seção contará com seleções especiais,
-recomendações premium e oportunidades exclusivas para
-os apaixonados pelo universo da perfumaria de luxo.
-</p>
-
+    <h2>🎁 Em Breve no MidasVIP</h2>
+    <p>Em breve esta seção contará com seleções especiais, recomendações premium e oportunidades exclusivas para os apaixonados pelo universo da perfumaria de luxo.</p>
 </section>
-
-<footer>
-
-© 2026 MidasVIP.com.br
-
-</footer>
-
-</body>
-
-</html>
+{% endblock %}
