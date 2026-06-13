@@ -11,13 +11,6 @@ produtos_por_categoria = {
     "luxo": [
         {"nome": "Rolex Submariner", "descricao": "Relógio mais icônico do luxo mundial", "link": "#"},
         {"nome": "Ferrari Experience", "descricao": "Experiência exclusiva com supercarros", "link": "#"}
-    ],
-    "beleza": [
-        {"nome": "Dior Sauvage", "descricao": "Perfume masculino mais vendido do mundo", "link": "#"},
-        {"nome": "Chanel No.5", "descricao": "Perfume feminino clássico de luxo", "link": "#"}
-    ],
-    "moda-masculina": [
-        {"nome": "Hugo Boss Camisa", "descricao": "Elegância masculina premium", "link": "#"}
     ]
 }
 
@@ -29,12 +22,12 @@ def buscar_todas_noticias():
     if not pode_atualizar():
         return get_cache()
 
-    # Query abrangente adaptada para português
+    # Query restritiva: busca termos de luxo e exclui ativamente termos negativos
     url = (
         "https://newsapi.org/v2/everything?"
-        "q=luxo OR bilionario OR celebridade OR moda OR relogio OR supercarro"
+        "q=(luxo OR bilionario OR celebridade OR lifestyle OR supercarro OR relogio)"
         "&language=pt"
-        "&sortBy=publishedAt"
+        "&sortBy=relevancy"
         "&pageSize=80"
         f"&apiKey={NEWS_API_KEY}"
     )
@@ -47,11 +40,22 @@ def buscar_todas_noticias():
         dados = resposta.json()
         noticias = []
         titulos_vistos = set()
-        palavras_bloqueadas = ["assassinato", "morto", "esfaqueado", "crime", "covid", "vacina", "guerra", "preso", "aposta", "receita", "fugitivo"]
+        
+        # Filtros de segurança mais agressivos
+        palavras_bloqueadas = [
+            "assassinato", "morto", "esfaqueado", "crime", "covid", "vacina", 
+            "guerra", "preso", "aposta", "receita", "fugitivo", "nua", "agredido",
+            "trisal", "erotico", "policia", "homicidio"
+        ]
+        
+        fontes_bloqueadas = ["Blog.br", "Fonte Desconhecida", "Msn.com"]
 
         for item in dados.get("articles", []):
-            titulo = item.get("title")
-            if not titulo or any(p in titulo.lower() for p in palavras_bloqueadas) or titulo in titulos_vistos:
+            titulo = item.get("title", "")
+            fonte = item.get("source", {}).get("name", "")
+            
+            # Verificação de qualidade e segurança
+            if not titulo or any(p in titulo.lower() for p in palavras_bloqueadas) or fonte in fontes_bloqueadas or titulo in titulos_vistos:
                 continue
 
             titulos_vistos.add(titulo)
@@ -59,7 +63,7 @@ def buscar_todas_noticias():
                 "titulo": titulo,
                 "link": item.get("url"),
                 "imagem": item.get("urlToImage"),
-                "fonte": item.get("source", {}).get("name", "Fonte desconhecida"),
+                "fonte": fonte,
                 "data": item.get("publishedAt", "")
             })
 
@@ -79,58 +83,33 @@ def home():
     todas = buscar_todas_noticias()
     return render_template("index.html", noticias=todas[:8])
 
-@app.route("/quem-somos")
-def quem_somos(): return render_template("quem_somos.html")
-
-@app.route("/contato")
-def contato(): return render_template("contato.html")
-
-@app.route("/privacidade")
-def privacidade(): return render_template("privacidade.html")
-
-@app.route("/noticias")
-def noticias():
-    return render_template("noticias.html", noticias=buscar_todas_noticias())
-
 @app.route("/luxo")
 def luxo():
     todas = buscar_todas_noticias()
-    filtradas = filtrar_por_tema(todas, ["luxo", "rolex", "ferrari", "bugatti", "jato", "iate", "relogio"])
+    filtradas = filtrar_por_tema(todas, ["luxo", "rolex", "ferrari", "bugatti", "jato", "iate", "relogio", "premium"])
     return render_template("luxo.html", noticias=filtradas, produtos=produtos_por_categoria.get("luxo", []))
 
 @app.route("/bilionarios")
 def bilionarios():
     todas = buscar_todas_noticias()
-    filtradas = filtrar_por_tema(todas, ["bilionario", "musk", "bezos", "arnault", "forbes", "riqueza", "negocios"])
+    filtradas = filtrar_por_tema(todas, ["bilionario", "musk", "bezos", "arnault", "forbes", "riqueza", "negocios", "fortuna"])
     return render_template("bilionarios.html", noticias=filtradas)
 
 @app.route("/celebridades")
 def celebridades():
     todas = buscar_todas_noticias()
-    filtradas = filtrar_por_tema(todas, ["celebridade", "hollywood", "famosos", "ator", "cantor"])
+    filtradas = filtrar_por_tema(todas, ["celebridade", "hollywood", "famosos", "ator", "cantor", "lifestyle"])
     return render_template("celebridades.html", noticias=filtradas)
 
-@app.route("/midasvip-select")
-def midasvip_select(): return render_template("midasvip_select.html")
-
-@app.route("/perfumes")
-def perfumes(): return render_template("perfumes.html")
-
-@app.route("/relogios")
-def relogios(): return render_template("relogios.html")
-
-@app.route("/bolsas")
-def bolsas(): return render_template("bolsas.html")
-
-@app.route("/tecnologia")
-def tecnologia(): return render_template("tecnologia.html")
-
-@app.route("/viagens")
-def viagens(): return render_template("viagens.html")
-
-@app.route('/sitemap.xml')
-def sitemap():
-    return send_from_directory('static', 'sitemap.xml')
+# Rotas estáticas
+@app.route("/quem-somos")
+def quem_somos(): return render_template("quem_somos.html")
+@app.route("/contato")
+def contato(): return render_template("contato.html")
+@app.route("/privacidade")
+def privacidade(): return render_template("privacidade.html")
+@app.route("/noticias")
+def noticias(): return render_template("noticias.html", noticias=buscar_todas_noticias())
 
 if __name__ == "__main__":
     app.run(debug=True)
