@@ -9,15 +9,17 @@
         ← Voltar para Categorias
     </a>
     
-    <h2>👔 Tecnologia</h2>
+    <h2>💻 Tecnologia</h2>
     
     <div class="grid">
         {% for item in produtos %}
-        <div class="card">
-            <h3>{{ item.nome }}</h3>
-            <p>{{ item.descricao }}</p>
-            <a href="{{ item.link }}" target="_blank" class="btn">VER DETALHES</a>
-        </div>
+            {# Filtro: O card só aparece se o nome for diferente do que você deseja remover #}
+            {% if item.nome != "NOME_DO_PRODUTO" %}
+            <div class="card">
+                <h3>{{ item.nome }}</h3>
+                <a href="{{ item.link }}" target="_blank" class="btn">VER DETALHES</a>
+            </div>
+            {% endif %}
         {% else %}
         <p>Estamos buscando novas ofertas para você. Volte em breve!</p>
         {% endfor %}
