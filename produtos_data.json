@@ -1,0 +1,9 @@
+{
+    "perfume": [
+        {"nome": "Perfume Importado Premium", "descricao": "Fragrância sofisticada para ocasiões especiais.", "link": "https://www.lomadee.com"},
+        {"nome": "Eau de Parfum Elegance", "descricao": "Toque de luxo diário.", "link": "https://www.lomadee.com"}
+    ],
+    "beleza": [
+        {"nome": "Kit Skincare Luxo", "descricao": "Cuidados com a pele de alta performance.", "link": "https://www.lomadee.com"}
+    ]
+}
