@@ -1,9 +1,27 @@
 {
-    "perfume": [
-        {"nome": "Perfume Importado Premium", "descricao": "Fragrância sofisticada para ocasiões especiais.", "link": "https://www.lomadee.com"},
-        {"nome": "Eau de Parfum Elegance", "descricao": "Toque de luxo diário.", "link": "https://www.lomadee.com"}
+    "perfumes": [
+        {"nome": "Perfume Midas VIP", "descricao": "Fragrância de alta fixação.", "link": "#"},
+        {"nome": "Perfume Gold Selection", "descricao": "Sofisticação e luxo.", "link": "#"}
     ],
     "beleza": [
-        {"nome": "Kit Skincare Luxo", "descricao": "Cuidados com a pele de alta performance.", "link": "https://www.lomadee.com"}
+        {"nome": "Kit Beleza Premium", "descricao": "Cuidados exclusivos.", "link": "#"}
+    ],
+    "relogios": [
+        {"nome": "Relógio Chronos VIP", "descricao": "Precisão absoluta.", "link": "#"}
+    ],
+    "bolsas": [
+        {"nome": "Bolsa Couro Elegance", "descricao": "Design italiano.", "link": "#"}
+    ],
+    "moda-feminina": [
+        {"nome": "Vestido Luxo Midas", "descricao": "Exclusividade total.", "link": "#"}
+    ],
+    "moda-masculina": [
+        {"nome": "Terno Slim Fit Midas", "descricao": "Corte impecável.", "link": "#"}
+    ],
+    "tecnologia": [
+        {"nome": "Fone Wireless VIP", "descricao": "Som de cinema.", "link": "#"}
+    ],
+    "viagens": [
+        {"nome": "Malas de Viagem Set", "descricao": "Durabilidade e estilo.", "link": "#"}
     ]
 }
