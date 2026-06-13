@@ -38,24 +38,33 @@ def carregar_produtos():
             return json.load(f)
     return {}
 
-# --- ROTAS ---
+# --- ROTAS COMPLETAS ---
 
 @app.route("/")
 def home():
     dados = carregar_cache()
-    todas = dados.get("bilionarios", []) + dados.get("celebridades", []) + dados.get("luxo", [])
+    # Adicionando chaves para garantir que a home carregue todas as seções
+    todas = dados.get("bilionarios", []) + dados.get("celebridades", []) + dados.get("luxo", []) + dados.get("noticias", [])
     return render_template("index.html", noticias=todas[:8])
 
+# Rotas de Notícias e Conteúdo
 @app.route("/noticias")
 def noticias():
-    dados = carregar_cache()
-    return render_template("noticias.html", noticias=dados.get("noticias", []))
+    return render_template("noticias.html", noticias=carregar_cache().get("noticias", []))
 
 @app.route("/celebridades")
 def celebridades():
-    dados = carregar_cache()
-    return render_template("celebridades.html", noticias=dados.get("celebridades", []))
+    return render_template("celebridades.html", noticias=carregar_cache().get("celebridades", []))
 
+@app.route("/bilionarios")
+def bilionarios():
+    return render_template("bilionarios.html", noticias=carregar_cache().get("bilionarios", []))
+
+@app.route("/luxo")
+def luxo():
+    return render_template("luxo.html", noticias=carregar_cache().get("luxo", []))
+
+# Rotas de Produtos
 @app.route('/midasvip-select')
 def midasvip_select():
     produtos = carregar_produtos()
@@ -63,43 +72,35 @@ def midasvip_select():
 
 @app.route("/perfumes")
 def perfumes():
-    produtos = carregar_produtos()
-    return render_template("perfumes.html", produtos=produtos.get("perfumes", []))
+    return render_template("perfumes.html", produtos=carregar_produtos().get("perfumes", []))
 
 @app.route("/beleza")
 def beleza():
-    produtos = carregar_produtos()
-    return render_template("beleza.html", produtos=produtos.get("beleza", []))
+    return render_template("beleza.html", produtos=carregar_produtos().get("beleza", []))
 
 @app.route("/moda-feminina")
 def moda_feminina():
-    produtos = carregar_produtos()
-    return render_template("moda_feminina.html", produtos=produtos.get("moda-feminina", []))
+    return render_template("moda_feminina.html", produtos=carregar_produtos().get("moda-feminina", []))
 
 @app.route("/relogios")
 def relogios():
-    produtos = carregar_produtos()
-    return render_template("relogios.html", produtos=produtos.get("relogios", []))
+    return render_template("relogios.html", produtos=carregar_produtos().get("relogios", []))
 
 @app.route("/bolsas")
 def bolsas():
-    produtos = carregar_produtos()
-    return render_template("bolsas.html", produtos=produtos.get("bolsas", []))
+    return render_template("bolsas.html", produtos=carregar_produtos().get("bolsas", []))
 
 @app.route("/moda-masculina")
 def moda_masculina():
-    produtos = carregar_produtos()
-    return render_template("moda_masculina.html", produtos=produtos.get("moda-masculina", []))
+    return render_template("moda_masculina.html", produtos=carregar_produtos().get("moda-masculina", []))
 
 @app.route("/tecnologia")
 def tecnologia():
-    produtos = carregar_produtos()
-    return render_template("tecnologia.html", produtos=produtos.get("tecnologia", []))
+    return render_template("tecnologia.html", produtos=carregar_produtos().get("tecnologia", []))
 
 @app.route("/viagens")
 def viagens():
-    produtos = carregar_produtos()
-    return render_template("viagens.html", produtos=produtos.get("viagens", []))
+    return render_template("viagens.html", produtos=carregar_produtos().get("viagens", []))
 
 if __name__ == "__main__":
     app.run(debug=True)
