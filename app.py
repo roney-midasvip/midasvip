@@ -1,15 +1,16 @@
 from flask import Flask, render_template
-from noticias_manager import carregar_cache # Nova importação correta
+from noticias_manager import carregar_cache
+import json
+import os
 
 app = Flask(__name__)
 
-# 💰 PRODUTOS POR CATEGORIA
-produtos_por_categoria = {
-    "luxo": [
-        {"nome": "Rolex Submariner", "descricao": "Relógio mais icônico do luxo mundial", "link": "#"},
-        {"nome": "Ferrari Experience", "descricao": "Experiência exclusiva com supercarros", "link": "#"}
-    ]
-}
+# Função para carregar os produtos gerados pelo robô
+def carregar_produtos():
+    if os.path.exists('produtos_data.json'):
+        with open('produtos_data.json', 'r', encoding='utf-8') as f:
+            return json.load(f)
+    return {}
 
 # 🏠 ROTAS
 @app.route("/")
@@ -21,12 +22,17 @@ def home():
 
 @app.route('/midasvip-select')
 def midasvip_select():
-    return render_template('midasvip_select.html')
+    # Passamos os produtos para a página de seleção
+    produtos = carregar_produtos()
+    return render_template('midasvip_select.html', produtos=produtos)
 
 @app.route("/luxo")
 def luxo():
     dados = carregar_cache()
-    return render_template("luxo.html", noticias=dados.get("luxo", []), produtos=produtos_por_categoria.get("luxo", []))
+    produtos = carregar_produtos()
+    return render_template("luxo.html", 
+                           noticias=dados.get("luxo", []), 
+                           produtos=produtos.get("luxo", []))
 
 @app.route("/bilionarios")
 def bilionarios():
@@ -37,6 +43,12 @@ def bilionarios():
 def celebridades():
     dados = carregar_cache()
     return render_template("celebridades.html", noticias=dados.get("celebridades", []))
+
+# Rotas de categorias (Exemplo para perfumes, basta repetir o padrão para as outras)
+@app.route("/perfumes")
+def perfumes():
+    produtos = carregar_produtos()
+    return render_template("perfumes.html", produtos=produtos.get("perfumes", []))
 
 # Rotas estáticas
 @app.route("/quem-somos")
