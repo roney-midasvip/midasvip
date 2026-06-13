@@ -1,33 +1,30 @@
-<!DOCTYPE html>
-<html lang="pt-BR">
-<head>
-    <meta charset="UTF-8">
-    <title>Política de Privacidade | MidasVIP</title>
-    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
-    <style>
-        .container-texto { max-width: 800px; margin: 50px auto; padding: 20px; line-height: 1.8; color: #d6d6d6; }
-        h1 { color: #d4af37; margin-bottom: 20px; }
-        h2 { color: #fff; margin-top: 30px; }
-    </style>
-</head>
-<body>
-    <div class="container-texto">
-        <h1>Política de Privacidade</h1>
-        <p>A sua privacidade é importante para o MidasVIP. Esta política descreve como coletamos e utilizamos as informações em nosso portal.</p>
-        
-        <h2>Cookies e Tecnologias de Rastreamento</h2>
-        <p>O MidasVIP utiliza cookies e tecnologias similares para melhorar a experiência do usuário, analisar o tráfego do site e personalizar conteúdos. Utilizamos ferramentas de análise como o Google Analytics (via Tag Manager) para entender o comportamento do visitante.</p>
-        
-        <h2>Publicidade e Afiliados</h2>
-        <p>Este site participa de programas de afiliados. Quando você clica em links de produtos ou recomendações, cookies podem ser armazenados em seu dispositivo para rastrear a origem da indicação e possibilitar o recebimento de comissões por vendas qualificadas, sem custo adicional para você.</p>
-        
-        <h2>Dados Pessoais</h2>
-        <p>Não coletamos informações que identifiquem você pessoalmente (como nome ou CPF) a menos que você as forneça voluntariamente através de nossos canais de contato.</p>
-        
-        <h2>Alterações nesta Política</h2>
-        <p>Podemos atualizar esta política periodicamente para refletir mudanças em nossas práticas. Recomendamos a leitura frequente desta página.</p>
-        
-        <p><a href="/" style="color:#d4af37;">Voltar para a Home</a></p>
-    </div>
-</body>
-</html>
+{% extends "base.html" %}
+
+{% block title %}Política de Privacidade{% endblock %}
+
+{% block content %}
+<style>
+    .container-texto { max-width: 800px; margin: 50px auto; padding: 20px; line-height: 1.8; color: #d6d6d6; }
+    .container-texto h1 { color: #d4af37; margin-bottom: 20px; }
+    .container-texto h2 { color: #fff; margin-top: 30px; }
+</style>
+
+<div class="container-texto">
+    <h1>Política de Privacidade</h1>
+    <p>A sua privacidade é importante para o MidasVIP. Esta política descreve como coletamos e utilizamos as informações em nosso portal.</p>
+    
+    <h2>Cookies e Tecnologias de Rastreamento</h2>
+    <p>O MidasVIP utiliza cookies e tecnologias similares para melhorar a experiência do usuário, analisar o tráfego do site e personalizar conteúdos. Utilizamos ferramentas de análise como o Google Analytics (via Tag Manager) para entender o comportamento do visitante.</p>
+    
+    <h2>Publicidade e Afiliados</h2>
+    <p>Este site participa de programas de afiliados. Quando você clica em links de produtos ou recomendações, cookies podem ser armazenados em seu dispositivo para rastrear a origem da indicação e possibilitar o recebimento de comissões por vendas qualificadas, sem custo adicional para você.</p>
+    
+    <h2>Dados Pessoais</h2>
+    <p>Não coletamos informações que identifiquem você pessoalmente (como nome ou CPF) a menos que você as forneça voluntariamente através de nossos canais de contato.</p>
+    
+    <h2>Alterações nesta Política</h2>
+    <p>Podemos atualizar esta política periodicamente para refletir mudanças em nossas práticas. Recomendamos a leitura frequente desta página.</p>
+    
+    <p><a href="/" style="color:#d4af37;">Voltar para a Home</a></p>
+</div>
+{% endblock %}
