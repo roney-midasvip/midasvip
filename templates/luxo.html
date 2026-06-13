@@ -1,60 +1,11 @@
-<!DOCTYPE html>
-<html lang="pt-BR">
-<head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+{% extends "base.html" %}
 
-<title>Luxo | MidasVIP</title>
+{% block title %}Luxo{% endblock %}
 
-<meta name="description" content="Últimas notícias sobre luxo, relógios, carros, iates e jatos privados.">
-
-<link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
-</head>
-
-<!-- Google tag (gtag.js) -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-HXWRZ08449"></script>
-<script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
-  gtag('config', 'G-HXWRZ08449');
-</script>
-
-<body>
-
-<header>
-
-<img
-src="{{ url_for('static', filename='img/logo-midasvip.png') }}"
-alt="MidasVIP"
-class="logo-principal"
->
-
-<p class="slogan">
-O UNIVERSO DA RIQUEZA, DO PODER E DO LUXO
-</p>
-
-</header>
-
-<nav>
-
-<a href="/">Home</a>
-<a href="/noticias">Notícias</a>
-<a href="/bilionarios">Bilionários</a>
-<a href="/celebridades">Celebridades</a>
-<a href="/luxo" class="menu-ativo">Luxo</a>
-
-</nav>
-
+{% block content %}
 <section class="hero">
-
-<h2>Luxo</h2>
-
-<p>
-Relógios lendários, supercarros, iates milionários,
-jatos privados e experiências exclusivas da elite global.
-</p>
-
+    <h2>Luxo</h2>
+    <p>Relógios lendários, supercarros, iates milionários, jatos privados e experiências exclusivas da elite global.</p>
 </section>
 
 <!-- Botão de destaque -->
@@ -64,66 +15,34 @@ jatos privados e experiências exclusivas da elite global.
 
 <!-- 🔥 NOTÍCIAS -->
 <section class="grid">
+    {% for noticia in noticias %}
+    <a href="{{ noticia.link }}" target="_blank" class="card">
+        {% if noticia.imagem %}
+        <img src="{{ noticia.imagem }}" 
+             alt="{{ noticia.titulo }}" 
+             style="width:100%;height:220px;object-fit:cover;border-radius:12px;margin-bottom:15px;"
+             onerror="this.style.display='none';">
+        {% endif %}
 
-{% for noticia in noticias %}
-
-<a href="{{ noticia.link }}" target="_blank" class="card">
-
-{% if noticia.imagem %}
-<img
-src="{{ noticia.imagem }}"
-alt="{{ noticia.titulo }}"
-style="width:100%;height:220px;object-fit:cover;border-radius:12px;margin-bottom:15px;"
->
-{% endif %}
-
-<h3>{{ noticia.titulo }}</h3>
-
-<p>
-Fonte:
-<strong>{{ noticia.fonte }}</strong>
-</p>
-
-</a>
-
-{% endfor %}
-
+        <h3>{{ noticia.titulo }}</h3>
+        <p>Fonte: <strong>{{ noticia.fonte }}</strong></p>
+    </a>
+    {% endfor %}
 </section>
 
 <!-- 💎 PRODUTOS -->
 <section class="produtos">
-
-<div class="container-produtos">
-
-<h2>Produtos de Luxo em Destaque</h2>
-
-<div class="grid">
-
-{% for p in produtos %}
-
-<div class="card">
-
-<h3>{{ p.nome }}</h3>
-
-<p>{{ p.descricao }}</p>
-
-<a href="{{ p.link }}" target="_blank" class="btn">
-Ver Oferta Exclusiva
-</a>
-
-</div>
-
-{% endfor %}
-
-</div>
-
-</div>
-
+    <div class="container-produtos">
+        <h2>Produtos de Luxo em Destaque</h2>
+        <div class="grid">
+            {% for p in produtos %}
+            <div class="card">
+                <h3>{{ p.nome }}</h3>
+                <p>{{ p.descricao }}</p>
+                <a href="{{ p.link }}" target="_blank" class="btn">Ver Oferta Exclusiva</a>
+            </div>
+            {% endfor %}
+        </div>
+    </div>
 </section>
-
-<footer>
-© 2026 MidasVIP.com.br
-</footer>
-
-</body>
-</html>
+{% endblock %}
