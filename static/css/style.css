@@ -11,7 +11,7 @@ body{
 }
 
 /* =======================
-   HEADER
+    HEADER
 ======================= */
 
 header{
@@ -21,7 +21,7 @@ header{
 }
 
 .logo-principal{
-    width:520px;
+    width: 650px; /* Alterado para ficar maior */
     max-width:95%;
     display:block;
     margin:0 auto;
@@ -35,7 +35,7 @@ header{
 }
 
 /* =======================
-   MENU
+    MENU
 ======================= */
 
 nav{
@@ -68,7 +68,7 @@ nav a:hover{
 }
 
 /* =======================
-   HERO
+    HERO
 ======================= */
 
 .hero{
@@ -95,7 +95,7 @@ nav a:hover{
 }
 
 /* =======================
-   BOTÃO PRINCIPAL
+    BOTÃO PRINCIPAL
 ======================= */
 
 .btn-dourado{
@@ -122,7 +122,7 @@ nav a:hover{
 }
 
 /* =======================
-   DESTAQUES
+    DESTAQUES
 ======================= */
 
 .destaque{
@@ -150,7 +150,7 @@ nav a:hover{
 }
 
 /* =======================
-   GRID BASE (NOTÍCIAS)
+    GRID BASE (NOTÍCIAS)
 ======================= */
 
 .grid{
@@ -194,7 +194,7 @@ nav a:hover{
 }
 
 /* =======================
-   BOTÃO DE AFILIADO
+    BOTÃO DE AFILIADO
 ======================= */
 
 .btn{
@@ -222,7 +222,7 @@ nav a:hover{
 }
 
 /* =======================
-   PRODUTOS (FIX DEFINITIVO)
+    PRODUTOS (FIX DEFINITIVO)
 ======================= */
 
 .produtos{
@@ -252,7 +252,7 @@ nav a:hover{
 }
 
 /* =======================
-   FOOTER
+    FOOTER
 ======================= */
 
 footer{
@@ -265,13 +265,13 @@ footer{
 }
 
 /* =======================
-   MOBILE
+    MOBILE
 ======================= */
 
 @media(max-width:768px){
 
     .logo-principal{
-        width:260px;
+        width: 320px; /* Alterado para ficar maior no mobile */
     }
 
     .slogan{
