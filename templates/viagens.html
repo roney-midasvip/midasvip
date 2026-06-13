@@ -3,15 +3,24 @@
 {% block title %}Viagens Exclusivas{% endblock %}
 
 {% block content %}
-<section class="hero">
-    <h1>✈️ Viagens Exclusivas</h1>
-    <p>Destinos, hotéis e experiências inspiradas no universo premium.</p>
-</section>
-
-<section class="grid">
-    <div class="card"><h3>🏝 Resorts</h3></div>
-    <div class="card"><h3>🏨 Hotéis de Luxo</h3></div>
-    <div class="card"><h3>✈️ Classe Executiva</h3></div>
-    <div class="card"><h3>🌎 Destinos Exclusivos</h3></div>
-</section>
+<div style="max-width: 1400px; margin: 20px auto; padding: 0 20px;">
+    <!-- Botão Voltar -->
+    <a href="/midasvip-select" style="color: #d4af37; text-decoration: none; font-size: 18px; display: inline-block; margin-bottom: 20px;">
+        ← Voltar para Categorias
+    </a>
+    
+    <h2>✈️ Viagens Exclusivas</h2>
+    
+    <div class="grid">
+        {% for item in produtos %}
+        <div class="card">
+            <h3>{{ item.nome }}</h3>
+            <p>{{ item.descricao }}</p>
+            <a href="{{ item.link }}" target="_blank" class="btn">VER DETALHES</a>
+        </div>
+        {% else %}
+        <p>Estamos buscando novas ofertas para você. Volte em breve!</p>
+        {% endfor %}
+    </div>
+</div>
 {% endblock %}
