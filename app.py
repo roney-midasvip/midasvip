@@ -9,15 +9,18 @@ API_KEY = "lmd_dev_F8K39DzOwG_Z1pGoeCk7rg1FFouHbuEdXFldOGfsIWc"
 SOURCE_ID = "fc89b7ba-30c3-4ff4-ad37-5ebfea125368"
 
 def buscar_produtos_direto(categoria):
-    """Busca produtos direto da API sem salvar em arquivo."""
+    """Busca produtos direto da API e loga o resultado para diagnóstico."""
     url = f"https://api.lomadee.com/v3/{API_KEY}/product/_preferred?sourceId={SOURCE_ID}&keyword={categoria}"
     try:
-        r = requests.get(url, timeout=5) # Timeout curto para não travar o site
+        r = requests.get(url, timeout=10)
         if r.status_code == 200:
             data = r.json().get('products', [])
-            return [{"nome": p['productName'], "descricao": p.get('shortDescription', ''), "link": p['link']} for p in data[:6]]
+            print(f"DEBUG: Categoria '{categoria}' retornou {len(data)} produtos.")
+            return [{"nome": p.get('productName', 'Produto'), "descricao": p.get('shortDescription', ''), "link": p.get('link', '#')} for p in data[:6]]
+        else:
+            print(f"DEBUG: API falhou para '{categoria}' com código {r.status_code}")
     except Exception as e:
-        print(f"Erro ao buscar {categoria}: {e}")
+        print(f"DEBUG: Erro de conexão para '{categoria}': {e}")
     return []
 
 # --- ROTAS ---
@@ -34,7 +37,7 @@ def midasvip_select():
 
 @app.route("/perfumes")
 def perfumes():
-    return render_template("perfumes.html", produtos=buscar_produtos_direto("perfumes"))
+    return render_template("perfumes.html", produtos=buscar_produtos_direto("perfume"))
 
 @app.route("/beleza")
 def beleza():
@@ -46,15 +49,15 @@ def moda_feminina():
 
 @app.route("/relogios")
 def relogios():
-    return render_template("relogios.html", produtos=buscar_produtos_direto("relogios"))
+    return render_template("relogios.html", produtos=buscar_produtos_direto("relogio"))
 
 @app.route("/bolsas")
 def bolsas():
-    return render_template("bolsas.html", produtos=buscar_produtos_direto("bolsas"))
+    return render_template("bolsas.html", produtos=buscar_produtos_direto("bolsa"))
 
 @app.route("/moda-masculina")
 def moda_masculina():
-    return render_template("moda_masculina.html", produtos=buscar_produtos_direto("moda masculina"))
+    return render_template("moda masculina")
 
 @app.route("/tecnologia")
 def tecnologia():
@@ -62,7 +65,7 @@ def tecnologia():
 
 @app.route("/viagens")
 def viagens():
-    return render_template("viagens.html", produtos=buscar_produtos_direto("viagens"))
+    return render_template("viagens.html", produtos=buscar_produtos_direto("viagem"))
 
 # ROTAS DE NOTÍCIAS E ESTÁTICAS
 @app.route("/luxo")
