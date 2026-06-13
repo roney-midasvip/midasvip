@@ -15,7 +15,6 @@ def atualizar_produtos_automaticamente():
     if os.path.exists('produtos_data.json'):
         return 
     
-    print("--- Buscando produtos automaticamente... ---")
     categorias = ["perfumes", "beleza", "moda-feminina", "relogios", "bolsas", "moda-masculina", "tecnologia", "viagens"]
     base_produtos = {}
 
@@ -43,28 +42,32 @@ def carregar_produtos():
 @app.route("/")
 def home():
     dados = carregar_cache()
-    # Adicionando chaves para garantir que a home carregue todas as seções
-    todas = dados.get("bilionarios", []) + dados.get("celebridades", []) + dados.get("luxo", []) + dados.get("noticias", [])
+    # Soma as categorias que existem no seu manager
+    todas = dados.get("bilionarios", []) + dados.get("celebridades", []) + dados.get("luxo", [])
     return render_template("index.html", noticias=todas[:8])
 
-# Rotas de Notícias e Conteúdo
 @app.route("/noticias")
 def noticias():
-    return render_template("noticias.html", noticias=carregar_cache().get("noticias", []))
+    # Agrupa tudo para a página de notícias, já que seu manager não tem chave 'noticias'
+    dados = carregar_cache()
+    todas = dados.get("bilionarios", []) + dados.get("celebridades", []) + dados.get("luxo", [])
+    return render_template("noticias.html", noticias=todas)
 
 @app.route("/celebridades")
 def celebridades():
-    return render_template("celebridades.html", noticias=carregar_cache().get("celebridades", []))
+    dados = carregar_cache()
+    return render_template("celebridades.html", noticias=dados.get("celebridades", []))
 
 @app.route("/bilionarios")
 def bilionarios():
-    return render_template("bilionarios.html", noticias=carregar_cache().get("bilionarios", []))
+    dados = carregar_cache()
+    return render_template("bilionarios.html", noticias=dados.get("bilionarios", []))
 
 @app.route("/luxo")
 def luxo():
-    return render_template("luxo.html", noticias=carregar_cache().get("luxo", []))
+    dados = carregar_cache()
+    return render_template("luxo.html", noticias=dados.get("luxo", []))
 
-# Rotas de Produtos
 @app.route('/midasvip-select')
 def midasvip_select():
     produtos = carregar_produtos()
