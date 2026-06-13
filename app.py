@@ -7,13 +7,13 @@ import requests
 app = Flask(__name__)
 
 # CONFIGURAÇÕES DA API
-API_KEY = "lmd_dev_F8K39DzOwG_Z1pGoeCk7rg1FFouHbuEdXFldOGfsIWc" # MANTENHA A SUA AQUI
+API_KEY = "lmd_dev_F8K39DzOwG_Z1pGoeCk7rg1FFouHbuEdXFldOGfsIWc"
 SOURCE_ID = "fc89b7ba-30c3-4ff4-ad37-5ebfea125368"
 
 def atualizar_produtos_automaticamente():
     """Busca produtos da API caso o arquivo ainda não exista."""
     if os.path.exists('produtos_data.json'):
-        return # Já existe, não precisa buscar de novo agora
+        return 
     
     print("--- Buscando produtos automaticamente... ---")
     categorias = ["perfumes", "beleza", "moda-feminina", "relogios", "bolsas", "moda-masculina", "tecnologia", "viagens"]
@@ -32,21 +32,29 @@ def atualizar_produtos_automaticamente():
         json.dump(base_produtos, f, ensure_ascii=False, indent=4)
 
 def carregar_produtos():
-    atualizar_produtos_automaticamente() # Garante que exista
+    atualizar_produtos_automaticamente()
     if os.path.exists('produtos_data.json'):
         with open('produtos_data.json', 'r', encoding='utf-8') as f:
             return json.load(f)
     return {}
 
 # --- ROTAS ---
-# (Suas rotas permanecem IGUAIS ao que você me passou, 
-#  o carregar_produtos() agora se encarrega de tudo!)
 
 @app.route("/")
 def home():
     dados = carregar_cache()
     todas = dados.get("bilionarios", []) + dados.get("celebridades", []) + dados.get("luxo", [])
     return render_template("index.html", noticias=todas[:8])
+
+@app.route("/noticias")
+def noticias():
+    dados = carregar_cache()
+    return render_template("noticias.html", noticias=dados.get("noticias", []))
+
+@app.route("/celebridades")
+def celebridades():
+    dados = carregar_cache()
+    return render_template("celebridades.html", noticias=dados.get("celebridades", []))
 
 @app.route('/midasvip-select')
 def midasvip_select():
@@ -92,8 +100,6 @@ def tecnologia():
 def viagens():
     produtos = carregar_produtos()
     return render_template("viagens.html", produtos=produtos.get("viagens", []))
-
-# ... (Mantenha as outras rotas de notícias e estáticas como estavam)
 
 if __name__ == "__main__":
     app.run(debug=True)
