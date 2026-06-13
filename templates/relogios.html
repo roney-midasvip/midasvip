@@ -3,66 +3,24 @@
 {% block title %}Relógios Premium{% endblock %}
 
 {% block content %}
-<style>
-    .btn {
-        display: inline-block;
-        margin-top: 10px;
-        padding: 10px 14px;
-        background: gold;
-        color: #000;
-        font-weight: bold;
-        border-radius: 8px;
-        text-decoration: none;
-    }
-    .btn:hover { background: #e6c200; }
-    .card p { opacity: 0.85; }
-</style>
-
-<section class="hero">
-    <h1>⌚ Relógios Premium</h1>
-    <p>Relógios sofisticados inspirados no universo do luxo, status e alta performance.</p>
-</section>
-
-<section class="destaque">
-    <h2>💎 Estilo & Status</h2>
-    <p>Selecionamos relógios que representam elegância, poder e estilo — do clássico ao moderno.</p>
-</section>
-
-<section class="grid">
-    <div class="card">
-        <h3>⌚ Relógio Executivo Clássico</h3>
-        <p>Design elegante em aço, ideal para ambiente profissional e sofisticado.</p>
-        <a href="SEU-LINK-AFILIADO-AQUI" class="btn">Ver oferta</a>
+<div style="max-width: 1400px; margin: 20px auto; padding: 0 20px;">
+    <!-- Botão Voltar -->
+    <a href="/midasvip-select" style="color: #d4af37; text-decoration: none; font-size: 18px; display: inline-block; margin-bottom: 20px;">
+        ← Voltar para Categorias
+    </a>
+    
+    <h2>⌚ Relógios Premium</h2>
+    
+    <div class="grid">
+        {% for item in produtos %}
+        <div class="card">
+            <h3>{{ item.nome }}</h3>
+            <p>{{ item.descricao }}</p>
+            <a href="{{ item.link }}" target="_blank" class="btn">VER DETALHES</a>
+        </div>
+        {% else %}
+        <p>Estamos buscando novas ofertas para você. Volte em breve!</p>
+        {% endfor %}
     </div>
-    <div class="card">
-        <h3>🔥 Relógio Esportivo Premium</h3>
-        <p>Performance e estilo em um design moderno e robusto.</p>
-        <a href="SEU-LINK-AFILIADO-AQUI" class="btn">Ver oferta</a>
-    </div>
-    <div class="card">
-        <h3>💎 Relógio de Luxo Minimalista</h3>
-        <p>Design limpo e sofisticado para quem valoriza elegância discreta.</p>
-        <a href="SEU-LINK-AFILIADO-AQUI" class="btn">Ver oferta</a>
-    </div>
-    <div class="card">
-        <h3>⚡ Relógio Estilo Bilionário</h3>
-        <p>Visual marcante e presença forte. Inspirado em alto padrão global.</p>
-        <a href="SEU-LINK-AFILIADO-AQUI" class="btn">Ver oferta</a>
-    </div>
-    <div class="card">
-        <h3>🌍 Relógio Automático Premium</h3>
-        <p>Mecanismo sofisticado para quem aprecia engenharia e tradição.</p>
-        <a href="SEU-LINK-AFILIADO-AQUI" class="btn">Ver oferta</a>
-    </div>
-    <div class="card">
-        <h3>💥 Relógio Fashion Luxo</h3>
-        <p>Design moderno, tendência e estilo para destaque visual.</p>
-        <a href="SEU-LINK-AFILIADO-AQUI" class="btn">Ver oferta</a>
-    </div>
-</section>
-
-<section class="destaque">
-    <h2>🎯 Escolha seu estilo</h2>
-    <p>Cada relógio representa status, personalidade e presença.</p>
-</section>
+</div>
 {% endblock %}
