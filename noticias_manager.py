@@ -15,4 +15,7 @@ def carregar_cache():
         return {"bilionarios": [], "celebridades": [], "luxo": []}
     
     with open(CACHE_FILE, 'r', encoding='utf-8') as f:
-        return json.load(f)
+        try:
+            return json.load(f)
+        except json.JSONDecodeError:
+            return {"bilionarios": [], "celebridades": [], "luxo": []}
