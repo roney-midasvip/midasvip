@@ -1,0 +1,33 @@
+name: Atualizar Notícias MidasVIP
+
+on:
+  schedule:
+    - cron: '0 */6 * * *' # Roda automaticamente a cada 6 horas
+  workflow_dispatch:      # Permite que você rode manualmente clicando num botão
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout do código
+        uses: actions/checkout@v3
+
+      - name: Configurar Python
+        uses: actions/setup-python@v4
+        with:
+          python-version: '3.9'
+
+      - name: Instalar dependências
+        run: |
+          pip install requests googletrans==4.0.0-rc1
+
+      - name: Rodar Robô de Notícias
+        run: python robô_noticias.py
+
+      - name: Fazer Commit e Push do cache atualizado
+        run: |
+          git config --global user.name 'github-actions[bot]'
+          git config --global user.email 'github-actions[bot]@users.noreply.github.com'
+          git add noticias_cache.json
+          git commit -m "Automacao: Atualizando noticias_cache.json" || echo "Sem mudanças para commit"
+          git push
