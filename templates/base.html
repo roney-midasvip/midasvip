@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block title %}{% endblock %} | MidasVIP</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+    <!-- Insira seus scripts de tracking aqui -->
+</head>
+<body>
+    <header>
+        <img src="{{ url_for('static', filename='img/logo-midasvip.png') }}" alt="MidasVIP" class="logo-principal">
+        <p class="slogan">O UNIVERSO DA RIQUEZA, DO PODER E DO LUXO</p>
+    </header>
+
+    <nav>
+        <a href="/">Home</a>
+        <a href="/noticias">Notícias</a>
+        <a href="/bilionarios">Bilionários</a>
+        <a href="/celebridades">Celebridades</a>
+        <a href="/luxo">Luxo</a>
+    </nav>
+
+    <!-- Aqui entra o conteúdo único de cada página -->
+    {% block content %}{% endblock %}
+
+    <footer>
+        <div style="margin-bottom: 15px; text-align: center;">
+            <a href="/quem-somos" style="color:#888; text-decoration:none; margin: 0 10px;">Quem Somos</a> |
+            <a href="/privacidade" style="color:#888; text-decoration:none; margin: 0 10px;">Política de Privacidade</a> |
+            <a href="/contato" style="color:#888; text-decoration:none; margin: 0 10px;">Contato</a>
+        </div>
+        <p style="text-align: center;">© 2026 MidasVIP.com.br</p>
+    </footer>
+</body>
+</html>
