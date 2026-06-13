@@ -1,30 +1,21 @@
 from flask import Flask, render_template
 from noticias_manager import carregar_cache
-import requests
+import json
+import os
 
 app = Flask(__name__)
 
-# CONFIGURAÇÕES DA API
-API_KEY = "lmd_dev_F8K39DzOwG_Z1pGoeCk7rg1FFouHbuEdXFldOGfsIWc"
-SOURCE_ID = "fc89b7ba-30c3-4ff4-ad37-5ebfea125368"
+def carregar_produtos():
+    """Lê os produtos do arquivo local. Se não achar, retorna vazio."""
+    if os.path.exists('produtos_data.json'):
+        try:
+            with open('produtos_data.json', 'r', encoding='utf-8') as f:
+                return json.load(f)
+        except:
+            return {}
+    return {}
 
-def buscar_produtos_direto(categoria):
-    """Busca produtos direto da API e loga o resultado para diagnóstico."""
-    url = f"https://api.lomadee.com/v3/{API_KEY}/product/_preferred?sourceId={SOURCE_ID}&keyword={categoria}"
-    try:
-        r = requests.get(url, timeout=10)
-        if r.status_code == 200:
-            data = r.json().get('products', [])
-            print(f"DEBUG: Categoria '{categoria}' retornou {len(data)} produtos.")
-            return [{"nome": p.get('productName', 'Produto'), "descricao": p.get('shortDescription', ''), "link": p.get('link', '#')} for p in data[:6]]
-        else:
-            print(f"DEBUG: API falhou para '{categoria}' com código {r.status_code}")
-    except Exception as e:
-        print(f"DEBUG: Erro de conexão para '{categoria}': {e}")
-    return []
-
-# --- ROTAS ---
-
+# 🏠 ROTAS
 @app.route("/")
 def home():
     dados = carregar_cache()
@@ -33,45 +24,46 @@ def home():
 
 @app.route('/midasvip-select')
 def midasvip_select():
-    return render_template('midasvip_select.html')
+    return render_template('midasvip_select.html', produtos=carregar_produtos())
 
+# 🛍️ ROTAS DE PRODUTOS
 @app.route("/perfumes")
 def perfumes():
-    return render_template("perfumes.html", produtos=buscar_produtos_direto("perfume"))
+    return render_template("perfumes.html", produtos=carregar_produtos().get("perfumes", []))
 
 @app.route("/beleza")
 def beleza():
-    return render_template("beleza.html", produtos=buscar_produtos_direto("beleza"))
+    return render_template("beleza.html", produtos=carregar_produtos().get("beleza", []))
 
 @app.route("/moda-feminina")
 def moda_feminina():
-    return render_template("moda_feminina.html", produtos=buscar_produtos_direto("moda feminina"))
+    return render_template("moda_feminina.html", produtos=carregar_produtos().get("moda-feminina", []))
 
 @app.route("/relogios")
 def relogios():
-    return render_template("relogios.html", produtos=buscar_produtos_direto("relogio"))
+    return render_template("relogios.html", produtos=carregar_produtos().get("relogios", []))
 
 @app.route("/bolsas")
 def bolsas():
-    return render_template("bolsas.html", produtos=buscar_produtos_direto("bolsa"))
+    return render_template("bolsas.html", produtos=carregar_produtos().get("bolsas", []))
 
 @app.route("/moda-masculina")
 def moda_masculina():
-    return render_template("moda masculina")
+    return render_template("moda_masculina.html", produtos=carregar_produtos().get("moda-masculina", []))
 
 @app.route("/tecnologia")
 def tecnologia():
-    return render_template("tecnologia.html", produtos=buscar_produtos_direto("tecnologia"))
+    return render_template("tecnologia.html", produtos=carregar_produtos().get("tecnologia", []))
 
 @app.route("/viagens")
 def viagens():
-    return render_template("viagens.html", produtos=buscar_produtos_direto("viagem"))
+    return render_template("viagens.html", produtos=carregar_produtos().get("viagens", []))
 
-# ROTAS DE NOTÍCIAS E ESTÁTICAS
+# ROTAS RESTANTES (Notícias, etc)
 @app.route("/luxo")
 def luxo():
     dados = carregar_cache()
-    return render_template("luxo.html", noticias=dados.get("luxo", []), produtos=buscar_produtos_direto("luxo"))
+    return render_template("luxo.html", noticias=dados.get("luxo", []), produtos=carregar_produtos().get("luxo", []))
 
 @app.route("/bilionarios")
 def bilionarios():
