@@ -3,48 +3,24 @@
 {% block title %}Beleza Premium{% endblock %}
 
 {% block content %}
-<style>
-    .btn {
-        display: inline-block;
-        margin-top: 10px;
-        padding: 10px 14px;
-        background: gold;
-        color: #000;
-        font-weight: bold;
-        border-radius: 8px;
-        text-decoration: none;
-    }
-    .btn:hover { background: #e6c200; }
-    .card p { opacity: 0.85; }
-</style>
-
-<section class="hero">
-    <h1>💄 Beleza Premium</h1>
-    <p>Skincare e beleza com padrão elevado e resultados reais.</p>
-</section>
-
-<section class="destaque">
-    <h2>💎 Cuidados & Estilo</h2>
-    <p>Produtos de beleza que elevam autoestima e presença.</p>
-</section>
-
-<section class="grid">
-    <div class="card">
-        <h3>✨ Skincare Premium</h3>
-        <p>Rotina de cuidados para pele saudável e luminosa.</p>
-        <a href="LINK_AFILIADO" class="btn">Ver oferta</a>
+<div style="max-width: 1400px; margin: 20px auto; padding: 0 20px;">
+    <!-- Botão Voltar -->
+    <a href="/midasvip-select" style="color: #d4af37; text-decoration: none; font-size: 18px; display: inline-block; margin-bottom: 20px;">
+        ← Voltar para Categorias
+    </a>
+    
+    <h2>💄 Beleza Premium</h2>
+    
+    <div class="grid">
+        {% for item in produtos %}
+        <div class="card">
+            <h3>{{ item.nome }}</h3>
+            <p>{{ item.descricao }}</p>
+            <a href="{{ item.link }}" target="_blank" class="btn">VER DETALHES</a>
+        </div>
+        {% else %}
+        <p>Estamos buscando novas ofertas para você. Volte em breve!</p>
+        {% endfor %}
     </div>
-
-    <div class="card">
-        <h3>🔥 Maquiagem Sofisticada</h3>
-        <p>Realce de beleza com acabamento profissional.</p>
-        <a href="LINK_AFILIADO" class="btn">Ver oferta</a>
-    </div>
-
-    <div class="card">
-        <h3>💎 Kit Beleza Completo</h3>
-        <p>Essenciais de beleza em um só conjunto.</p>
-        <a href="LINK_AFILIADO" class="btn">Ver oferta</a>
-    </div>
-</section>
+</div>
 {% endblock %}
