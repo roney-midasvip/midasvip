@@ -1,92 +1,64 @@
 from flask import Flask, render_template
-from noticias_manager import carregar_cache
-import json
-import os
+import requests
 
 app = Flask(__name__)
 
-def carregar_produtos():
-    """Lê os produtos do arquivo local. Se não achar, retorna vazio."""
-    if os.path.exists('produtos_data.json'):
-        try:
-            with open('produtos_data.json', 'r', encoding='utf-8') as f:
-                return json.load(f)
-        except:
-            return {}
-    return {}
+# Configurações da API
+API_KEY = "lmd_dev_F8K39DzOwG_Z1pGoeCk7rg1FFouHbuEdXFldOGfsIWc"
+SOURCE_ID = "fc89b7ba-30c3-4ff4-ad37-5ebfea125368"
+# IP da Lomadee para contornar a falha de DNS do servidor
+API_IP = "52.67.234.195" 
+HEADERS = {"Host": "api.lomadee.com"}
 
-# 🏠 ROTAS
+def buscar_produtos_api(categoria):
+    """Busca produtos direto na API usando IP fixo para evitar erro de DNS"""
+    url = f"https://{API_IP}/v3/{API_KEY}/product/_preferred?sourceId={SOURCE_ID}&keyword={categoria}"
+    try:
+        # verify=False é usado aqui porque estamos acessando via IP
+        response = requests.get(url, headers=HEADERS, timeout=5, verify=False)
+        if response.status_code == 200:
+            data = response.json()
+            return [{"nome": p['productName'], "descricao": p.get('shortDescription', ''), "link": p['link']} 
+                    for p in data.get('products', [])[:5]]
+    except Exception as e:
+        print(f"Erro ao buscar {categoria}: {e}")
+    return []
+
 @app.route("/")
 def home():
-    dados = carregar_cache()
-    todas = dados.get("bilionarios", []) + dados.get("celebridades", []) + dados.get("luxo", [])
-    return render_template("index.html", noticias=todas[:8])
+    return render_template("index.html")
 
-@app.route('/midasvip-select')
-def midasvip_select():
-    return render_template('midasvip_select.html', produtos=carregar_produtos())
-
-# 🛍️ ROTAS DE PRODUTOS
 @app.route("/perfumes")
 def perfumes():
-    return render_template("perfumes.html", produtos=carregar_produtos().get("perfumes", []))
+    return render_template("perfumes.html", produtos=buscar_produtos_api("perfume"))
 
 @app.route("/beleza")
 def beleza():
-    return render_template("beleza.html", produtos=carregar_produtos().get("beleza", []))
+    return render_template("beleza.html", produtos=buscar_produtos_api("beleza"))
 
 @app.route("/moda-feminina")
 def moda_feminina():
-    return render_template("moda_feminina.html", produtos=carregar_produtos().get("moda-feminina", []))
+    return render_template("moda-feminina.html", produtos=buscar_produtos_api("moda-feminina"))
 
 @app.route("/relogios")
 def relogios():
-    return render_template("relogios.html", produtos=carregar_produtos().get("relogios", []))
+    return render_template("relogios.html", produtos=buscar_produtos_api("relogios"))
 
 @app.route("/bolsas")
 def bolsas():
-    return render_template("bolsas.html", produtos=carregar_produtos().get("bolsas", []))
+    return render_template("bolsas.html", produtos=buscar_produtos_api("bolsas"))
 
 @app.route("/moda-masculina")
 def moda_masculina():
-    return render_template("moda_masculina.html", produtos=carregar_produtos().get("moda-masculina", []))
+    return render_template("moda-masculina.html", produtos=buscar_produtos_api("moda-masculina"))
 
 @app.route("/tecnologia")
 def tecnologia():
-    return render_template("tecnologia.html", produtos=carregar_produtos().get("tecnologia", []))
+    return render_template("tecnologia.html", produtos=buscar_produtos_api("tecnologia"))
 
 @app.route("/viagens")
 def viagens():
-    return render_template("viagens.html", produtos=carregar_produtos().get("viagens", []))
-
-# ROTAS RESTANTES (Notícias, etc)
-@app.route("/luxo")
-def luxo():
-    dados = carregar_cache()
-    return render_template("luxo.html", noticias=dados.get("luxo", []), produtos=carregar_produtos().get("luxo", []))
-
-@app.route("/bilionarios")
-def bilionarios():
-    dados = carregar_cache()
-    return render_template("bilionarios.html", noticias=dados.get("bilionarios", []))
-
-@app.route("/celebridades")
-def celebridades():
-    dados = carregar_cache()
-    return render_template("celebridades.html", noticias=dados.get("celebridades", []))
-
-@app.route("/noticias")
-def noticias(): 
-    dados = carregar_cache()
-    todas = dados.get("bilionarios", []) + dados.get("celebridades", []) + dados.get("luxo", [])
-    return render_template("noticias.html", noticias=todas)
-
-@app.route("/quem-somos")
-def quem_somos(): return render_template("quem_somos.html")
-@app.route("/contato")
-def contato(): return render_template("contato.html")
-@app.route("/privacidade")
-def privacidade(): return render_template("privacidade.html")
+    return render_template("viagens.html", produtos=buscar_produtos_api("viagens"))
 
 if __name__ == "__main__":
     app.run(debug=True)
