@@ -13,11 +13,13 @@
     
     <div class="grid">
         {% for item in produtos %}
-        <div class="card">
-            <h3>{{ item.nome }}</h3>
-            <p>{{ item.descricao }}</p>
-            <a href="{{ item.link }}" target="_blank" class="btn">VER DETALHES</a>
-        </div>
+            {# Filtro: Exibe o card apenas se o nome NÃO for Bolsa Couro Elegance #}
+            {% if item.nome != "Bolsa Couro Elegance" %}
+            <div class="card">
+                <h3>{{ item.nome }}</h3>
+                <a href="{{ item.link }}" target="_blank" class="btn">VER DETALHES</a>
+            </div>
+            {% endif %}
         {% else %}
         <p>Estamos buscando novas ofertas para você. Volte em breve!</p>
         {% endfor %}
