@@ -10,6 +10,25 @@ app = Flask(__name__)
 API_KEY = "lmd_dev_F8K39DzOwG_Z1pGoeCk7rg1FFouHbuEdXFldOGfsIWc"
 SOURCE_ID = "fc89b7ba-30c3-4ff4-ad37-5ebfea125368"
 
+def atualizar_produtos_automaticamente():
+
+    if os.path.exists('produtos_data.json'):
+        return
+
+    base_produtos = {
+        "perfumes": [],
+        "beleza": [],
+        "relogios": [],
+        "bolsas": [],
+        "moda-feminina": [],
+        "moda-masculina": [],
+        "tecnologia": [],
+        "viagens": []
+    }
+
+    with open('produtos_data.json', 'w', encoding='utf-8') as f:
+        json.dump(base_produtos, f, ensure_ascii=False, indent=4)
+
 def carregar_produtos():
     atualizar_produtos_automaticamente()
     if os.path.exists('produtos_data.json'):
