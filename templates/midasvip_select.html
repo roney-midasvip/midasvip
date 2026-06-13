@@ -1,199 +1,84 @@
-<!DOCTYPE html>
+{% extends "base.html" %}
 
-<html lang="pt-BR">
+{% block title %}Universo MidasVIP{% endblock %}
 
-<head>
-
-<!-- Google tag (gtag.js) -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-HXWRZ08449"></script>
-<script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
-
-  gtag('config', 'G-HXWRZ08449');
-</script>
-  
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-<title>Universo MidasVIP</title>
-
-<link rel="stylesheet"
-href="{{ url_for('static', filename='css/style.css') }}">
-
-</head>
-
-<body>
-
-<header>
-
-<img
-src="{{ url_for('static', filename='img/logo-midasvip.png') }}"
-alt="MidasVIP"
-class="logo-principal"
-
->
-
-</header>
-
-<nav>
-
-<a href="/">Home</a> <a href="/noticias">Notícias</a> <a href="/bilionarios">Bilionários</a> <a href="/celebridades">Celebridades</a> <a href="/luxo">Luxo</a>
-
-</nav>
-
+{% block content %}
 <section class="hero">
-
-<h1>💎 Universo MidasVIP</h1>
-
-<p>
-Seleção especial de produtos, experiências e tendências inspiradas
-no universo dos bilionários, celebridades e do lifestyle premium.
-</p>
-
+    <h1>💎 Universo MidasVIP</h1>
+    <p>Seleção especial de produtos, experiências e tendências inspiradas no universo dos bilionários, celebridades e do lifestyle premium.</p>
 </section>
 
 <section class="grid">
-
-<a href="/perfumes" style="text-decoration:none;color:inherit;">
-<div class="card">
-<h3>🌸 Perfumes Premium</h3>
-<p>
-Fragrâncias sofisticadas femininas e masculinas inspiradas nas
-marcas mais desejadas do mundo.
-</p>
-</div>
-</a>
-
-<a href="/beleza" style="text-decoration:none;color:inherit;">
-<div class="card">
-<h3>💄 Beleza Premium</h3>
-<p>
-Cuidados pessoais, skincare e produtos de beleza de alto padrão.
-</p>
-</div>
-</a>
-
-<a href="/moda-feminina" style="text-decoration:none;color:inherit;">
-<div class="card">
-<h3>👗 Moda Feminina</h3>
-<p>
-Elegância, estilo e tendências inspiradas no mercado de luxo.
-</p>
-</div>
-</a>
-
-<a href="/relogios" style="text-decoration:none;color:inherit;">
-<div class="card">
-<h3>⌚ Relógios Premium</h3>
-<p>
-Relógios sofisticados para quem aprecia design e exclusividade.
-</p>
-</div>
-</a>
-
-<a href="/bolsas" style="text-decoration:none;color:inherit;">
-<div class="card">
-<h3>👜 Bolsas & Acessórios</h3>
-<p>
-Bolsas, malas, óculos e acessórios inspirados no universo luxury.
-</p>
-</div>
-</a>
-
-<a href="/moda-masculina" style="text-decoration:none;color:inherit;">
-<div class="card">
-<h3>👔 Moda Masculina</h3>
-<p>
-Peças clássicas, executivas e elegantes para o dia a dia.
-</p>
-</div>
-</a>
-
-<a href="/tecnologia" style="text-decoration:none;color:inherit;">
-<div class="card">
-<h3>📱 Tecnologia Premium</h3>
-<p>
-Gadgets, eletrônicos e inovação com foco em sofisticação.
-</p>
-</div>
-</a>
-
-<a href="/viagens" style="text-decoration:none;color:inherit;">
-<div class="card">
-<h3>✈️ Viagens Exclusivas</h3>
-<p>
-Hotéis, resorts, experiências e destinos desejados ao redor do mundo.
-</p>
-</div>
-</a>
-
+    <a href="/perfumes" style="text-decoration:none;color:inherit;">
+        <div class="card">
+            <h3>🌸 Perfumes Premium</h3>
+            <p>Fragrâncias sofisticadas femininas e masculinas inspiradas nas marcas mais desejadas do mundo.</p>
+        </div>
+    </a>
+    <a href="/beleza" style="text-decoration:none;color:inherit;">
+        <div class="card">
+            <h3>💄 Beleza Premium</h3>
+            <p>Cuidados pessoais, skincare e produtos de beleza de alto padrão.</p>
+        </div>
+    </a>
+    <a href="/moda-feminina" style="text-decoration:none;color:inherit;">
+        <div class="card">
+            <h3>👗 Moda Feminina</h3>
+            <p>Elegância, estilo e tendências inspiradas no mercado de luxo.</p>
+        </div>
+    </a>
+    <a href="/relogios" style="text-decoration:none;color:inherit;">
+        <div class="card">
+            <h3>⌚ Relógios Premium</h3>
+            <p>Relógios sofisticados para quem aprecia design e exclusividade.</p>
+        </div>
+    </a>
+    <a href="/bolsas" style="text-decoration:none;color:inherit;">
+        <div class="card">
+            <h3>👜 Bolsas & Acessórios</h3>
+            <p>Bolsas, malas, óculos e acessórios inspirados no universo luxury.</p>
+        </div>
+    </a>
+    <a href="/moda-masculina" style="text-decoration:none;color:inherit;">
+        <div class="card">
+            <h3>👔 Moda Masculina</h3>
+            <p>Peças clássicas, executivas e elegantes para o dia a dia.</p>
+        </div>
+    </a>
+    <a href="/tecnologia" style="text-decoration:none;color:inherit;">
+        <div class="card">
+            <h3>📱 Tecnologia Premium</h3>
+            <p>Gadgets, eletrônicos e inovação com foco em sofisticação.</p>
+        </div>
+    </a>
+    <a href="/viagens" style="text-decoration:none;color:inherit;">
+        <div class="card">
+            <h3>✈️ Viagens Exclusivas</h3>
+            <p>Hotéis, resorts, experiências e destinos desejados ao redor do mundo.</p>
+        </div>
+    </a>
 </section>
 
 <section class="destaque">
-
-<h2>💎 Produtos em Destaque</h2>
-
-<p>
-Seleções especiais do Universo MidasVIP.
-Em breve esta área reunirá produtos premium,
-tendências e oportunidades cuidadosamente selecionadas.
-</p>
-
+    <h2>💎 Produtos em Destaque</h2>
+    <p>Seleções especiais do Universo MidasVIP. Em breve esta área reunirá produtos premium, tendências e oportunidades cuidadosamente selecionadas.</p>
 </section>
 
 <section class="grid">
-
-<div class="card">
-
-<h3>🌸 Perfume Premium</h3>
-
-<p>
-Fragrâncias sofisticadas inspiradas nas marcas mais desejadas do mundo.
-</p>
-
-<a href="#" class="btn-dourado">
-Ver Seleção
-</a>
-
-</div>
-
-<div class="card">
-
-<h3>⌚ Relógio Premium</h3>
-
-<p>
-Modelos elegantes para quem valoriza design e exclusividade.
-</p>
-
-<a href="#" class="btn-dourado">
-Ver Seleção
-</a>
-
-</div>
-
-<div class="card">
-
-<h3>👜 Bolsa Premium</h3>
-
-<p>
-Acessórios sofisticados inspirados no universo do luxo.
-</p>
-
-<a href="#" class="btn-dourado">
-Ver Seleção
-</a>
-
-</div>
-
+    <div class="card">
+        <h3>🌸 Perfume Premium</h3>
+        <p>Fragrâncias sofisticadas inspiradas nas marcas mais desejadas do mundo.</p>
+        <a href="#" class="btn-dourado">Ver Seleção</a>
+    </div>
+    <div class="card">
+        <h3>⌚ Relógio Premium</h3>
+        <p>Modelos elegantes para quem valoriza design e exclusividade.</p>
+        <a href="#" class="btn-dourado">Ver Seleção</a>
+    </div>
+    <div class="card">
+        <h3>👜 Bolsa Premium</h3>
+        <p>Acessórios sofisticados inspirados no universo do luxo.</p>
+        <a href="#" class="btn-dourado">Ver Seleção</a>
+    </div>
 </section>
-
-<footer>
-
-© 2026 MidasVIP.com.br
-
-</footer>
-
-</body>
-</html>
+{% endblock %}
