@@ -7,7 +7,7 @@ import requests
 app = Flask(__name__)
 
 # CONFIGURAÇÕES DA API
-API_KEY = "SUA_API_KEY_AQUI" # MANTENHA A SUA AQUI
+API_KEY = "lmd_dev_F8K39DzOwG_Z1pGoeCk7rg1FFouHbuEdXFldOGfsIWc" # MANTENHA A SUA AQUI
 SOURCE_ID = "fc89b7ba-30c3-4ff4-ad37-5ebfea125368"
 
 def atualizar_produtos_automaticamente():
