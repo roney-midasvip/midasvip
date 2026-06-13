@@ -14,7 +14,7 @@
     <div class="grid">
         {% for item in produtos %}
             {# Filtro: O card só aparece se o nome for diferente do que você deseja remover #}
-            {% if item.nome != "NOME_DO_PRODUTO_A_REMOVER" %}
+            {% if item.nome != "NOME_DO_PRODUTO" %}
             <div class="card">
                 <h3>{{ item.nome }}</h3>
                 <a href="{{ item.link }}" target="_blank" class="btn">VER DETALHES</a>
