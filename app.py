@@ -79,6 +79,10 @@ def home():
     todas = buscar_todas_noticias()
     return render_template("index.html", noticias=todas[:8])
 
+@app.route("/privacidade")
+def privacidade():
+    return render_template("privacidade.html")
+
 @app.route("/noticias")
 def noticias():
     return render_template("noticias.html", noticias=buscar_todas_noticias())
