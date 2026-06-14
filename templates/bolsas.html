@@ -7,47 +7,67 @@
 <div style="max-width: 1400px; margin: 20px auto; padding: 0 20px;">
 
     <a href="/midasvip-select"
-       style="color: #d4af37; text-decoration: none; font-size: 18px; display: inline-block; margin-bottom: 20px;">
-        ← Voltar para Categorias
+       style="color:#d4af37;text-decoration:none;font-size:18px;display:inline-block;margin-bottom:20px;">
+       ← Voltar para Categorias
     </a>
 
-    <h2>👜 Bolsas & Acessórios</h2>
+    <h2 style="color:#d4af37;margin-bottom:30px;">
+        👜 Bolsas & Acessórios
+    </h2>
 
     <div class="grid">
 
-        {% for item in produtos %}
-
         <div class="card">
-
-            {% if item.images %}
-            <img src="{{ item.images[0].url }}"
-                 alt="{{ item.name }}"
-                 style="width:100%; max-height:250px; object-fit:contain;">
-            {% endif %}
-
-            <h3>{{ item.name }}</h3>
-
-            {% if item.options and item.options[0].pricing %}
+            <h3>FARFETCH</h3>
             <p>
-                <strong>
-                    R$ {{ "%.2f"|format(item.options[0].pricing[0].price) }}
-                </strong>
+                Bolsas, acessórios e peças exclusivas das principais
+                grifes de luxo do mundo.
             </p>
-            {% endif %}
-
-            <a href="{{ item.url }}"
+            <a href="https://www.farfetch.com/br/shopping/women/bags-purses-1/items.aspx"
                target="_blank"
                class="btn">
-               VER DETALHES
+               VISITAR LOJA
             </a>
-
         </div>
 
-        {% else %}
+        <div class="card">
+            <h3>Mytheresa</h3>
+            <p>
+                Curadoria premium de bolsas e acessórios femininos
+                das marcas mais desejadas.
+            </p>
+            <a href="https://www.mytheresa.com"
+               target="_blank"
+               class="btn">
+               VISITAR LOJA
+            </a>
+        </div>
 
-        <p>Estamos buscando novas ofertas para você. Volte em breve!</p>
+        <div class="card">
+            <h3>Kate Spade</h3>
+            <p>
+                Bolsas sofisticadas, elegantes e reconhecidas
+                mundialmente pelo design exclusivo.
+            </p>
+            <a href="https://www.katespade.com"
+               target="_blank"
+               class="btn">
+               VISITAR LOJA
+            </a>
+        </div>
 
-        {% endfor %}
+        <div class="card">
+            <h3>Sestini</h3>
+            <p>
+                Malas, mochilas e acessórios premium para viagens
+                e lifestyle sofisticado.
+            </p>
+            <a href="https://www.sestini.com.br"
+               target="_blank"
+               class="btn">
+               VISITAR LOJA
+            </a>
+        </div>
 
     </div>
 
