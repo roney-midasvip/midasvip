@@ -71,6 +71,8 @@ nav a:hover,
     margin-bottom:35px;
     font-weight:700;
     color:#d4af37;
+    font-family:Georgia, 'Times New Roman', serif;
+    text-shadow:0 0 18px rgba(212,175,55,0.35);
 }
 
 .hero p{
@@ -97,6 +99,7 @@ nav a:hover,
     transition:0.3s;
     box-shadow:0 0 18px rgba(212,175,55,0.25);
     text-align:center;
+    border:none;
 }
 
 .btn:hover,
@@ -120,6 +123,7 @@ nav a:hover,
     color:#d4af37;
     font-size:42px;
     margin-bottom:20px;
+    font-family:Georgia, 'Times New Roman', serif;
 }
 
 .destaque p{
@@ -183,17 +187,25 @@ div[style*="max-width: 1400px"] > h2{
     background:linear-gradient(180deg,#151515,#0b0b0b);
     border:1px solid rgba(212,175,55,0.45);
     border-radius:22px;
-    padding:42px 32px;
+    padding:42px 32px 34px;
     color:#fff;
     text-decoration:none;
     transition:0.3s;
-    min-height:320px;
+    min-height:405px;
     display:flex;
     flex-direction:column;
     justify-content:flex-start;
     box-shadow:
         inset 0 0 18px rgba(255,255,255,0.02),
         0 0 18px rgba(212,175,55,0.10);
+}
+
+/* REMOVE LOGOS EXTERNOS DUPLICADOS */
+.card img,
+.card-logo,
+.logo-loja,
+.logo-marca{
+    display:none !important;
 }
 
 .card:hover{
@@ -224,6 +236,7 @@ div[style*="max-width: 1400px"] > h2{
     color:#f1f1f1;
     font-size:20px;
     line-height:1.8;
+    margin-top:6px;
 }
 
 /* NOME DAS LOJAS EM TEXTO */
@@ -233,11 +246,11 @@ div[style*="max-width: 1400px"] > h2{
     font-family:Georgia, "Times New Roman", serif;
     font-weight:700;
     color:#d4af37;
-    text-align:center;
+    text-align:left;
     margin-bottom:25px;
     text-shadow:0 0 12px rgba(212,175,55,0.35);
     letter-spacing:1px;
-    line-height:1.2;
+    line-height:1.1;
 }
 
 .logo-texto::after{
@@ -245,13 +258,8 @@ div[style*="max-width: 1400px"] > h2{
     display:block;
     width:120px;
     height:1px;
-    margin:18px auto 0;
-    background:linear-gradient(
-        90deg,
-        transparent,
-        #d4af37,
-        transparent
-    );
+    margin:18px 0 0;
+    background:linear-gradient(90deg,#d4af37,transparent);
 }
 
 .card .btn{
@@ -340,7 +348,13 @@ footer{
     }
 
     .logo-texto{
-        font-size:30px;
+        font-size:32px;
+        text-align:center;
+    }
+
+    .logo-texto::after{
+        margin:18px auto 0;
+        background:linear-gradient(90deg,transparent,#d4af37,transparent);
     }
 
     .card p{
