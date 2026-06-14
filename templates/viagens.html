@@ -7,47 +7,67 @@
 <div style="max-width: 1400px; margin: 20px auto; padding: 0 20px;">
 
     <a href="/midasvip-select"
-       style="color: #d4af37; text-decoration: none; font-size: 18px; display: inline-block; margin-bottom: 20px;">
-        ← Voltar para Categorias
+       style="color:#d4af37;text-decoration:none;font-size:18px;display:inline-block;margin-bottom:20px;">
+       ← Voltar para Categorias
     </a>
 
-    <h2>✈️ Viagens Exclusivas</h2>
+    <h2 style="color:#d4af37;margin-bottom:30px;">
+        ✈️ Viagens Exclusivas
+    </h2>
 
     <div class="grid">
 
-        {% for item in produtos %}
-
         <div class="card">
-
-            {% if item.images %}
-            <img src="{{ item.images[0].url }}"
-                 alt="{{ item.name }}"
-                 style="width:100%; max-height:250px; object-fit:contain;">
-            {% endif %}
-
-            <h3>{{ item.name }}</h3>
-
-            {% if item.options and item.options[0].pricing %}
+            <h3>Booking.com</h3>
             <p>
-                <strong>
-                    R$ {{ "%.2f"|format(item.options[0].pricing[0].price) }}
-                </strong>
+                Hotéis, resorts e hospedagens premium em destinos
+                desejados ao redor do mundo.
             </p>
-            {% endif %}
-
-            <a href="{{ item.url }}"
+            <a href="https://www.booking.com"
                target="_blank"
                class="btn">
-               VER DETALHES
+               VISITAR LOJA
             </a>
-
         </div>
 
-        {% else %}
+        <div class="card">
+            <h3>Marriott International</h3>
+            <p>
+                Rede internacional de hotéis premium, resorts
+                exclusivos e experiências sofisticadas.
+            </p>
+            <a href="https://www.marriott.com"
+               target="_blank"
+               class="btn">
+               VISITAR LOJA
+            </a>
+        </div>
 
-        <p>Estamos buscando novas ofertas para você. Volte em breve!</p>
+        <div class="card">
+            <h3>Expedia</h3>
+            <p>
+                Viagens completas, hotéis, voos e experiências para
+                quem busca conforto e praticidade.
+            </p>
+            <a href="https://www.expedia.com.br"
+               target="_blank"
+               class="btn">
+               VISITAR LOJA
+            </a>
+        </div>
 
-        {% endfor %}
+        <div class="card">
+            <h3>Agoda</h3>
+            <p>
+                Hotéis internacionais, resorts e hospedagens
+                selecionadas para viagens exclusivas.
+            </p>
+            <a href="https://www.agoda.com"
+               target="_blank"
+               class="btn">
+               VISITAR LOJA
+            </a>
+        </div>
 
     </div>
 
