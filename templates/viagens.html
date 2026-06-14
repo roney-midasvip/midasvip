@@ -3,26 +3,54 @@
 {% block title %}Viagens Exclusivas{% endblock %}
 
 {% block content %}
+
 <div style="max-width: 1400px; margin: 20px auto; padding: 0 20px;">
-    <!-- Botão Voltar -->
-    <a href="/midasvip-select" style="color: #d4af37; text-decoration: none; font-size: 18px; display: inline-block; margin-bottom: 20px;">
+
+    <a href="/midasvip-select"
+       style="color: #d4af37; text-decoration: none; font-size: 18px; display: inline-block; margin-bottom: 20px;">
         ← Voltar para Categorias
     </a>
-    
+
     <h2>✈️ Viagens Exclusivas</h2>
-    
+
     <div class="grid">
+
         {% for item in produtos %}
-            {# Filtro: O card só aparece se o nome for diferente do que você deseja remover #}
-            {% if item.nome != "NOME_DO_PRODUTO" %}
-            <div class="card">
-                <h3>{{ item.nome }}</h3>
-                <a href="{{ item.link }}" target="_blank" class="btn">VER DETALHES</a>
-            </div>
+
+        <div class="card">
+
+            {% if item.images %}
+            <img src="{{ item.images[0].url }}"
+                 alt="{{ item.name }}"
+                 style="width:100%; max-height:250px; object-fit:contain;">
             {% endif %}
+
+            <h3>{{ item.name }}</h3>
+
+            {% if item.options and item.options[0].pricing %}
+            <p>
+                <strong>
+                    R$ {{ "%.2f"|format(item.options[0].pricing[0].price) }}
+                </strong>
+            </p>
+            {% endif %}
+
+            <a href="{{ item.url }}"
+               target="_blank"
+               class="btn">
+               VER DETALHES
+            </a>
+
+        </div>
+
         {% else %}
+
         <p>Estamos buscando novas ofertas para você. Volte em breve!</p>
+
         {% endfor %}
+
     </div>
+
 </div>
+
 {% endblock %}
