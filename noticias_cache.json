@@ -7,6 +7,12 @@
             "imagem": "https://platform.theverge.com/wp-content/uploads/sites/2/2026/06/STKE012_SPACEX_IPO_2026_D.jpg?quality=90&strip=all&crop=0%2C10.732984293194%2C100%2C78.534031413613&w=1200"
         },
         {
+            "titulo": "Veja quanto mais dinheiro Elon Musk tem do que Larry Page, Jeff Bezos e você",
+            "link": "https://gizmodo.com/heres-how-much-more-money-elon-musk-has-than-larry-page-jeff-bezos-and-you-2000771172",
+            "fonte": "Gizmodo.com",
+            "imagem": "https://gizmodo.com/app/uploads/2026/06/elon-musk-poster-getty-1200x675.jpg"
+        },
+        {
             "titulo": "A família Trump supostamente ganhou cerca de US$ 2,3 bilhões com criptografia, enquanto os investidores perderam cerca de US$ 2,3 bilhões com criptografia relacionada a Trump",
             "link": "https://gizmodo.com/trump-family-reportedly-made-about-2-3-billion-on-crypto-while-investors-lost-about-2-3-billion-on-trump-related-crypto-2000769825",
             "fonte": "Gizmodo.com",
@@ -53,21 +59,9 @@
             "link": "https://www.businessinsider.com/elon-musk-wealth-net-worth-spacex-ipo-filing-debt-loans-2026-5",
             "fonte": "Business Insider",
             "imagem": "https://i.insider.com/6a10290951ede568c7e17493?width=1200&format=jpeg"
-        },
-        {
-            "titulo": "Relatório afirma que a SpaceX planeja lançar teste de data center espacial até o final de 2027",
-            "link": "https://gizmodo.com/report-says-spacex-plans-to-launch-space-data-center-test-by-late-2027-2000769843",
-            "fonte": "Gizmodo.com",
-            "imagem": "https://gizmodo.com/app/uploads/2025/12/elon-1200x675.jpg"
         }
     ],
     "celebridades": [
-        {
-            "titulo": "Se você tem $ 650.000 e não compra este robô Mecha gigante, você é um tolo",
-            "link": "https://www.wired.com/story/unitree-gd01-mecha-robot/",
-            "fonte": "Wired",
-            "imagem": "https://media.wired.com/photos/6a03a0e42162ad5152e57fa7/191:100/w_1280,c_limit/Unitree-Mecha-Robot-Business-3.jpg"
-        },
         {
             "titulo": "O hotel mais famoso de todos os estados",
             "link": "https://www.businessinsider.com/most-famous-hotel-every-state",
@@ -105,22 +99,28 @@
             "imagem": "https://i.insider.com/6a0b4756abc4e9d88574b169?width=1200&format=jpeg"
         },
         {
-            "titulo": "19 casais de celebridades que conheceram suas almas gêmeas quando eram adolescentes",
-            "link": "https://www.businessinsider.com/celebrities-who-married-their-high-school-sweetheart-2018-4",
-            "fonte": "Business Insider",
-            "imagem": "https://i.insider.com/6a22f2c8b4fb977f35984cfe?width=1200&format=jpeg"
-        },
-        {
             "titulo": "Corredores amarelos sem fim começaram como um meme da internet – agora é um filme de terror de Hollywood",
             "link": "https://www.bbc.com/news/articles/cdxpdnwx5n5o",
             "fonte": "BBC News",
             "imagem": "https://ichef.bbci.co.uk/news/1024/branded_news/a54e/live/ce042a60-59dd-11f1-b9b7-274764de012f.jpg"
         },
         {
+            "titulo": "19 casais de celebridades que conheceram suas almas gêmeas quando eram adolescentes",
+            "link": "https://www.businessinsider.com/celebrities-who-married-their-high-school-sweetheart-2018-4",
+            "fonte": "Business Insider",
+            "imagem": "https://i.insider.com/6a22f2c8b4fb977f35984cfe?width=1200&format=jpeg"
+        },
+        {
             "titulo": "9 dos melhores e piores looks que as celebridades usaram no 2026 ACM Awards",
             "link": "https://www.businessinsider.com/acm-awards-best-worst-dressed-celebrities-2026-5",
             "fonte": "Business Insider",
             "imagem": "https://i.insider.com/6a0b22f2abc4e9d88574b02f?width=1200&format=jpeg"
+        },
+        {
+            "titulo": "Boy George recebe homenagem pelo conjunto da obra no LGBT Awards",
+            "link": "https://www.bbc.com/news/articles/cvgz4g7jq5yo",
+            "fonte": "BBC News",
+            "imagem": "https://ichef.bbci.co.uk/news/1024/branded_news/5691/live/73fcd450-5ad1-11f1-aaf0-778732b8e0fc.jpg"
         }
     ],
     "luxo": [
@@ -141,12 +141,6 @@
             "link": "https://www.bbc.com/news/articles/cevpp983kmzo",
             "fonte": "BBC News",
             "imagem": "https://ichef.bbci.co.uk/news/1024/branded_news/c348/live/07438080-5823-11f1-ab54-8b21c7b2a5d0.jpg"
-        },
-        {
-            "titulo": "O próximo robô aspirador de Narwal promete recursos de luxo a um preço médio",
-            "link": "https://gizmodo.com/narwals-next-robot-vacuum-promises-luxury-features-at-a-midrange-price-2000757245",
-            "fonte": "Gizmodo.com",
-            "imagem": "https://gizmodo.com/app/uploads/2026/05/Freo-Z10-Turbo-with-dock-1200x675.jpg"
         },
         {
             "titulo": "Prada e Axiom Space revelam camada interna ajustada ao traje espacial de luxo",
@@ -183,6 +177,12 @@
             "link": "https://www.wired.com/story/it-sure-seems-like-these-instagram-ads-think-youre-doing-cocaine-all-wrong/",
             "fonte": "Wired",
             "imagem": "https://media.wired.com/photos/6a02312257bdfbf807f9ffd3/191:100/w_1280,c_limit/Instagram-Ads-Cocaine-Culture-1772632329.jpg"
+        },
+        {
+            "titulo": "Ferrari revela Luce, seu primeiro veículo totalmente elétrico, co-projetado por Jony Ive",
+            "link": "https://www.cnet.com/roadshow/news/first-ferrari-ev-co-designed-by-jony-ive-is-here/",
+            "fonte": "CNET",
+            "imagem": "https://www.cnet.com/a/img/resize/ed3343b683282a9495cd7d8a78156b8639c3c349/hub/2026/05/26/da7ed773-2f2b-4434-b8c9-b8db19f9b734/ferrari-luce.jpg?auto=webp&fit=crop&height=675&width=1200"
         }
     ]
 }
