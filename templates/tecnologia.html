@@ -7,47 +7,67 @@
 <div style="max-width: 1400px; margin: 20px auto; padding: 0 20px;">
 
     <a href="/midasvip-select"
-       style="color: #d4af37; text-decoration: none; font-size: 18px; display: inline-block; margin-bottom: 20px;">
-        ← Voltar para Categorias
+       style="color:#d4af37;text-decoration:none;font-size:18px;display:inline-block;margin-bottom:20px;">
+       ← Voltar para Categorias
     </a>
 
-    <h2>📱 Tecnologia Premium</h2>
+    <h2 style="color:#d4af37;margin-bottom:30px;">
+        📱 Tecnologia Premium
+    </h2>
 
     <div class="grid">
 
-        {% for item in produtos %}
-
         <div class="card">
-
-            {% if item.images %}
-            <img src="{{ item.images[0].url }}"
-                 alt="{{ item.name }}"
-                 style="width:100%; max-height:250px; object-fit:contain;">
-            {% endif %}
-
-            <h3>{{ item.name }}</h3>
-
-            {% if item.options and item.options[0].pricing %}
+            <h3>Dyson</h3>
             <p>
-                <strong>
-                    R$ {{ "%.2f"|format(item.options[0].pricing[0].price) }}
-                </strong>
+                Tecnologia premium, design inovador e produtos
+                reconhecidos mundialmente pela excelência.
             </p>
-            {% endif %}
-
-            <a href="{{ item.url }}"
+            <a href="https://www.dyson.com.br"
                target="_blank"
                class="btn">
-               VER DETALHES
+               VISITAR LOJA
             </a>
-
         </div>
 
-        {% else %}
+        <div class="card">
+            <h3>Lenovo</h3>
+            <p>
+                Notebooks, workstations e dispositivos premium
+                para produtividade e desempenho.
+            </p>
+            <a href="https://www.lenovo.com/br"
+               target="_blank"
+               class="btn">
+               VISITAR LOJA
+            </a>
+        </div>
 
-        <p>Estamos buscando novas ofertas para você. Volte em breve!</p>
+        <div class="card">
+            <h3>Xiaomi Brasil</h3>
+            <p>
+                Smartphones, dispositivos inteligentes e tecnologia
+                avançada com excelente custo-benefício.
+            </p>
+            <a href="https://www.mibrasil.com.br"
+               target="_blank"
+               class="btn">
+               VISITAR LOJA
+            </a>
+        </div>
 
-        {% endfor %}
+        <div class="card">
+            <h3>B&H Photo Video</h3>
+            <p>
+                Referência mundial em eletrônicos, fotografia,
+                vídeo e equipamentos profissionais.
+            </p>
+            <a href="https://www.bhphotovideo.com"
+               target="_blank"
+               class="btn">
+               VISITAR LOJA
+            </a>
+        </div>
 
     </div>
 
