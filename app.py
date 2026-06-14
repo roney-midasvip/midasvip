@@ -7,6 +7,7 @@ app = Flask(__name__)
 API_KEY = "lmd_dev_F8K39DzOwG_Z1pGoeCk7rg1FFouHbuEdXFldOGfsIWc"
 API_URL = "https://api-beta.lomadee.com.br/affiliate/products"
 
+
 def buscar_produtos(search, limite=24, preco_min=400):
     try:
         headers = {
@@ -23,10 +24,6 @@ def buscar_produtos(search, limite=24, preco_min=400):
 
         r = requests.get(API_URL, headers=headers, params=params, timeout=20)
 
-print("BUSCA:", search)
-print("STATUS:", r.status_code)
-print("RESPOSTA:", r.text[:1000])
-        
         if r.status_code != 200:
             print("Erro LinkMyDeals:", r.status_code, r.text[:500])
             return []
@@ -84,43 +81,47 @@ def perfumes():
 
 @app.route("/beleza")
 def beleza():
-    produtos = buscar_produtos("skincare beleza premium", 24, 400)
+    produtos = buscar_produtos("creme", 24, 200)
     return render_template("beleza.html", produtos=produtos)
 
 
 @app.route("/moda-feminina")
 def moda_feminina():
-    produtos = buscar_produtos("moda feminina premium", 24, 400)
+    produtos = buscar_produtos("bolsa", 24, 300)
     return render_template("moda_feminina.html", produtos=produtos)
 
 
 @app.route("/relogios")
 def relogios():
-    produtos = buscar_produtos("relogio", 24, 400)
+    produtos = buscar_produtos("relógio", 24, 300)
+    if not produtos:
+        produtos = buscar_produtos("relogio", 24, 300)
     return render_template("relogios.html", produtos=produtos)
 
 
 @app.route("/bolsas")
 def bolsas():
-    produtos = buscar_produtos("bolsa feminina", 24, 400)
+    produtos = buscar_produtos("bolsa", 24, 300)
     return render_template("bolsas.html", produtos=produtos)
 
 
 @app.route("/moda-masculina")
 def moda_masculina():
-    produtos = buscar_produtos("moda masculina premium", 24, 400)
+    produtos = buscar_produtos("tenis", 24, 300)
     return render_template("moda_masculina.html", produtos=produtos)
 
 
 @app.route("/tecnologia")
 def tecnologia():
-    produtos = buscar_produtos("iphone samsung apple", 24, 400)
+    produtos = buscar_produtos("smartphone", 24, 400)
+    if not produtos:
+        produtos = buscar_produtos("fone", 24, 300)
     return render_template("tecnologia.html", produtos=produtos)
 
 
 @app.route("/viagens")
 def viagens():
-    produtos = buscar_produtos("mala viagem", 24, 400)
+    produtos = buscar_produtos("mala", 24, 300)
     return render_template("viagens.html", produtos=produtos)
 
 
