@@ -7,7 +7,6 @@ app = Flask(__name__)
 API_KEY = "lmd_dev_F8K39DzOwG_Z1pGoeCk7rg1FFouHbuEdXFldOGfsIWc"
 API_URL = "https://api-beta.lomadee.com.br/affiliate/products"
 
-
 ORGS = {
     "drogaria_rosario": "1fcee90e-562e-455c-97a5-6bdd6d60b589",
     "le_loyn": "09562538-fde7-4bbf-947b-2ccebbc1c887",
@@ -23,7 +22,7 @@ ORGS = {
 }
 
 
-def buscar_produtos(search="", organization_ids=None, limite=24, preco_min=300):
+def buscar_produtos(search="", organization_ids=None, limite=24, preco_min=200):
     try:
         headers = {
             "x-api-key": API_KEY
@@ -65,7 +64,7 @@ def buscar_produtos(search="", organization_ids=None, limite=24, preco_min=300):
             if not nome or not url or not imagens or not options:
                 continue
 
-            pricing = options[0].get("pricing", []) if options else []
+            pricing = options[0].get("pricing", [])
 
             if not pricing:
                 continue
@@ -75,7 +74,7 @@ def buscar_produtos(search="", organization_ids=None, limite=24, preco_min=300):
             if not preco or preco < preco_min:
                 continue
 
-            chave_nome = nome.lower()
+            chave_nome = nome.lower().strip()
 
             if chave_nome in nomes_vistos:
                 continue
@@ -148,27 +147,49 @@ def perfumes():
 @app.route("/beleza")
 def beleza():
     produtos = buscar_produtos(
-        search="skin care",
+        search="creme facial",
         organization_ids=[
             ORGS["simple_organic"]
         ],
         limite=24,
-        preco_min=150
+        preco_min=80
     )
+
+    if not produtos:
+        produtos = buscar_produtos(
+            search="skin care",
+            organization_ids=[
+                ORGS["simple_organic"]
+            ],
+            limite=24,
+            preco_min=80
+        )
+
     return render_template("beleza.html", produtos=produtos)
 
 
 @app.route("/moda-feminina")
 def moda_feminina():
     produtos = buscar_produtos(
-        search="",
+        search="vestido",
         organization_ids=[
-            ORGS["guess"],
             ORGS["morena_rosa"]
         ],
         limite=24,
-        preco_min=250
+        preco_min=200
     )
+
+    if not produtos:
+        produtos = buscar_produtos(
+            search="blusa",
+            organization_ids=[
+                ORGS["morena_rosa"],
+                ORGS["guess"]
+            ],
+            limite=24,
+            preco_min=200
+        )
+
     return render_template("moda_feminina.html", produtos=produtos)
 
 
@@ -179,6 +200,14 @@ def relogios():
         limite=24,
         preco_min=300
     )
+
+    if not produtos:
+        produtos = buscar_produtos(
+            search="relogio",
+            limite=24,
+            preco_min=300
+        )
+
     return render_template("relogios.html", produtos=produtos)
 
 
@@ -199,28 +228,49 @@ def bolsas():
 @app.route("/moda-masculina")
 def moda_masculina():
     produtos = buscar_produtos(
-        search="",
+        search="camisa",
         organization_ids=[
             ORGS["freeway"],
             ORGS["camisaria_colombo"]
         ],
         limite=24,
-        preco_min=250
+        preco_min=150
     )
+
+    if not produtos:
+        produtos = buscar_produtos(
+            search="calçado",
+            organization_ids=[
+                ORGS["freeway"]
+            ],
+            limite=24,
+            preco_min=150
+        )
+
     return render_template("moda_masculina.html", produtos=produtos)
 
 
 @app.route("/tecnologia")
 def tecnologia():
     produtos = buscar_produtos(
-        search="",
+        search="notebook",
         organization_ids=[
-            ORGS["lenovo"],
-            ORGS["xiaomi"]
+            ORGS["lenovo"]
         ],
         limite=24,
-        preco_min=400
+        preco_min=1000
     )
+
+    if not produtos:
+        produtos = buscar_produtos(
+            search="smartphone",
+            organization_ids=[
+                ORGS["xiaomi"]
+            ],
+            limite=24,
+            preco_min=600
+        )
+
     return render_template("tecnologia.html", produtos=produtos)
 
 
@@ -232,7 +282,7 @@ def viagens():
             ORGS["le_postiche"]
         ],
         limite=24,
-        preco_min=250
+        preco_min=200
     )
     return render_template("viagens.html", produtos=produtos)
 
