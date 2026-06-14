@@ -1,0 +1,36 @@
+{% extends "base.html" %}
+
+{% block title %}{{ titulo }}{% endblock %}
+
+{% block content %}
+
+<section class="hero">
+    <h2>{{ titulo }}</h2>
+    <p>{{ descricao }}</p>
+
+    <a href="/midasvip-select" class="btn-dourado">
+        ← Voltar para Categorias
+    </a>
+</section>
+
+<section class="grid">
+
+    {% for loja in lojas %}
+
+    <div class="card">
+        <h3>{{ loja.nome }}</h3>
+        <p>{{ loja.descricao }}</p>
+
+        <a href="{{ loja.link }}"
+           target="_blank"
+           rel="nofollow sponsored noopener"
+           class="btn">
+           VISITAR LOJA
+        </a>
+    </div>
+
+    {% endfor %}
+
+</section>
+
+{% endblock %}
