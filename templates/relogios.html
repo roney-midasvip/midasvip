@@ -7,47 +7,67 @@
 <div style="max-width: 1400px; margin: 20px auto; padding: 0 20px;">
 
     <a href="/midasvip-select"
-       style="color: #d4af37; text-decoration: none; font-size: 18px; display: inline-block; margin-bottom: 20px;">
-        ← Voltar para Categorias
+       style="color:#d4af37;text-decoration:none;font-size:18px;display:inline-block;margin-bottom:20px;">
+       ← Voltar para Categorias
     </a>
 
-    <h2>⌚ Relógios Premium</h2>
+    <h2 style="color:#d4af37;margin-bottom:30px;">
+        ⌚ Relógios Premium
+    </h2>
 
     <div class="grid">
 
-        {% for item in produtos %}
-
         <div class="card">
-
-            {% if item.images %}
-            <img src="{{ item.images[0].url }}"
-                 alt="{{ item.name }}"
-                 style="width:100%; max-height:250px; object-fit:contain;">
-            {% endif %}
-
-            <h3>{{ item.name }}</h3>
-
-            {% if item.options and item.options[0].pricing %}
+            <h3>Ashford</h3>
             <p>
-                <strong>
-                    R$ {{ "%.2f"|format(item.options[0].pricing[0].price) }}
-                </strong>
+                Relógios premium das principais marcas internacionais,
+                com modelos clássicos e sofisticados.
             </p>
-            {% endif %}
-
-            <a href="{{ item.url }}"
+            <a href="https://www.ashford.com"
                target="_blank"
                class="btn">
-               VER DETALHES
+               VISITAR LOJA
             </a>
-
         </div>
 
-        {% else %}
+        <div class="card">
+            <h3>Jomashop</h3>
+            <p>
+                Uma das maiores referências mundiais em relógios
+                de luxo e acessórios premium.
+            </p>
+            <a href="https://www.jomashop.com"
+               target="_blank"
+               class="btn">
+               VISITAR LOJA
+            </a>
+        </div>
 
-        <p>Estamos buscando novas ofertas para você. Volte em breve!</p>
+        <div class="card">
+            <h3>Watches2U</h3>
+            <p>
+                Loja especializada em relógios masculinos e femininos
+                das marcas mais desejadas.
+            </p>
+            <a href="https://www.watches2u.com"
+               target="_blank"
+               class="btn">
+               VISITAR LOJA
+            </a>
+        </div>
 
-        {% endfor %}
+        <div class="card">
+            <h3>Watchmaxx</h3>
+            <p>
+                Seleção premium de relógios sofisticados para quem
+                aprecia exclusividade e elegância.
+            </p>
+            <a href="https://www.watchmaxx.com"
+               target="_blank"
+               class="btn">
+               VISITAR LOJA
+            </a>
+        </div>
 
     </div>
 
