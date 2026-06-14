@@ -6,50 +6,72 @@
 
 <div style="max-width: 1400px; margin: 20px auto; padding: 0 20px;">
 
-    <a href="/midasvip-select"
-       style="color: #d4af37; text-decoration: none; font-size: 18px; display: inline-block; margin-bottom: 20px;">
-        ← Voltar para Categorias
-    </a>
+```
+<a href="/midasvip-select"
+   style="color:#d4af37;text-decoration:none;font-size:18px;display:inline-block;margin-bottom:20px;">
+   ← Voltar para Categorias
+</a>
 
-    <h2>💄 Beleza Premium</h2>
+<h2 style="color:#d4af37;margin-bottom:30px;">
+    💄 Beleza Premium
+</h2>
 
-    <div class="grid">
+<div class="grid">
 
-        {% for item in produtos %}
-
-        <div class="card">
-
-            {% if item.images %}
-            <img src="{{ item.images[0].url }}"
-                 alt="{{ item.name }}"
-                 style="width:100%; max-height:250px; object-fit:contain;">
-            {% endif %}
-
-            <h3>{{ item.name }}</h3>
-
-            {% if item.options and item.options[0].pricing %}
-            <p>
-                <strong>
-                    R$ {{ "%.2f"|format(item.options[0].pricing[0].price) }}
-                </strong>
-            </p>
-            {% endif %}
-
-            <a href="{{ item.url }}"
-               target="_blank"
-               class="btn">
-               VER DETALHES
-            </a>
-
-        </div>
-
-        {% else %}
-
-        <p>Estamos buscando novas ofertas para você. Volte em breve!</p>
-
-        {% endfor %}
-
+    <div class="card">
+        <h3>Sephora</h3>
+        <p>
+            Maquiagem, skincare e produtos premium das marcas
+            mais desejadas do mundo.
+        </p>
+        <a href="https://www.sephora.com.br"
+           target="_blank"
+           class="btn">
+           VISITAR LOJA
+        </a>
     </div>
+
+    <div class="card">
+        <h3>L'Occitane</h3>
+        <p>
+            Cuidados corporais, fragrâncias e cosméticos
+            inspirados na tradição francesa.
+        </p>
+        <a href="https://br.loccitane.com"
+           target="_blank"
+           class="btn">
+           VISITAR LOJA
+        </a>
+    </div>
+
+    <div class="card">
+        <h3>MAC Cosmetics</h3>
+        <p>
+            Referência mundial em maquiagem profissional
+            e produtos de alta performance.
+        </p>
+        <a href="https://www.maccosmetics.com.br"
+           target="_blank"
+           class="btn">
+           VISITAR LOJA
+        </a>
+    </div>
+
+    <div class="card">
+        <h3>Clinique</h3>
+        <p>
+            Skincare avançado e soluções premium para cuidados
+            com a pele.
+        </p>
+        <a href="https://www.clinique.com.br"
+           target="_blank"
+           class="btn">
+           VISITAR LOJA
+        </a>
+    </div>
+
+</div>
+```
 
 </div>
 
