@@ -7,47 +7,67 @@
 <div style="max-width: 1400px; margin: 20px auto; padding: 0 20px;">
 
     <a href="/midasvip-select"
-       style="color: #d4af37; text-decoration: none; font-size: 18px; display: inline-block; margin-bottom: 20px;">
-        ← Voltar para Categorias
+       style="color:#d4af37;text-decoration:none;font-size:18px;display:inline-block;margin-bottom:20px;">
+       ← Voltar para Categorias
     </a>
 
-    <h2>👔 Moda Masculina</h2>
+    <h2 style="color:#d4af37;margin-bottom:30px;">
+        👔 Moda Masculina
+    </h2>
 
     <div class="grid">
 
-        {% for item in produtos %}
-
         <div class="card">
-
-            {% if item.images %}
-            <img src="{{ item.images[0].url }}"
-                 alt="{{ item.name }}"
-                 style="width:100%; max-height:250px; object-fit:contain;">
-            {% endif %}
-
-            <h3>{{ item.name }}</h3>
-
-            {% if item.options and item.options[0].pricing %}
+            <h3>Osklen</h3>
             <p>
-                <strong>
-                    R$ {{ "%.2f"|format(item.options[0].pricing[0].price) }}
-                </strong>
+                Moda masculina premium com design contemporâneo,
+                sofisticação e reconhecimento internacional.
             </p>
-            {% endif %}
-
-            <a href="{{ item.url }}"
+            <a href="https://www.osklen.com.br"
                target="_blank"
                class="btn">
-               VER DETALHES
+               VISITAR LOJA
             </a>
-
         </div>
 
-        {% else %}
+        <div class="card">
+            <h3>Levi's</h3>
+            <p>
+                Peças masculinas icônicas, jeans premium e estilo
+                reconhecido mundialmente.
+            </p>
+            <a href="https://www.levi.com.br"
+               target="_blank"
+               class="btn">
+               VISITAR LOJA
+            </a>
+        </div>
 
-        <p>Estamos buscando novas ofertas para você. Volte em breve!</p>
+        <div class="card">
+            <h3>Mytheresa Men</h3>
+            <p>
+                Moda masculina de luxo com curadoria das principais
+                marcas internacionais.
+            </p>
+            <a href="https://www.mytheresa.com"
+               target="_blank"
+               class="btn">
+               VISITAR LOJA
+            </a>
+        </div>
 
-        {% endfor %}
+        <div class="card">
+            <h3>Saks Fifth Avenue</h3>
+            <p>
+                Referência mundial em moda masculina premium,
+                acessórios e lifestyle de luxo.
+            </p>
+            <a href="https://www.saksfifthavenue.com"
+               target="_blank"
+               class="btn">
+               VISITAR LOJA
+            </a>
+        </div>
 
     </div>
 
