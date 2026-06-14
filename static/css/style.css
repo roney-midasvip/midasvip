@@ -10,10 +10,6 @@ body{
     font-family:Arial, Helvetica, sans-serif;
 }
 
-/* =======================
-    HEADER
-======================= */
-
 header{
     background:#000;
     text-align:center;
@@ -21,7 +17,7 @@ header{
 }
 
 .logo-principal{
-    width: 650px; /* Alterado para ficar maior */
+    width:650px;
     max-width:95%;
     display:block;
     margin:0 auto;
@@ -34,19 +30,13 @@ header{
     letter-spacing:8px;
 }
 
-/* =======================
-    MENU
-======================= */
-
 nav{
     background:#0b0b0b;
     border-top:1px solid #1f1f1f;
     border-bottom:1px solid #1f1f1f;
-
     display:flex;
     justify-content:center;
     align-items:center;
-
     gap:60px;
     padding:22px 10px;
 }
@@ -59,17 +49,12 @@ nav a{
     transition:0.3s;
 }
 
-nav a:hover{
-    color:#d4af37;
-}
-
+nav a:hover,
 .menu-ativo{
     color:#d4af37 !important;
 }
 
-/* =======================
-    HERO
-======================= */
+/* HERO */
 
 .hero{
     width:100%;
@@ -79,11 +64,13 @@ nav a:hover{
     padding:80px 20px 70px;
 }
 
+.hero h1,
 .hero h2{
     font-size:72px;
     line-height:1.15;
     margin-bottom:35px;
     font-weight:700;
+    color:#d4af37;
 }
 
 .hero p{
@@ -94,46 +81,37 @@ nav a:hover{
     color:#dddddd;
 }
 
-/* =======================
-    BOTÃO PRINCIPAL
-======================= */
+/* BOTÕES */
 
-.btn-dourado{
+.btn-dourado,
+.btn{
     display:inline-block;
-    margin-top:45px;
-
-    background:#d4af37;
-    color:#000;
-
-    padding:18px 40px;
-
+    margin-top:25px;
+    background:linear-gradient(135deg,#f4d76a,#d4af37,#b88918);
+    color:#000 !important;
+    padding:14px 28px;
     border-radius:10px;
-
-    font-size:22px;
+    font-size:15px;
     font-weight:bold;
-
     text-decoration:none;
-
     transition:0.3s;
+    box-shadow:0 0 18px rgba(212,175,55,0.25);
 }
 
+.btn:hover,
 .btn-dourado:hover{
-    opacity:0.9;
+    transform:scale(1.05);
+    box-shadow:0 0 25px rgba(212,175,55,0.55);
 }
 
-/* =======================
-    DESTAQUES
-======================= */
+/* DESTAQUES */
 
 .destaque{
     max-width:1400px;
     margin:40px auto;
-
     background:#0f0f0f;
-
     border:1px solid #1f1f1f;
     border-radius:20px;
-
     padding:40px;
 }
 
@@ -149,111 +127,104 @@ nav a:hover{
     color:#d6d6d6;
 }
 
-/* =======================
-    GRID BASE (NOTÍCIAS)
-======================= */
+/* CATEGORIAS PREMIUM */
+
+a[href="/midasvip-select"]{
+    display:inline-flex !important;
+    align-items:center;
+    gap:12px;
+    padding:16px 28px !important;
+    border:2px solid #d4af37;
+    border-radius:16px;
+    color:#d4af37 !important;
+    font-size:18px !important;
+    font-weight:bold;
+    letter-spacing:1.5px;
+    text-transform:uppercase;
+    margin:20px 0 35px !important;
+    box-shadow:0 0 18px rgba(212,175,55,0.25);
+    background:rgba(212,175,55,0.03);
+}
+
+a[href="/midasvip-select"]:hover{
+    background:rgba(212,175,55,0.12);
+    box-shadow:0 0 28px rgba(212,175,55,0.45);
+}
+
+div[style*="max-width: 1400px"] > h2{
+    color:#d4af37 !important;
+    font-size:58px;
+    font-family:Georgia, 'Times New Roman', serif;
+    font-weight:700;
+    letter-spacing:2px;
+    margin:10px 0 50px !important;
+    text-shadow:0 0 18px rgba(212,175,55,0.45);
+    border-bottom:1px solid rgba(212,175,55,0.4);
+    padding-bottom:18px;
+    width:fit-content;
+}
+
+/* GRID */
 
 .grid{
     max-width:1400px;
     margin:40px auto;
     padding:0 20px;
-
     display:grid;
-    grid-template-columns:repeat(auto-fit,minmax(300px,1fr));
+    grid-template-columns:repeat(auto-fit,minmax(260px,1fr));
     gap:30px;
 }
 
-/* CARD PADRÃO */
-.card{
-    background:#111;
-    border:1px solid #222;
-    border-radius:18px;
-    padding:30px;
+/* CARD PREMIUM */
 
+.card{
+    background:linear-gradient(180deg,#151515,#0b0b0b);
+    border:1px solid rgba(212,175,55,0.45);
+    border-radius:22px;
+    padding:42px 32px;
     color:#fff;
     text-decoration:none;
-
     transition:0.3s;
+    min-height:300px;
+    display:flex;
+    flex-direction:column;
+    justify-content:space-between;
+    box-shadow:
+        inset 0 0 18px rgba(255,255,255,0.02),
+        0 0 18px rgba(212,175,55,0.10);
 }
 
 .card:hover{
-    transform:translateY(-6px);
-    border-color:#d4af37;
+    transform:translateY(-8px);
+    border-color:#f4d76a;
+    box-shadow:0 0 35px rgba(212,175,55,0.35);
 }
 
 .card h3{
     color:#d4af37;
-    font-size:30px;
-    margin-bottom:15px;
+    font-size:34px;
+    margin-bottom:22px;
+    font-family:Georgia, 'Times New Roman', serif;
+    line-height:1.15;
+    text-shadow:0 0 12px rgba(212,175,55,0.35);
+}
+
+.card h3::after{
+    content:"";
+    display:block;
+    width:120px;
+    height:1px;
+    background:linear-gradient(90deg,transparent,#d4af37,transparent);
+    margin:22px 0 0;
 }
 
 .card p{
-    color:#d8d8d8;
-    font-size:19px;
+    color:#f1f1f1;
+    font-size:20px;
     line-height:1.8;
 }
 
-/* =======================
-    BOTÃO DE AFILIADO
-======================= */
-
-.btn{
-    display:inline-block;
-    margin-top:15px;
-
-    padding:10px 18px;
-
-    background:#d4af37;
-    color:#000 !important;
-
-    font-size:14px;
-    font-weight:bold;
-
-    text-decoration:none;
-
-    border-radius:8px;
-
-    transition:0.3s;
-}
-
-.btn:hover{
-    background:#caa233;
-    transform:scale(1.05);
-}
-
-/* =======================
-    PRODUTOS (FIX DEFINITIVO)
-======================= */
-
-.produtos{
-    width:100%;
-    display:flex;
-    justify-content:center;
-    margin-top:60px;
-}
-
-.container-produtos{
-    width:100%;
-    max-width:1400px;
-    padding:0 20px;
-    text-align:center;
-}
-
-.produtos h2{
-    color:#d4af37;
-    font-size:42px;
-    margin-bottom:30px;
-    text-align:center;
-}
-
-.produtos .grid{
-    width:100%;
-    margin:0 auto;
-}
-
-/* =======================
-    FOOTER
-======================= */
+/* FOOTER */
 
 footer{
     margin-top:80px;
@@ -264,14 +235,12 @@ footer{
     font-size:16px;
 }
 
-/* =======================
-    MOBILE
-======================= */
+/* MOBILE */
 
 @media(max-width:768px){
 
     .logo-principal{
-        width: 320px; /* Alterado para ficar maior no mobile */
+        width:320px;
     }
 
     .slogan{
@@ -293,6 +262,7 @@ footer{
         padding:50px 20px;
     }
 
+    .hero h1,
     .hero h2{
         font-size:40px;
     }
@@ -301,27 +271,39 @@ footer{
         font-size:18px;
     }
 
-    .btn-dourado{
-        font-size:18px;
+    a[href="/midasvip-select"]{
+        font-size:13px !important;
+        padding:13px 18px !important;
+        margin-left:0 !important;
     }
 
-    .destaque{
-        padding:25px;
+    div[style*="max-width: 1400px"] > h2{
+        font-size:36px;
+        line-height:1.2;
+        margin-bottom:30px !important;
     }
 
-    .destaque h2{
-        font-size:28px;
+    .grid{
+        grid-template-columns:1fr;
+        padding:0 16px;
+        gap:25px;
     }
 
-    .destaque p{
-        font-size:18px;
+    .card{
+        min-height:auto;
+        padding:32px 26px;
+        text-align:center;
     }
 
     .card h3{
-        font-size:24px;
+        font-size:30px;
+    }
+
+    .card h3::after{
+        margin:18px auto 0;
     }
 
     .card p{
-        font-size:16px;
+        font-size:18px;
     }
 }
