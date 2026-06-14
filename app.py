@@ -23,6 +23,10 @@ def buscar_produtos(search, limite=24, preco_min=400):
 
         r = requests.get(API_URL, headers=headers, params=params, timeout=20)
 
+print("BUSCA:", search)
+print("STATUS:", r.status_code)
+print("RESPOSTA:", r.text[:1000])
+        
         if r.status_code != 200:
             print("Erro LinkMyDeals:", r.status_code, r.text[:500])
             return []
