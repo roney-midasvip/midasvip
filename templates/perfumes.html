@@ -6,50 +6,72 @@
 
 <div style="max-width: 1400px; margin: 20px auto; padding: 0 20px;">
 
-    <a href="/midasvip-select"
-       style="color: #d4af37; text-decoration: none; font-size: 18px; display: inline-block; margin-bottom: 20px;">
-        ← Voltar para Categorias
-    </a>
+```
+<a href="/midasvip-select"
+   style="color:#d4af37;text-decoration:none;font-size:18px;display:inline-block;margin-bottom:20px;">
+   ← Voltar para Categorias
+</a>
 
-    <h2>🌸 Perfumes Premium</h2>
+<h2 style="color:#d4af37;margin-bottom:30px;">
+    🌸 Perfumes Premium
+</h2>
 
-    <div class="grid">
+<div class="grid">
 
-        {% for item in produtos %}
-
-        <div class="card">
-
-            {% if item.images %}
-            <img src="{{ item.images[0].url }}"
-                 alt="{{ item.name }}"
-                 style="width:100%; max-height:250px; object-fit:contain;">
-            {% endif %}
-
-            <h3>{{ item.name }}</h3>
-
-            {% if item.options and item.options[0].pricing %}
-            <p>
-                <strong>
-                    R$ {{ "%.2f"|format(item.options[0].pricing[0].price) }}
-                </strong>
-            </p>
-            {% endif %}
-
-            <a href="{{ item.url }}"
-               target="_blank"
-               class="btn">
-               VER DETALHES
-            </a>
-
-        </div>
-
-        {% else %}
-
-        <p>Estamos buscando novas ofertas para você. Volte em breve!</p>
-
-        {% endfor %}
-
+    <div class="card">
+        <h3>Sephora</h3>
+        <p>
+            Fragrâncias importadas, lançamentos exclusivos e
+            perfumes das marcas mais desejadas do mundo.
+        </p>
+        <a href="https://www.sephora.com.br/perfumes"
+           target="_blank"
+           class="btn">
+           VISITAR LOJA
+        </a>
     </div>
+
+    <div class="card">
+        <h3>FragranceNet</h3>
+        <p>
+            Uma das maiores perfumarias online do mundo,
+            especializada em fragrâncias premium.
+        </p>
+        <a href="https://www.fragrancenet.com"
+           target="_blank"
+           class="btn">
+           VISITAR LOJA
+        </a>
+    </div>
+
+    <div class="card">
+        <h3>StrawberryNET</h3>
+        <p>
+            Perfumes importados, cosméticos e produtos
+            premium de beleza com alcance global.
+        </p>
+        <a href="https://www.strawberrynet.com"
+           target="_blank"
+           class="btn">
+           VISITAR LOJA
+        </a>
+    </div>
+
+    <div class="card">
+        <h3>Bath & Body Works</h3>
+        <p>
+            Body mists, perfumes e fragrâncias sofisticadas
+            reconhecidas mundialmente.
+        </p>
+        <a href="https://www.bathandbodyworks.com"
+           target="_blank"
+           class="btn">
+           VISITAR LOJA
+        </a>
+    </div>
+
+</div>
+```
 
 </div>
 
